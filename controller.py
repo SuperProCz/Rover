@@ -2,6 +2,7 @@ import sys, time
 running = True
 from pynput.keyboard import Key, Listener
 
+#nice comment, I hope that I don't break anything by adding it here
 xVel = 0
 yVel = 0
 alreadyPressed = {'w': False, 's': False, 'a': False, 'd': False}
