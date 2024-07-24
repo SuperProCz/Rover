@@ -1,0 +1,302 @@
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"pcf8574.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.PCF8574_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	PCF8574_Init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	PCF8574_Init:
+  25              	.LVL0:
+  26              	.LFB66:
+  27              		.file 1 "Src/pcf8574.c"
+   1:Src/pcf8574.c **** /*
+   2:Src/pcf8574.c ****  * pcf8574.c
+   3:Src/pcf8574.c ****  *
+   4:Src/pcf8574.c ****  *  Created on: Dec 30, 2014
+   5:Src/pcf8574.c ****  *      Author: peter
+   6:Src/pcf8574.c ****  */
+   7:Src/pcf8574.c **** 
+   8:Src/pcf8574.c **** #include "pcf8574.h"
+   9:Src/pcf8574.c **** 
+  10:Src/pcf8574.c **** PCF8574_RESULT PCF8574_Init(PCF8574_HandleTypeDef* handle) {
+  28              		.loc 1 10 60 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  11:Src/pcf8574.c **** 
+  12:Src/pcf8574.c **** 	handle->PCF_I2C_ADDRESS &= 0x07;
+  33              		.loc 1 12 2 view .LVU1
+  34              		.loc 1 12 26 is_stmt 0 view .LVU2
+  35 0000 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+  36 0002 03F00703 		and	r3, r3, #7
+  37 0006 0370     		strb	r3, [r0]
+  13:Src/pcf8574.c **** 
+  14:Src/pcf8574.c **** 	/*if (handle->i2c.State == HAL_I2C_STATE_RESET) {
+  15:Src/pcf8574.c **** 		handle->i2c.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  16:Src/pcf8574.c **** 		handle->i2c.Init.DualAddressMode = I2C_DUALADDRESS_DISABLED;
+  17:Src/pcf8574.c **** 		handle->i2c.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  18:Src/pcf8574.c **** 		handle->i2c.Init.NoStretchMode = I2C_NOSTRETCH_DISABLED;
+  19:Src/pcf8574.c **** 		handle->i2c.Init.OwnAddress1 = 0xFE;
+  20:Src/pcf8574.c **** 		if (HAL_I2C_Init(&handle->i2c) != HAL_OK) {
+  21:Src/pcf8574.c **** 			handle->errorCallback(PCF8574_ERROR);
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s 			page 2
+
+
+  22:Src/pcf8574.c **** 			return PCF8574_ERROR;
+  23:Src/pcf8574.c **** 		}
+  24:Src/pcf8574.c **** 	}*/
+  25:Src/pcf8574.c **** 	return PCF8574_OK;
+  38              		.loc 1 25 2 is_stmt 1 view .LVU3
+  26:Src/pcf8574.c **** }
+  39              		.loc 1 26 1 is_stmt 0 view .LVU4
+  40 0008 0020     		movs	r0, #0
+  41              	.LVL1:
+  42              		.loc 1 26 1 view .LVU5
+  43 000a 7047     		bx	lr
+  44              		.cfi_endproc
+  45              	.LFE66:
+  47              		.section	.text.PCF8574_DeInit,"ax",%progbits
+  48              		.align	1
+  49              		.global	PCF8574_DeInit
+  50              		.syntax unified
+  51              		.thumb
+  52              		.thumb_func
+  54              	PCF8574_DeInit:
+  55              	.LVL2:
+  56              	.LFB67:
+  27:Src/pcf8574.c **** 
+  28:Src/pcf8574.c **** PCF8574_RESULT PCF8574_DeInit(PCF8574_HandleTypeDef* handle) {
+  57              		.loc 1 28 62 is_stmt 1 view -0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              		.loc 1 28 62 is_stmt 0 view .LVU7
+  62 0000 08B5     		push	{r3, lr}
+  63              	.LCFI0:
+  64              		.cfi_def_cfa_offset 8
+  65              		.cfi_offset 3, -8
+  66              		.cfi_offset 14, -4
+  29:Src/pcf8574.c **** 	HAL_I2C_DeInit(&handle->i2c);
+  67              		.loc 1 29 2 is_stmt 1 view .LVU8
+  68 0002 0830     		adds	r0, r0, #8
+  69              	.LVL3:
+  70              		.loc 1 29 2 is_stmt 0 view .LVU9
+  71 0004 FFF7FEFF 		bl	HAL_I2C_DeInit
+  72              	.LVL4:
+  30:Src/pcf8574.c **** 	return PCF8574_OK;
+  73              		.loc 1 30 2 is_stmt 1 view .LVU10
+  31:Src/pcf8574.c **** }
+  74              		.loc 1 31 1 is_stmt 0 view .LVU11
+  75 0008 0020     		movs	r0, #0
+  76 000a 08BD     		pop	{r3, pc}
+  77              		.cfi_endproc
+  78              	.LFE67:
+  80              		.section	.text.PCF8574_Write,"ax",%progbits
+  81              		.align	1
+  82              		.global	PCF8574_Write
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  87              	PCF8574_Write:
+  88              	.LVL5:
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s 			page 3
+
+
+  89              	.LFB68:
+  32:Src/pcf8574.c **** 
+  33:Src/pcf8574.c **** PCF8574_RESULT PCF8574_Write(PCF8574_HandleTypeDef* handle, uint8_t val) {
+  90              		.loc 1 33 74 is_stmt 1 view -0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 8
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		.loc 1 33 74 is_stmt 0 view .LVU13
+  95 0000 00B5     		push	{lr}
+  96              	.LCFI1:
+  97              		.cfi_def_cfa_offset 4
+  98              		.cfi_offset 14, -4
+  99 0002 85B0     		sub	sp, sp, #20
+ 100              	.LCFI2:
+ 101              		.cfi_def_cfa_offset 24
+ 102 0004 0346     		mov	r3, r0
+ 103 0006 8DF80F10 		strb	r1, [sp, #15]
+  34:Src/pcf8574.c **** 	if (HAL_I2C_Master_Transmit(&handle->i2c,
+ 104              		.loc 1 34 2 is_stmt 1 view .LVU14
+  35:Src/pcf8574.c **** 			(handle->PCF_I2C_ADDRESS << 1) | PCF8574_I2C_ADDRESS_MASK, &val, 1,
+ 105              		.loc 1 35 11 is_stmt 0 view .LVU15
+ 106 000a 10F8081B 		ldrb	r1, [r0], #8	@ zero_extendqisi2
+ 107              	.LVL6:
+ 108              		.loc 1 35 29 view .LVU16
+ 109 000e 4900     		lsls	r1, r1, #1
+  34:Src/pcf8574.c **** 	if (HAL_I2C_Master_Transmit(&handle->i2c,
+ 110              		.loc 1 34 6 view .LVU17
+ 111 0010 5B68     		ldr	r3, [r3, #4]
+ 112              	.LVL7:
+  34:Src/pcf8574.c **** 	if (HAL_I2C_Master_Transmit(&handle->i2c,
+ 113              		.loc 1 34 6 view .LVU18
+ 114 0012 0093     		str	r3, [sp]
+ 115 0014 0123     		movs	r3, #1
+ 116 0016 0DF10F02 		add	r2, sp, #15
+ 117              	.LVL8:
+  34:Src/pcf8574.c **** 	if (HAL_I2C_Master_Transmit(&handle->i2c,
+ 118              		.loc 1 34 6 view .LVU19
+ 119 001a 41F04001 		orr	r1, r1, #64
+ 120 001e FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+ 121              	.LVL9:
+  34:Src/pcf8574.c **** 	if (HAL_I2C_Master_Transmit(&handle->i2c,
+ 122              		.loc 1 34 5 view .LVU20
+ 123 0022 10B9     		cbnz	r0, .L8
+ 124              	.L5:
+  36:Src/pcf8574.c **** 			handle->PCF_I2C_TIMEOUT) != HAL_OK) {
+  37:Src/pcf8574.c **** 		//handle->errorCallback(PCF8574_ERROR);
+  38:Src/pcf8574.c **** 		return PCF8574_ERROR;
+  39:Src/pcf8574.c **** 	}
+  40:Src/pcf8574.c **** 
+  41:Src/pcf8574.c **** 	/*if (HAL_I2C_Master_Transmit_DMA(&handle->i2c,
+  42:Src/pcf8574.c **** 			(handle->PCF_I2C_ADDRESS << 1) | PCF8574_I2C_ADDRESS_MASK, &val, 1) != HAL_OK) {
+  43:Src/pcf8574.c **** 		handle->errorCallback(PCF8574_ERROR);
+  44:Src/pcf8574.c **** 		//<return PCF8574_ERROR;
+  45:Src/pcf8574.c **** 	}*/
+  46:Src/pcf8574.c **** 
+  47:Src/pcf8574.c **** 	//HAL_I2C_Master_Transmit_DMA(&hi2c2, 0xA4, (uint8_t*)ai2cBuffer, 2);
+  48:Src/pcf8574.c **** 	return PCF8574_OK;
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s 			page 4
+
+
+  49:Src/pcf8574.c **** }
+ 125              		.loc 1 49 1 view .LVU21
+ 126 0024 05B0     		add	sp, sp, #20
+ 127              	.LCFI3:
+ 128              		.cfi_remember_state
+ 129              		.cfi_def_cfa_offset 4
+ 130              		@ sp needed
+ 131 0026 5DF804FB 		ldr	pc, [sp], #4
+ 132              	.L8:
+ 133              	.LCFI4:
+ 134              		.cfi_restore_state
+  38:Src/pcf8574.c **** 	}
+ 135              		.loc 1 38 10 view .LVU22
+ 136 002a 0120     		movs	r0, #1
+ 137 002c FAE7     		b	.L5
+ 138              		.cfi_endproc
+ 139              	.LFE68:
+ 141              		.section	.text.PCF8574_Read,"ax",%progbits
+ 142              		.align	1
+ 143              		.global	PCF8574_Read
+ 144              		.syntax unified
+ 145              		.thumb
+ 146              		.thumb_func
+ 148              	PCF8574_Read:
+ 149              	.LVL10:
+ 150              	.LFB69:
+  50:Src/pcf8574.c **** 
+  51:Src/pcf8574.c **** PCF8574_RESULT PCF8574_Read(PCF8574_HandleTypeDef* handle, uint8_t* val) {
+ 151              		.loc 1 51 74 is_stmt 1 view -0
+ 152              		.cfi_startproc
+ 153              		@ args = 0, pretend = 0, frame = 0
+ 154              		@ frame_needed = 0, uses_anonymous_args = 0
+ 155              		.loc 1 51 74 is_stmt 0 view .LVU24
+ 156 0000 00B5     		push	{lr}
+ 157              	.LCFI5:
+ 158              		.cfi_def_cfa_offset 4
+ 159              		.cfi_offset 14, -4
+ 160 0002 83B0     		sub	sp, sp, #12
+ 161              	.LCFI6:
+ 162              		.cfi_def_cfa_offset 16
+ 163 0004 0346     		mov	r3, r0
+ 164 0006 0A46     		mov	r2, r1
+  52:Src/pcf8574.c **** 	if (HAL_I2C_Master_Receive(&handle->i2c,
+ 165              		.loc 1 52 2 is_stmt 1 view .LVU25
+  53:Src/pcf8574.c **** 			(handle->PCF_I2C_ADDRESS << 1) | PCF8574_I2C_ADDRESS_MASK, val, 1,
+ 166              		.loc 1 53 11 is_stmt 0 view .LVU26
+ 167 0008 10F808CB 		ldrb	ip, [r0], #8	@ zero_extendqisi2
+ 168              	.LVL11:
+ 169              		.loc 1 53 29 view .LVU27
+ 170 000c 4FEA4C0C 		lsl	ip, ip, #1
+  52:Src/pcf8574.c **** 	if (HAL_I2C_Master_Receive(&handle->i2c,
+ 171              		.loc 1 52 6 view .LVU28
+ 172 0010 5B68     		ldr	r3, [r3, #4]
+ 173              	.LVL12:
+  52:Src/pcf8574.c **** 	if (HAL_I2C_Master_Receive(&handle->i2c,
+ 174              		.loc 1 52 6 view .LVU29
+ 175 0012 0093     		str	r3, [sp]
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s 			page 5
+
+
+ 176 0014 0123     		movs	r3, #1
+ 177 0016 4CF04001 		orr	r1, ip, #64
+ 178              	.LVL13:
+  52:Src/pcf8574.c **** 	if (HAL_I2C_Master_Receive(&handle->i2c,
+ 179              		.loc 1 52 6 view .LVU30
+ 180 001a FFF7FEFF 		bl	HAL_I2C_Master_Receive
+ 181              	.LVL14:
+  52:Src/pcf8574.c **** 	if (HAL_I2C_Master_Receive(&handle->i2c,
+ 182              		.loc 1 52 5 view .LVU31
+ 183 001e 10B9     		cbnz	r0, .L13
+ 184              	.L10:
+  54:Src/pcf8574.c **** 			handle->PCF_I2C_TIMEOUT) != HAL_OK) {
+  55:Src/pcf8574.c **** 		return PCF8574_ERROR;
+  56:Src/pcf8574.c **** 	}
+  57:Src/pcf8574.c **** 	return PCF8574_OK;
+  58:Src/pcf8574.c **** }
+ 185              		.loc 1 58 1 view .LVU32
+ 186 0020 03B0     		add	sp, sp, #12
+ 187              	.LCFI7:
+ 188              		.cfi_remember_state
+ 189              		.cfi_def_cfa_offset 4
+ 190              		@ sp needed
+ 191 0022 5DF804FB 		ldr	pc, [sp], #4
+ 192              	.L13:
+ 193              	.LCFI8:
+ 194              		.cfi_restore_state
+  55:Src/pcf8574.c **** 	}
+ 195              		.loc 1 55 10 view .LVU33
+ 196 0026 0120     		movs	r0, #1
+ 197 0028 FAE7     		b	.L10
+ 198              		.cfi_endproc
+ 199              	.LFE69:
+ 201              		.text
+ 202              	.Letext0:
+ 203              		.file 2 "/opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_de
+ 204              		.file 3 "/opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint
+ 205              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 206              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 207              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 208              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h"
+ 209              		.file 8 "Inc/pcf8574.h"
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 pcf8574.c
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s:18     .text.PCF8574_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s:24     .text.PCF8574_Init:0000000000000000 PCF8574_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s:48     .text.PCF8574_DeInit:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s:54     .text.PCF8574_DeInit:0000000000000000 PCF8574_DeInit
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s:81     .text.PCF8574_Write:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s:87     .text.PCF8574_Write:0000000000000000 PCF8574_Write
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s:142    .text.PCF8574_Read:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccV5jHXS.s:148    .text.PCF8574_Read:0000000000000000 PCF8574_Read
+
+UNDEFINED SYMBOLS
+HAL_I2C_DeInit
+HAL_I2C_Master_Transmit
+HAL_I2C_Master_Receive

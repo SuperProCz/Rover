@@ -1,0 +1,2079 @@
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SystemClock_Config,"ax",%progbits
+  18              		.align	1
+  19              		.global	SystemClock_Config
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	SystemClock_Config:
+  25              	.LFB67:
+  26              		.file 1 "Src/main.c"
+   1:Src/main.c    **** /*
+   2:Src/main.c    **** * This file is part of the hoverboard-firmware-hack project.
+   3:Src/main.c    **** *
+   4:Src/main.c    **** * Copyright (C) 2017-2018 Rene Hopf <renehopf@mac.com>
+   5:Src/main.c    **** * Copyright (C) 2017-2018 Nico Stute <crinq@crinq.de>
+   6:Src/main.c    **** * Copyright (C) 2017-2018 Niklas Fauth <niklas.fauth@kit.fail>
+   7:Src/main.c    **** * Copyright (C) 2019-2020 Emanuel FERU <aerdronix@gmail.com>
+   8:Src/main.c    **** *
+   9:Src/main.c    **** * This program is free software: you can redistribute it and/or modify
+  10:Src/main.c    **** * it under the terms of the GNU General Public License as published by
+  11:Src/main.c    **** * the Free Software Foundation, either version 3 of the License, or
+  12:Src/main.c    **** * (at your option) any later version.
+  13:Src/main.c    **** *
+  14:Src/main.c    **** * This program is distributed in the hope that it will be useful,
+  15:Src/main.c    **** * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  16:Src/main.c    **** * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  17:Src/main.c    **** * GNU General Public License for more details.
+  18:Src/main.c    **** *
+  19:Src/main.c    **** * You should have received a copy of the GNU General Public License
+  20:Src/main.c    **** * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  21:Src/main.c    **** */
+  22:Src/main.c    **** 
+  23:Src/main.c    **** #include <stdio.h>
+  24:Src/main.c    **** #include <stdlib.h> // for abs()
+  25:Src/main.c    **** #include "stm32f1xx_hal.h"
+  26:Src/main.c    **** #include "defines.h"
+  27:Src/main.c    **** #include "setup.h"
+  28:Src/main.c    **** #include "config.h"
+  29:Src/main.c    **** #include "util.h"
+  30:Src/main.c    **** #include "BLDC_controller.h"      /* BLDC's header file */
+  31:Src/main.c    **** #include "rtwtypes.h"
+  32:Src/main.c    **** #include "comms.h"
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 2
+
+
+  33:Src/main.c    **** 
+  34:Src/main.c    **** #if defined(DEBUG_I2C_LCD) || defined(SUPPORT_LCD)
+  35:Src/main.c    **** #include "hd44780.h"
+  36:Src/main.c    **** #endif
+  37:Src/main.c    **** 
+  38:Src/main.c    **** void SystemClock_Config(void);
+  39:Src/main.c    **** 
+  40:Src/main.c    **** //------------------------------------------------------------------------
+  41:Src/main.c    **** // Global variables set externally
+  42:Src/main.c    **** //------------------------------------------------------------------------
+  43:Src/main.c    **** extern TIM_HandleTypeDef htim_left;
+  44:Src/main.c    **** extern TIM_HandleTypeDef htim_right;
+  45:Src/main.c    **** extern ADC_HandleTypeDef hadc1;
+  46:Src/main.c    **** extern ADC_HandleTypeDef hadc2;
+  47:Src/main.c    **** extern volatile adc_buf_t adc_buffer;
+  48:Src/main.c    **** #if defined(DEBUG_I2C_LCD) || defined(SUPPORT_LCD)
+  49:Src/main.c    ****   extern LCD_PCF8574_HandleTypeDef lcd;
+  50:Src/main.c    ****   extern uint8_t LCDerrorFlag;
+  51:Src/main.c    **** #endif
+  52:Src/main.c    **** 
+  53:Src/main.c    **** extern UART_HandleTypeDef huart2;
+  54:Src/main.c    **** extern UART_HandleTypeDef huart3;
+  55:Src/main.c    **** 
+  56:Src/main.c    **** volatile uint8_t uart_buf[200];
+  57:Src/main.c    **** 
+  58:Src/main.c    **** // Matlab defines - from auto-code generation
+  59:Src/main.c    **** //---------------
+  60:Src/main.c    **** extern P    rtP_Left;                   /* Block parameters (auto storage) */
+  61:Src/main.c    **** extern P    rtP_Right;                  /* Block parameters (auto storage) */
+  62:Src/main.c    **** extern ExtY rtY_Left;                   /* External outputs */
+  63:Src/main.c    **** extern ExtY rtY_Right;                  /* External outputs */
+  64:Src/main.c    **** extern ExtU rtU_Left;                   /* External inputs */
+  65:Src/main.c    **** extern ExtU rtU_Right;                  /* External inputs */
+  66:Src/main.c    **** //---------------
+  67:Src/main.c    **** 
+  68:Src/main.c    **** extern uint8_t     inIdx;               // input index used for dual-inputs
+  69:Src/main.c    **** extern uint8_t     inIdx_prev;
+  70:Src/main.c    **** extern InputStruct input1[];            // input structure
+  71:Src/main.c    **** extern InputStruct input2[];            // input structure
+  72:Src/main.c    **** 
+  73:Src/main.c    **** extern int16_t speedAvg;                // Average measured speed
+  74:Src/main.c    **** extern int16_t speedAvgAbs;             // Average measured speed in absolute
+  75:Src/main.c    **** extern volatile uint32_t timeoutCntGen; // Timeout counter for the General timeout (PPM, PWM, Nunch
+  76:Src/main.c    **** extern volatile uint8_t  timeoutFlgGen; // Timeout Flag for the General timeout (PPM, PWM, Nunchuk)
+  77:Src/main.c    **** extern uint8_t timeoutFlgADC;           // Timeout Flag for for ADC Protection: 0 = OK, 1 = Problem
+  78:Src/main.c    **** extern uint8_t timeoutFlgSerial;        // Timeout Flag for Rx Serial command: 0 = OK, 1 = Problem 
+  79:Src/main.c    **** 
+  80:Src/main.c    **** extern volatile int pwml;               // global variable for pwm left. -1000 to 1000
+  81:Src/main.c    **** extern volatile int pwmr;               // global variable for pwm right. -1000 to 1000
+  82:Src/main.c    **** 
+  83:Src/main.c    **** extern uint8_t enable;                  // global variable for motor enable
+  84:Src/main.c    **** 
+  85:Src/main.c    **** extern int16_t batVoltage;              // global variable for battery voltage
+  86:Src/main.c    **** 
+  87:Src/main.c    **** #if defined(SIDEBOARD_SERIAL_USART2)
+  88:Src/main.c    **** extern SerialSideboard Sideboard_L;
+  89:Src/main.c    **** #endif
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 3
+
+
+  90:Src/main.c    **** #if defined(SIDEBOARD_SERIAL_USART3)
+  91:Src/main.c    **** extern SerialSideboard Sideboard_R;
+  92:Src/main.c    **** #endif
+  93:Src/main.c    **** #if (defined(CONTROL_PPM_LEFT) && defined(DEBUG_SERIAL_USART3)) || (defined(CONTROL_PPM_RIGHT) && d
+  94:Src/main.c    **** extern volatile uint16_t ppm_captured_value[PPM_NUM_CHANNELS+1];
+  95:Src/main.c    **** #endif
+  96:Src/main.c    **** #if (defined(CONTROL_PWM_LEFT) && defined(DEBUG_SERIAL_USART3)) || (defined(CONTROL_PWM_RIGHT) && d
+  97:Src/main.c    **** extern volatile uint16_t pwm_captured_ch1_value;
+  98:Src/main.c    **** extern volatile uint16_t pwm_captured_ch2_value;
+  99:Src/main.c    **** #endif
+ 100:Src/main.c    **** 
+ 101:Src/main.c    **** 
+ 102:Src/main.c    **** //------------------------------------------------------------------------
+ 103:Src/main.c    **** // Global variables set here in main.c
+ 104:Src/main.c    **** //------------------------------------------------------------------------
+ 105:Src/main.c    **** uint8_t backwardDrive;
+ 106:Src/main.c    **** extern volatile uint32_t buzzerTimer;
+ 107:Src/main.c    **** volatile uint32_t main_loop_counter;
+ 108:Src/main.c    **** int16_t batVoltageCalib;         // global variable for calibrated battery voltage
+ 109:Src/main.c    **** int16_t board_temp_deg_c;        // global variable for calibrated temperature in degrees Celsius
+ 110:Src/main.c    **** int16_t left_dc_curr;            // global variable for Left DC Link current 
+ 111:Src/main.c    **** int16_t right_dc_curr;           // global variable for Right DC Link current
+ 112:Src/main.c    **** int16_t dc_curr;                 // global variable for Total DC Link current 
+ 113:Src/main.c    **** int16_t cmdL;                    // global variable for Left Command 
+ 114:Src/main.c    **** int16_t cmdR;                    // global variable for Right Command 
+ 115:Src/main.c    **** 
+ 116:Src/main.c    **** //------------------------------------------------------------------------
+ 117:Src/main.c    **** // Local variables
+ 118:Src/main.c    **** //------------------------------------------------------------------------
+ 119:Src/main.c    **** #if defined(FEEDBACK_SERIAL_USART2) || defined(FEEDBACK_SERIAL_USART3)
+ 120:Src/main.c    **** typedef struct{
+ 121:Src/main.c    ****   uint16_t  start;
+ 122:Src/main.c    ****   int16_t   cmd1;
+ 123:Src/main.c    ****   int16_t   cmd2;
+ 124:Src/main.c    ****   int16_t   speedR_meas;
+ 125:Src/main.c    ****   int16_t   speedL_meas;
+ 126:Src/main.c    ****   int16_t   batVoltage;
+ 127:Src/main.c    ****   int16_t   boardTemp;
+ 128:Src/main.c    ****   uint16_t  cmdLed;
+ 129:Src/main.c    ****   uint16_t  checksum;
+ 130:Src/main.c    **** } SerialFeedback;
+ 131:Src/main.c    **** static SerialFeedback Feedback;
+ 132:Src/main.c    **** #endif
+ 133:Src/main.c    **** #if defined(FEEDBACK_SERIAL_USART2)
+ 134:Src/main.c    **** static uint8_t sideboard_leds_L;
+ 135:Src/main.c    **** #endif
+ 136:Src/main.c    **** #if defined(FEEDBACK_SERIAL_USART3)
+ 137:Src/main.c    **** static uint8_t sideboard_leds_R;
+ 138:Src/main.c    **** #endif
+ 139:Src/main.c    **** 
+ 140:Src/main.c    **** #ifdef VARIANT_TRANSPOTTER
+ 141:Src/main.c    ****   uint8_t  nunchuk_connected;
+ 142:Src/main.c    ****   extern float    setDistance;  
+ 143:Src/main.c    **** 
+ 144:Src/main.c    ****   static uint8_t  checkRemote = 0;
+ 145:Src/main.c    ****   static uint16_t distance;
+ 146:Src/main.c    ****   static float    steering;
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 4
+
+
+ 147:Src/main.c    ****   static int      distanceErr;  
+ 148:Src/main.c    ****   static int      lastDistance = 0;
+ 149:Src/main.c    ****   static uint16_t transpotter_counter = 0;
+ 150:Src/main.c    **** #endif
+ 151:Src/main.c    **** 
+ 152:Src/main.c    **** static int16_t    speed;                // local variable for speed. -1000 to 1000
+ 153:Src/main.c    **** #ifndef VARIANT_TRANSPOTTER
+ 154:Src/main.c    ****   static int16_t  steer;                // local variable for steering. -1000 to 1000
+ 155:Src/main.c    ****   static int16_t  steerRateFixdt;       // local fixed-point variable for steering rate limiter
+ 156:Src/main.c    ****   static int16_t  speedRateFixdt;       // local fixed-point variable for speed rate limiter
+ 157:Src/main.c    ****   static int32_t  steerFixdt;           // local fixed-point variable for steering low-pass filter
+ 158:Src/main.c    ****   static int32_t  speedFixdt;           // local fixed-point variable for speed low-pass filter
+ 159:Src/main.c    **** #endif
+ 160:Src/main.c    **** 
+ 161:Src/main.c    **** static uint32_t    buzzerTimer_prev = 0;
+ 162:Src/main.c    **** static uint32_t    inactivity_timeout_counter;
+ 163:Src/main.c    **** static MultipleTap MultipleTapBrake;    // define multiple tap functionality for the Brake pedal
+ 164:Src/main.c    **** 
+ 165:Src/main.c    **** static uint16_t rate = RATE; // Adjustable rate to support multiple drive modes on startup
+ 166:Src/main.c    **** 
+ 167:Src/main.c    **** #ifdef MULTI_MODE_DRIVE
+ 168:Src/main.c    ****   static uint8_t drive_mode;
+ 169:Src/main.c    ****   static uint16_t max_speed;
+ 170:Src/main.c    **** #endif
+ 171:Src/main.c    **** 
+ 172:Src/main.c    **** 
+ 173:Src/main.c    **** int main(void) {
+ 174:Src/main.c    **** 
+ 175:Src/main.c    ****   HAL_Init();
+ 176:Src/main.c    ****   __HAL_RCC_AFIO_CLK_ENABLE();
+ 177:Src/main.c    ****   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+ 178:Src/main.c    ****   /* System interrupt init*/
+ 179:Src/main.c    ****   /* MemoryManagement_IRQn interrupt configuration */
+ 180:Src/main.c    ****   HAL_NVIC_SetPriority(MemoryManagement_IRQn, 0, 0);
+ 181:Src/main.c    ****   /* BusFault_IRQn interrupt configuration */
+ 182:Src/main.c    ****   HAL_NVIC_SetPriority(BusFault_IRQn, 0, 0);
+ 183:Src/main.c    ****   /* UsageFault_IRQn interrupt configuration */
+ 184:Src/main.c    ****   HAL_NVIC_SetPriority(UsageFault_IRQn, 0, 0);
+ 185:Src/main.c    ****   /* SVCall_IRQn interrupt configuration */
+ 186:Src/main.c    ****   HAL_NVIC_SetPriority(SVCall_IRQn, 0, 0);
+ 187:Src/main.c    ****   /* DebugMonitor_IRQn interrupt configuration */
+ 188:Src/main.c    ****   HAL_NVIC_SetPriority(DebugMonitor_IRQn, 0, 0);
+ 189:Src/main.c    ****   /* PendSV_IRQn interrupt configuration */
+ 190:Src/main.c    ****   HAL_NVIC_SetPriority(PendSV_IRQn, 0, 0);
+ 191:Src/main.c    ****   /* SysTick_IRQn interrupt configuration */
+ 192:Src/main.c    ****   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+ 193:Src/main.c    **** 
+ 194:Src/main.c    ****   SystemClock_Config();
+ 195:Src/main.c    **** 
+ 196:Src/main.c    ****   __HAL_RCC_DMA1_CLK_DISABLE();
+ 197:Src/main.c    ****   MX_GPIO_Init();
+ 198:Src/main.c    ****   MX_TIM_Init();
+ 199:Src/main.c    ****   MX_ADC1_Init();
+ 200:Src/main.c    ****   MX_ADC2_Init();
+ 201:Src/main.c    ****   BLDC_Init();        // BLDC Controller Init
+ 202:Src/main.c    **** 
+ 203:Src/main.c    ****   HAL_GPIO_WritePin(OFF_PORT, OFF_PIN, GPIO_PIN_SET);   // Activate Latch
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 5
+
+
+ 204:Src/main.c    ****   Input_Lim_Init();   // Input Limitations Init
+ 205:Src/main.c    ****   Input_Init();       // Input Init
+ 206:Src/main.c    **** 
+ 207:Src/main.c    ****   HAL_ADC_Start(&hadc1);
+ 208:Src/main.c    ****   HAL_ADC_Start(&hadc2);
+ 209:Src/main.c    **** 
+ 210:Src/main.c    ****   poweronMelody();
+ 211:Src/main.c    ****   HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_SET);
+ 212:Src/main.c    ****   
+ 213:Src/main.c    ****   int32_t board_temp_adcFixdt = adc_buffer.temp << 16;  // Fixed-point filter output initialized wi
+ 214:Src/main.c    ****   int16_t board_temp_adcFilt  = adc_buffer.temp;
+ 215:Src/main.c    **** 
+ 216:Src/main.c    ****   #ifdef MULTI_MODE_DRIVE
+ 217:Src/main.c    ****     if (adc_buffer.l_tx2 > input1[0].min + 50 && adc_buffer.l_rx2 > input2[0].min + 50) {
+ 218:Src/main.c    ****       drive_mode = 2;
+ 219:Src/main.c    ****       max_speed = MULTI_MODE_DRIVE_M3_MAX;
+ 220:Src/main.c    ****       rate = MULTI_MODE_DRIVE_M3_RATE;
+ 221:Src/main.c    ****       rtP_Left.n_max = rtP_Right.n_max = MULTI_MODE_M3_N_MOT_MAX << 4;
+ 222:Src/main.c    ****       rtP_Left.i_max = rtP_Right.i_max = (MULTI_MODE_M3_I_MOT_MAX * A2BIT_CONV) << 4;
+ 223:Src/main.c    ****     } else if (adc_buffer.l_tx2 > input1[0].min + 50) {
+ 224:Src/main.c    ****       drive_mode = 1;
+ 225:Src/main.c    ****       max_speed = MULTI_MODE_DRIVE_M2_MAX;
+ 226:Src/main.c    ****       rate = MULTI_MODE_DRIVE_M2_RATE;
+ 227:Src/main.c    ****       rtP_Left.n_max = rtP_Right.n_max = MULTI_MODE_M2_N_MOT_MAX << 4;
+ 228:Src/main.c    ****       rtP_Left.i_max = rtP_Right.i_max = (MULTI_MODE_M2_I_MOT_MAX * A2BIT_CONV) << 4;
+ 229:Src/main.c    ****     } else {
+ 230:Src/main.c    ****       drive_mode = 0;
+ 231:Src/main.c    ****       max_speed = MULTI_MODE_DRIVE_M1_MAX;
+ 232:Src/main.c    ****       rate = MULTI_MODE_DRIVE_M1_RATE;
+ 233:Src/main.c    ****       rtP_Left.n_max = rtP_Right.n_max = MULTI_MODE_M1_N_MOT_MAX << 4;
+ 234:Src/main.c    ****       rtP_Left.i_max = rtP_Right.i_max = (MULTI_MODE_M1_I_MOT_MAX * A2BIT_CONV) << 4;
+ 235:Src/main.c    ****     }
+ 236:Src/main.c    **** 
+ 237:Src/main.c    ****     printf("Drive mode %i selected: max_speed:%i acc_rate:%i \r\n", drive_mode, max_speed, rate);
+ 238:Src/main.c    ****   #endif
+ 239:Src/main.c    **** 
+ 240:Src/main.c    ****   // Loop until button is released
+ 241:Src/main.c    ****   while(HAL_GPIO_ReadPin(BUTTON_PORT, BUTTON_PIN)) { HAL_Delay(10); }
+ 242:Src/main.c    **** 
+ 243:Src/main.c    ****   #ifdef MULTI_MODE_DRIVE
+ 244:Src/main.c    ****     // Wait until triggers are released. Exit if timeout elapses (to unblock if the inputs are not 
+ 245:Src/main.c    ****     int iTimeout = 0;
+ 246:Src/main.c    ****     while((adc_buffer.l_rx2 + adc_buffer.l_tx2) >= (input1[0].min + input2[0].min) && iTimeout++ < 
+ 247:Src/main.c    ****       HAL_Delay(10);
+ 248:Src/main.c    ****     }
+ 249:Src/main.c    ****   #endif
+ 250:Src/main.c    **** 
+ 251:Src/main.c    ****   while(1) {
+ 252:Src/main.c    ****     if (buzzerTimer - buzzerTimer_prev > 16*DELAY_IN_MAIN_LOOP) {   // 1 ms = 16 ticks buzzerTimer
+ 253:Src/main.c    **** 
+ 254:Src/main.c    ****     readCommand();                        // Read Command: input1[inIdx].cmd, input2[inIdx].cmd
+ 255:Src/main.c    ****     calcAvgSpeed();                       // Calculate average measured speed: speedAvg, speedAvgAb
+ 256:Src/main.c    **** 
+ 257:Src/main.c    ****     #ifndef VARIANT_TRANSPOTTER
+ 258:Src/main.c    ****       // ####### MOTOR ENABLING: Only if the initial input is very small (for SAFETY) #######
+ 259:Src/main.c    ****       if (enable == 0 && !rtY_Left.z_errCode && !rtY_Right.z_errCode && 
+ 260:Src/main.c    ****           ABS(input1[inIdx].cmd) < 50 && ABS(input2[inIdx].cmd) < 50){
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 6
+
+
+ 261:Src/main.c    ****         beepShort(6);                     // make 2 beeps indicating the motor enable
+ 262:Src/main.c    ****         beepShort(4); HAL_Delay(100);
+ 263:Src/main.c    ****         steerFixdt = speedFixdt = 0;      // reset filters
+ 264:Src/main.c    ****         enable = 1;                       // enable motors
+ 265:Src/main.c    ****         #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 266:Src/main.c    ****         printf("-- Motors enabled --\r\n");
+ 267:Src/main.c    ****         #endif
+ 268:Src/main.c    ****       }
+ 269:Src/main.c    **** 
+ 270:Src/main.c    ****       // ####### VARIANT_HOVERCAR #######
+ 271:Src/main.c    ****       #if defined(VARIANT_HOVERCAR) || defined(VARIANT_SKATEBOARD) || defined(ELECTRIC_BRAKE_ENABLE
+ 272:Src/main.c    ****         uint16_t speedBlend;                                        // Calculate speed Blend, a num
+ 273:Src/main.c    ****         speedBlend = (uint16_t)(((CLAMP(speedAvgAbs,10,60) - 10) << 15) / 50); // speedBlend [0,1] 
+ 274:Src/main.c    ****       #endif
+ 275:Src/main.c    **** 
+ 276:Src/main.c    ****       #ifdef STANDSTILL_HOLD_ENABLE
+ 277:Src/main.c    ****         standstillHold();                                           // Apply Standstill Hold functi
+ 278:Src/main.c    ****       #endif
+ 279:Src/main.c    **** 
+ 280:Src/main.c    ****       #ifdef VARIANT_HOVERCAR
+ 281:Src/main.c    ****       if (inIdx == CONTROL_ADC) {                                   // Only use use implementation 
+ 282:Src/main.c    ****         if (speedAvgAbs < 60) {                                     // Check if Hovercar is physica
+ 283:Src/main.c    ****           multipleTapDet(input1[inIdx].cmd, HAL_GetTick(), &MultipleTapBrake); // Brake pedal in th
+ 284:Src/main.c    ****         }
+ 285:Src/main.c    **** 
+ 286:Src/main.c    ****         if (input1[inIdx].cmd > 30) {                               // If Brake pedal (input1) is p
+ 287:Src/main.c    ****           input2[inIdx].cmd = (int16_t)((input2[inIdx].cmd * speedBlend) >> 15);
+ 288:Src/main.c    ****           cruiseControl((uint8_t)rtP_Left.b_cruiseCtrlEna);         // Cruise control deactivated b
+ 289:Src/main.c    ****         }
+ 290:Src/main.c    ****       }
+ 291:Src/main.c    ****       #endif
+ 292:Src/main.c    **** 
+ 293:Src/main.c    ****       #ifdef ELECTRIC_BRAKE_ENABLE
+ 294:Src/main.c    ****         electricBrake(speedBlend, MultipleTapBrake.b_multipleTap);  // Apply Electric Brake. Only a
+ 295:Src/main.c    ****       #endif
+ 296:Src/main.c    **** 
+ 297:Src/main.c    ****       #ifdef VARIANT_HOVERCAR
+ 298:Src/main.c    ****       if (inIdx == CONTROL_ADC) {                                   // Only use use implementation 
+ 299:Src/main.c    ****         if (speedAvg > 0) {                                         // Make sure the Brake pedal is
+ 300:Src/main.c    ****           input1[inIdx].cmd = (int16_t)((-input1[inIdx].cmd * speedBlend) >> 15);
+ 301:Src/main.c    ****         } else {
+ 302:Src/main.c    ****           input1[inIdx].cmd = (int16_t)(( input1[inIdx].cmd * speedBlend) >> 15);
+ 303:Src/main.c    ****         }
+ 304:Src/main.c    ****       }
+ 305:Src/main.c    ****       #endif
+ 306:Src/main.c    **** 
+ 307:Src/main.c    ****       #ifdef VARIANT_SKATEBOARD
+ 308:Src/main.c    ****         if (input2[inIdx].cmd < 0) {                                // When Throttle is negative, i
+ 309:Src/main.c    ****           if (speedAvg > 0) {                                       // Make sure the braking is opp
+ 310:Src/main.c    ****             input2[inIdx].cmd  = (int16_t)(( input2[inIdx].cmd * speedBlend) >> 15);
+ 311:Src/main.c    ****           } else {
+ 312:Src/main.c    ****             input2[inIdx].cmd  = (int16_t)((-input2[inIdx].cmd * speedBlend) >> 15);
+ 313:Src/main.c    ****           }
+ 314:Src/main.c    ****         }
+ 315:Src/main.c    ****       #endif
+ 316:Src/main.c    **** 
+ 317:Src/main.c    ****       // ####### LOW-PASS FILTER #######
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 7
+
+
+ 318:Src/main.c    ****       rateLimiter16(input1[inIdx].cmd, rate, &steerRateFixdt);
+ 319:Src/main.c    ****       rateLimiter16(input2[inIdx].cmd, rate, &speedRateFixdt);
+ 320:Src/main.c    ****       filtLowPass32(steerRateFixdt >> 4, FILTER, &steerFixdt);
+ 321:Src/main.c    ****       filtLowPass32(speedRateFixdt >> 4, FILTER, &speedFixdt);
+ 322:Src/main.c    ****       steer = (int16_t)(steerFixdt >> 16);  // convert fixed-point to integer
+ 323:Src/main.c    ****       speed = (int16_t)(speedFixdt >> 16);  // convert fixed-point to integer
+ 324:Src/main.c    **** 
+ 325:Src/main.c    ****       // ####### VARIANT_HOVERCAR #######
+ 326:Src/main.c    ****       #ifdef VARIANT_HOVERCAR
+ 327:Src/main.c    ****       if (inIdx == CONTROL_ADC) {               // Only use use implementation below if pedals are 
+ 328:Src/main.c    **** 
+ 329:Src/main.c    ****         #ifdef MULTI_MODE_DRIVE
+ 330:Src/main.c    ****         if (speed >= max_speed) {
+ 331:Src/main.c    ****           speed = max_speed;
+ 332:Src/main.c    ****         }
+ 333:Src/main.c    ****         #endif
+ 334:Src/main.c    **** 
+ 335:Src/main.c    ****         if (!MultipleTapBrake.b_multipleTap) {  // Check driving direction
+ 336:Src/main.c    ****           speed = steer + speed;                // Forward driving: in this case steer = Brake, spe
+ 337:Src/main.c    ****         } else {
+ 338:Src/main.c    ****           speed = steer - speed;                // Reverse driving: in this case steer = Brake, spe
+ 339:Src/main.c    ****         }
+ 340:Src/main.c    ****         steer = 0;                              // Do not apply steering to avoid side effects if S
+ 341:Src/main.c    ****       }
+ 342:Src/main.c    ****       #endif
+ 343:Src/main.c    **** 
+ 344:Src/main.c    ****       #if defined(TANK_STEERING) && !defined(VARIANT_HOVERCAR) && !defined(VARIANT_SKATEBOARD) 
+ 345:Src/main.c    ****         // Tank steering (no mixing)
+ 346:Src/main.c    ****         cmdL = steer; 
+ 347:Src/main.c    ****         cmdR = speed;
+ 348:Src/main.c    ****       #else 
+ 349:Src/main.c    ****         // ####### MIXER #######
+ 350:Src/main.c    ****         mixerFcn(speed << 4, steer << 4, &cmdR, &cmdL);   // This function implements the equations
+ 351:Src/main.c    ****       #endif
+ 352:Src/main.c    **** 
+ 353:Src/main.c    **** 
+ 354:Src/main.c    ****       // ####### SET OUTPUTS (if the target change is less than +/- 100) #######
+ 355:Src/main.c    ****       #ifdef INVERT_R_DIRECTION
+ 356:Src/main.c    ****         pwmr = cmdR;
+ 357:Src/main.c    ****       #else
+ 358:Src/main.c    ****         pwmr = -cmdR;
+ 359:Src/main.c    ****       #endif
+ 360:Src/main.c    ****       #ifdef INVERT_L_DIRECTION
+ 361:Src/main.c    ****         pwml = -cmdL;
+ 362:Src/main.c    ****       #else
+ 363:Src/main.c    ****         pwml = cmdL;
+ 364:Src/main.c    ****       #endif
+ 365:Src/main.c    ****     #endif
+ 366:Src/main.c    **** 
+ 367:Src/main.c    ****     #ifdef VARIANT_TRANSPOTTER
+ 368:Src/main.c    ****       distance    = CLAMP(input1[inIdx].cmd - 180, 0, 4095);
+ 369:Src/main.c    ****       steering    = (input2[inIdx].cmd - 2048) / 2048.0;
+ 370:Src/main.c    ****       distanceErr = distance - (int)(setDistance * 1345);
+ 371:Src/main.c    **** 
+ 372:Src/main.c    ****       if (nunchuk_connected == 0) {
+ 373:Src/main.c    ****         cmdL = cmdL * 0.8f + (CLAMP(distanceErr + (steering*((float)MAX(ABS(distanceErr), 50)) * RO
+ 374:Src/main.c    ****         cmdR = cmdR * 0.8f + (CLAMP(distanceErr - (steering*((float)MAX(ABS(distanceErr), 50)) * RO
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 8
+
+
+ 375:Src/main.c    ****         if (distanceErr > 0) {
+ 376:Src/main.c    ****           enable = 1;
+ 377:Src/main.c    ****         }
+ 378:Src/main.c    ****         if (distanceErr > -300) {
+ 379:Src/main.c    ****           #ifdef INVERT_R_DIRECTION
+ 380:Src/main.c    ****             pwmr = cmdR;
+ 381:Src/main.c    ****           #else
+ 382:Src/main.c    ****             pwmr = -cmdR;
+ 383:Src/main.c    ****           #endif
+ 384:Src/main.c    ****           #ifdef INVERT_L_DIRECTION
+ 385:Src/main.c    ****             pwml = -cmdL;
+ 386:Src/main.c    ****           #else
+ 387:Src/main.c    ****             pwml = cmdL;
+ 388:Src/main.c    ****           #endif
+ 389:Src/main.c    **** 
+ 390:Src/main.c    ****           if (checkRemote) {
+ 391:Src/main.c    ****             if (!HAL_GPIO_ReadPin(LED_PORT, LED_PIN)) {
+ 392:Src/main.c    ****               //enable = 1;
+ 393:Src/main.c    ****             } else {
+ 394:Src/main.c    ****               enable = 0;
+ 395:Src/main.c    ****             }
+ 396:Src/main.c    ****           }
+ 397:Src/main.c    ****         } else {
+ 398:Src/main.c    ****           enable = 0;
+ 399:Src/main.c    ****         }
+ 400:Src/main.c    ****         timeoutCntGen = 0;
+ 401:Src/main.c    ****         timeoutFlgGen = 0;
+ 402:Src/main.c    ****       }
+ 403:Src/main.c    **** 
+ 404:Src/main.c    ****       if (timeoutFlgGen) {
+ 405:Src/main.c    ****         pwml = 0;
+ 406:Src/main.c    ****         pwmr = 0;
+ 407:Src/main.c    ****         enable = 0;
+ 408:Src/main.c    ****         #ifdef SUPPORT_LCD
+ 409:Src/main.c    ****           LCD_SetLocation(&lcd,  0, 0); LCD_WriteString(&lcd, "Len:");
+ 410:Src/main.c    ****           LCD_SetLocation(&lcd,  8, 0); LCD_WriteString(&lcd, "m(");
+ 411:Src/main.c    ****           LCD_SetLocation(&lcd, 14, 0); LCD_WriteString(&lcd, "m)");
+ 412:Src/main.c    ****         #endif
+ 413:Src/main.c    ****         HAL_Delay(1000);
+ 414:Src/main.c    ****         nunchuk_connected = 0;
+ 415:Src/main.c    ****       }
+ 416:Src/main.c    **** 
+ 417:Src/main.c    ****       if ((distance / 1345.0) - setDistance > 0.5 && (lastDistance / 1345.0) - setDistance > 0.5) {
+ 418:Src/main.c    ****         enable = 0;
+ 419:Src/main.c    ****         beepLong(5);
+ 420:Src/main.c    ****         #ifdef SUPPORT_LCD
+ 421:Src/main.c    ****           LCD_ClearDisplay(&lcd);
+ 422:Src/main.c    ****           HAL_Delay(5);
+ 423:Src/main.c    ****           LCD_SetLocation(&lcd, 0, 0); LCD_WriteString(&lcd, "Emergency Off!");
+ 424:Src/main.c    ****           LCD_SetLocation(&lcd, 0, 1); LCD_WriteString(&lcd, "Keeper too fast.");
+ 425:Src/main.c    ****         #endif
+ 426:Src/main.c    ****         poweroff();
+ 427:Src/main.c    ****       }
+ 428:Src/main.c    **** 
+ 429:Src/main.c    ****       #ifdef SUPPORT_NUNCHUK
+ 430:Src/main.c    ****         if (transpotter_counter % 500 == 0) {
+ 431:Src/main.c    ****           if (nunchuk_connected == 0 && enable == 0) {
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 9
+
+
+ 432:Src/main.c    ****               if(Nunchuk_Read() == NUNCHUK_CONNECTED) {
+ 433:Src/main.c    ****                 #ifdef SUPPORT_LCD
+ 434:Src/main.c    ****                   LCD_SetLocation(&lcd, 0, 0); LCD_WriteString(&lcd, "Nunchuk Control");
+ 435:Src/main.c    ****                 #endif
+ 436:Src/main.c    ****                 nunchuk_connected = 1;
+ 437:Src/main.c    **** 	      }
+ 438:Src/main.c    **** 	    } else {
+ 439:Src/main.c    ****               nunchuk_connected = 0;
+ 440:Src/main.c    **** 	    }
+ 441:Src/main.c    ****           }
+ 442:Src/main.c    ****         }   
+ 443:Src/main.c    ****       #endif
+ 444:Src/main.c    **** 
+ 445:Src/main.c    ****       #ifdef SUPPORT_LCD
+ 446:Src/main.c    ****         if (transpotter_counter % 100 == 0) {
+ 447:Src/main.c    ****           if (LCDerrorFlag == 1 && enable == 0) {
+ 448:Src/main.c    **** 
+ 449:Src/main.c    ****           } else {
+ 450:Src/main.c    ****             if (nunchuk_connected == 0) {
+ 451:Src/main.c    ****               LCD_SetLocation(&lcd,  4, 0); LCD_WriteFloat(&lcd,distance/1345.0,2);
+ 452:Src/main.c    ****               LCD_SetLocation(&lcd, 10, 0); LCD_WriteFloat(&lcd,setDistance,2);
+ 453:Src/main.c    ****             }
+ 454:Src/main.c    ****             LCD_SetLocation(&lcd,  4, 1); LCD_WriteFloat(&lcd,batVoltage, 1);
+ 455:Src/main.c    ****             // LCD_SetLocation(&lcd, 11, 1); LCD_WriteFloat(&lcd,MAX(ABS(currentR), ABS(currentL)),
+ 456:Src/main.c    ****           }
+ 457:Src/main.c    ****         }
+ 458:Src/main.c    ****       #endif
+ 459:Src/main.c    ****       transpotter_counter++;
+ 460:Src/main.c    ****     #endif
+ 461:Src/main.c    **** 
+ 462:Src/main.c    ****     // ####### SIDEBOARDS HANDLING #######
+ 463:Src/main.c    ****     #if defined(SIDEBOARD_SERIAL_USART2)
+ 464:Src/main.c    ****       sideboardSensors((uint8_t)Sideboard_L.sensors);
+ 465:Src/main.c    ****     #endif
+ 466:Src/main.c    ****     #if defined(FEEDBACK_SERIAL_USART2)
+ 467:Src/main.c    ****       sideboardLeds(&sideboard_leds_L);
+ 468:Src/main.c    ****     #endif
+ 469:Src/main.c    ****     #if defined(SIDEBOARD_SERIAL_USART3)
+ 470:Src/main.c    ****       sideboardSensors((uint8_t)Sideboard_R.sensors);
+ 471:Src/main.c    ****     #endif
+ 472:Src/main.c    ****     #if defined(FEEDBACK_SERIAL_USART3)
+ 473:Src/main.c    ****       sideboardLeds(&sideboard_leds_R);
+ 474:Src/main.c    ****     #endif
+ 475:Src/main.c    ****     
+ 476:Src/main.c    **** 
+ 477:Src/main.c    ****     // ####### CALC BOARD TEMPERATURE #######
+ 478:Src/main.c    ****     filtLowPass32(adc_buffer.temp, TEMP_FILT_COEF, &board_temp_adcFixdt);
+ 479:Src/main.c    ****     board_temp_adcFilt  = (int16_t)(board_temp_adcFixdt >> 16);  // convert fixed-point to integer
+ 480:Src/main.c    ****     board_temp_deg_c    = (TEMP_CAL_HIGH_DEG_C - TEMP_CAL_LOW_DEG_C) * (board_temp_adcFilt - TEMP_C
+ 481:Src/main.c    **** 
+ 482:Src/main.c    ****     // ####### CALC CALIBRATED BATTERY VOLTAGE #######
+ 483:Src/main.c    ****     batVoltageCalib = batVoltage * BAT_CALIB_REAL_VOLTAGE / BAT_CALIB_ADC;
+ 484:Src/main.c    **** 
+ 485:Src/main.c    ****     // ####### CALC DC LINK CURRENT #######
+ 486:Src/main.c    ****     left_dc_curr  = -(rtU_Left.i_DCLink * 100) / A2BIT_CONV;   // Left DC Link Current * 100 
+ 487:Src/main.c    ****     right_dc_curr = -(rtU_Right.i_DCLink * 100) / A2BIT_CONV;  // Right DC Link Current * 100
+ 488:Src/main.c    ****     dc_curr       = left_dc_curr + right_dc_curr;            // Total DC Link Current * 100
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 10
+
+
+ 489:Src/main.c    **** 
+ 490:Src/main.c    ****     // ####### DEBUG SERIAL OUT #######
+ 491:Src/main.c    ****     #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 492:Src/main.c    ****       if (main_loop_counter % 25 == 0) {    // Send data periodically every 125 ms      
+ 493:Src/main.c    ****         #if defined(DEBUG_SERIAL_PROTOCOL)
+ 494:Src/main.c    ****           process_debug();
+ 495:Src/main.c    ****         #else
+ 496:Src/main.c    ****           printf("in1:%i in2:%i cmdL:%i cmdR:%i BatADC:%i BatV:%i TempADC:%i Temp:%i \r\n",
+ 497:Src/main.c    ****             input1[inIdx].raw,        // 1: INPUT1
+ 498:Src/main.c    ****             input2[inIdx].raw,        // 2: INPUT2
+ 499:Src/main.c    ****             cmdL,                     // 3: output command: [-1000, 1000]
+ 500:Src/main.c    ****             cmdR,                     // 4: output command: [-1000, 1000]
+ 501:Src/main.c    ****             adc_buffer.batt1,         // 5: for battery voltage calibration
+ 502:Src/main.c    ****             batVoltageCalib,          // 6: for verifying battery voltage calibration
+ 503:Src/main.c    ****             board_temp_adcFilt,       // 7: for board temperature calibration
+ 504:Src/main.c    ****             board_temp_deg_c);        // 8: for verifying board temperature calibration
+ 505:Src/main.c    ****         #endif
+ 506:Src/main.c    ****       }
+ 507:Src/main.c    ****     #endif
+ 508:Src/main.c    **** 
+ 509:Src/main.c    ****     // ####### FEEDBACK SERIAL OUT #######
+ 510:Src/main.c    ****     #if defined(FEEDBACK_SERIAL_USART2) || defined(FEEDBACK_SERIAL_USART3)
+ 511:Src/main.c    ****       if (main_loop_counter % 2 == 0) {    // Send data periodically every 10 ms
+ 512:Src/main.c    ****         Feedback.start	        = (uint16_t)SERIAL_START_FRAME;
+ 513:Src/main.c    ****         Feedback.cmd1           = (int16_t)input1[inIdx].cmd;
+ 514:Src/main.c    ****         Feedback.cmd2           = (int16_t)input2[inIdx].cmd;
+ 515:Src/main.c    ****         Feedback.speedR_meas	  = (int16_t)rtY_Right.n_mot;
+ 516:Src/main.c    ****         Feedback.speedL_meas	  = (int16_t)rtY_Left.n_mot;
+ 517:Src/main.c    ****         Feedback.batVoltage	    = (int16_t)batVoltageCalib;
+ 518:Src/main.c    ****         Feedback.boardTemp	    = (int16_t)board_temp_deg_c;
+ 519:Src/main.c    **** 
+ 520:Src/main.c    ****         #if defined(FEEDBACK_SERIAL_USART2)
+ 521:Src/main.c    ****           if(__HAL_DMA_GET_COUNTER(huart2.hdmatx) == 0) {
+ 522:Src/main.c    ****             Feedback.cmdLed     = (uint16_t)sideboard_leds_L;
+ 523:Src/main.c    ****             Feedback.checksum   = (uint16_t)(Feedback.start ^ Feedback.cmd1 ^ Feedback.cmd2 ^ Feedb
+ 524:Src/main.c    ****                                            ^ Feedback.batVoltage ^ Feedback.boardTemp ^ Feedback.cm
+ 525:Src/main.c    **** 
+ 526:Src/main.c    ****             HAL_UART_Transmit_DMA(&huart2, (uint8_t *)&Feedback, sizeof(Feedback));
+ 527:Src/main.c    ****           }
+ 528:Src/main.c    ****         #endif
+ 529:Src/main.c    ****         #if defined(FEEDBACK_SERIAL_USART3)
+ 530:Src/main.c    ****           if(__HAL_DMA_GET_COUNTER(huart3.hdmatx) == 0) {
+ 531:Src/main.c    ****             Feedback.cmdLed     = (uint16_t)sideboard_leds_R;
+ 532:Src/main.c    ****             Feedback.checksum   = (uint16_t)(Feedback.start ^ Feedback.cmd1 ^ Feedback.cmd2 ^ Feedb
+ 533:Src/main.c    ****                                            ^ Feedback.batVoltage ^ Feedback.boardTemp ^ Feedback.cm
+ 534:Src/main.c    **** 
+ 535:Src/main.c    ****             HAL_UART_Transmit_DMA(&huart3, (uint8_t *)&Feedback, sizeof(Feedback));
+ 536:Src/main.c    ****           }
+ 537:Src/main.c    ****         #endif
+ 538:Src/main.c    ****       }
+ 539:Src/main.c    ****     #endif
+ 540:Src/main.c    **** 
+ 541:Src/main.c    ****     // ####### POWEROFF BY POWER-BUTTON #######
+ 542:Src/main.c    ****     poweroffPressCheck();
+ 543:Src/main.c    **** 
+ 544:Src/main.c    ****     // ####### BEEP AND EMERGENCY POWEROFF #######
+ 545:Src/main.c    ****     if (TEMP_POWEROFF_ENABLE && board_temp_deg_c >= TEMP_POWEROFF && speedAvgAbs < 20){  // powerof
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 11
+
+
+ 546:Src/main.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 547:Src/main.c    ****         printf("Powering off, temperature is too high\r\n");
+ 548:Src/main.c    ****       #endif
+ 549:Src/main.c    ****       poweroff();
+ 550:Src/main.c    ****     } else if ( BAT_DEAD_ENABLE && batVoltage < BAT_DEAD && speedAvgAbs < 20){
+ 551:Src/main.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 552:Src/main.c    ****         printf("Powering off, battery voltage is too low\r\n");
+ 553:Src/main.c    ****       #endif
+ 554:Src/main.c    ****       poweroff();
+ 555:Src/main.c    ****     } else if (rtY_Left.z_errCode || rtY_Right.z_errCode) {                                        
+ 556:Src/main.c    ****       enable = 0;
+ 557:Src/main.c    ****       beepCount(1, 24, 1);
+ 558:Src/main.c    ****     } else if (timeoutFlgADC) {                                                                    
+ 559:Src/main.c    ****       beepCount(2, 24, 1);
+ 560:Src/main.c    ****     } else if (timeoutFlgSerial) {                                                                 
+ 561:Src/main.c    ****       beepCount(3, 24, 1);
+ 562:Src/main.c    ****     } else if (timeoutFlgGen) {                                                                    
+ 563:Src/main.c    ****       beepCount(4, 24, 1);
+ 564:Src/main.c    ****     } else if (TEMP_WARNING_ENABLE && board_temp_deg_c >= TEMP_WARNING) {                          
+ 565:Src/main.c    ****       beepCount(5, 24, 1);
+ 566:Src/main.c    ****     } else if (BAT_LVL1_ENABLE && batVoltage < BAT_LVL1) {                                         
+ 567:Src/main.c    ****       beepCount(0, 10, 6);
+ 568:Src/main.c    ****     } else if (BAT_LVL2_ENABLE && batVoltage < BAT_LVL2) {                                         
+ 569:Src/main.c    ****       beepCount(0, 10, 30);
+ 570:Src/main.c    ****     } else if (BEEPS_BACKWARD && (((cmdR < -50 || cmdL < -50) && speedAvg < 0) || MultipleTapBrake.
+ 571:Src/main.c    ****       beepCount(0, 5, 1);
+ 572:Src/main.c    ****       backwardDrive = 1;
+ 573:Src/main.c    ****     } else {  // do not beep
+ 574:Src/main.c    ****       beepCount(0, 0, 0);
+ 575:Src/main.c    ****       backwardDrive = 0;
+ 576:Src/main.c    ****     }
+ 577:Src/main.c    **** 
+ 578:Src/main.c    **** 
+ 579:Src/main.c    ****     inactivity_timeout_counter++;
+ 580:Src/main.c    **** 
+ 581:Src/main.c    ****     // ####### INACTIVITY TIMEOUT #######
+ 582:Src/main.c    ****     if (abs(cmdL) > 50 || abs(cmdR) > 50) {
+ 583:Src/main.c    ****       inactivity_timeout_counter = 0;
+ 584:Src/main.c    ****     }
+ 585:Src/main.c    **** 
+ 586:Src/main.c    ****     #if defined(CRUISE_CONTROL_SUPPORT) || defined(STANDSTILL_HOLD_ENABLE)
+ 587:Src/main.c    ****       if ((abs(rtP_Left.n_cruiseMotTgt)  > 50 && rtP_Left.b_cruiseCtrlEna) || 
+ 588:Src/main.c    ****           (abs(rtP_Right.n_cruiseMotTgt) > 50 && rtP_Right.b_cruiseCtrlEna)) {
+ 589:Src/main.c    ****         inactivity_timeout_counter = 0;
+ 590:Src/main.c    ****       }
+ 591:Src/main.c    ****     #endif
+ 592:Src/main.c    **** 
+ 593:Src/main.c    ****     //Power off after inactivity timeout. Uncomment to bring back the functionality
+ 594:Src/main.c    ****     /*
+ 595:Src/main.c    ****     if (inactivity_timeout_counter > (INACTIVITY_TIMEOUT * 60 * 1000) / (DELAY_IN_MAIN_LOOP + 1)) {
+ 596:Src/main.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 597:Src/main.c    ****         printf("Powering off, wheels were inactive for too long\r\n");
+ 598:Src/main.c    ****       #endif
+ 599:Src/main.c    ****       poweroff();
+ 600:Src/main.c    ****     }
+ 601:Src/main.c    ****     */
+ 602:Src/main.c    **** 
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 12
+
+
+ 603:Src/main.c    ****     // HAL_GPIO_TogglePin(LED_PORT, LED_PIN);                 // This is to measure the main() loop
+ 604:Src/main.c    ****     // Update states
+ 605:Src/main.c    ****     inIdx_prev = inIdx;
+ 606:Src/main.c    ****     buzzerTimer_prev = buzzerTimer;
+ 607:Src/main.c    ****     main_loop_counter++;
+ 608:Src/main.c    ****     }
+ 609:Src/main.c    ****   }
+ 610:Src/main.c    **** }
+ 611:Src/main.c    **** 
+ 612:Src/main.c    **** 
+ 613:Src/main.c    **** // ===========================================================
+ 614:Src/main.c    **** /** System Clock Configuration
+ 615:Src/main.c    **** */
+ 616:Src/main.c    **** void SystemClock_Config(void) {
+  27              		.loc 1 616 31 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 88
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 30B5     		push	{r4, r5, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 12
+  34              		.cfi_offset 4, -12
+  35              		.cfi_offset 5, -8
+  36              		.cfi_offset 14, -4
+  37 0002 97B0     		sub	sp, sp, #92
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 104
+ 617:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct;
+  40              		.loc 1 617 3 view .LVU1
+ 618:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  41              		.loc 1 618 3 view .LVU2
+ 619:Src/main.c    ****   RCC_PeriphCLKInitTypeDef PeriphClkInit;
+  42              		.loc 1 619 3 view .LVU3
+ 620:Src/main.c    **** 
+ 621:Src/main.c    ****   /**Initializes the CPU, AHB and APB busses clocks
+ 622:Src/main.c    ****     */
+ 623:Src/main.c    ****   RCC_OscInitStruct.OscillatorType      = RCC_OSCILLATORTYPE_HSI;
+  43              		.loc 1 623 3 view .LVU4
+  44              		.loc 1 623 41 is_stmt 0 view .LVU5
+  45 0004 0225     		movs	r5, #2
+  46 0006 0C95     		str	r5, [sp, #48]
+ 624:Src/main.c    ****   RCC_OscInitStruct.HSIState            = RCC_HSI_ON;
+  47              		.loc 1 624 3 is_stmt 1 view .LVU6
+  48              		.loc 1 624 41 is_stmt 0 view .LVU7
+  49 0008 0123     		movs	r3, #1
+  50 000a 1093     		str	r3, [sp, #64]
+ 625:Src/main.c    ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+  51              		.loc 1 625 3 is_stmt 1 view .LVU8
+  52              		.loc 1 625 41 is_stmt 0 view .LVU9
+  53 000c 1023     		movs	r3, #16
+  54 000e 1193     		str	r3, [sp, #68]
+ 626:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState        = RCC_PLL_ON;
+  55              		.loc 1 626 3 is_stmt 1 view .LVU10
+  56              		.loc 1 626 41 is_stmt 0 view .LVU11
+  57 0010 1395     		str	r5, [sp, #76]
+ 627:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource       = RCC_PLLSOURCE_HSI_DIV2;
+  58              		.loc 1 627 3 is_stmt 1 view .LVU12
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 13
+
+
+  59              		.loc 1 627 41 is_stmt 0 view .LVU13
+  60 0012 0024     		movs	r4, #0
+  61 0014 1494     		str	r4, [sp, #80]
+ 628:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL          = RCC_PLL_MUL16;
+  62              		.loc 1 628 3 is_stmt 1 view .LVU14
+  63              		.loc 1 628 41 is_stmt 0 view .LVU15
+  64 0016 4FF46013 		mov	r3, #3670016
+  65 001a 1593     		str	r3, [sp, #84]
+ 629:Src/main.c    ****   HAL_RCC_OscConfig(&RCC_OscInitStruct);
+  66              		.loc 1 629 3 is_stmt 1 view .LVU16
+  67 001c 0CA8     		add	r0, sp, #48
+  68 001e FFF7FEFF 		bl	HAL_RCC_OscConfig
+  69              	.LVL0:
+ 630:Src/main.c    **** 
+ 631:Src/main.c    ****   /**Initializes the CPU, AHB and APB busses clocks
+ 632:Src/main.c    ****     */
+ 633:Src/main.c    ****   RCC_ClkInitStruct.ClockType           = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE
+  70              		.loc 1 633 3 view .LVU17
+  71              		.loc 1 633 41 is_stmt 0 view .LVU18
+  72 0022 0F23     		movs	r3, #15
+  73 0024 0793     		str	r3, [sp, #28]
+ 634:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource        = RCC_SYSCLKSOURCE_PLLCLK;
+  74              		.loc 1 634 3 is_stmt 1 view .LVU19
+  75              		.loc 1 634 41 is_stmt 0 view .LVU20
+  76 0026 0895     		str	r5, [sp, #32]
+ 635:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider       = RCC_SYSCLK_DIV1;
+  77              		.loc 1 635 3 is_stmt 1 view .LVU21
+  78              		.loc 1 635 41 is_stmt 0 view .LVU22
+  79 0028 0994     		str	r4, [sp, #36]
+ 636:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider      = RCC_HCLK_DIV2;
+  80              		.loc 1 636 3 is_stmt 1 view .LVU23
+  81              		.loc 1 636 41 is_stmt 0 view .LVU24
+  82 002a 4FF48063 		mov	r3, #1024
+  83 002e 0A93     		str	r3, [sp, #40]
+ 637:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider      = RCC_HCLK_DIV1;
+  84              		.loc 1 637 3 is_stmt 1 view .LVU25
+  85              		.loc 1 637 41 is_stmt 0 view .LVU26
+  86 0030 0B94     		str	r4, [sp, #44]
+ 638:Src/main.c    **** 
+ 639:Src/main.c    ****   HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2);
+  87              		.loc 1 639 3 is_stmt 1 view .LVU27
+  88 0032 2946     		mov	r1, r5
+  89 0034 07A8     		add	r0, sp, #28
+  90 0036 FFF7FEFF 		bl	HAL_RCC_ClockConfig
+  91              	.LVL1:
+ 640:Src/main.c    **** 
+ 641:Src/main.c    ****   PeriphClkInit.PeriphClockSelection    = RCC_PERIPHCLK_ADC;
+  92              		.loc 1 641 3 view .LVU28
+  93              		.loc 1 641 41 is_stmt 0 view .LVU29
+  94 003a 0195     		str	r5, [sp, #4]
+ 642:Src/main.c    ****   // PeriphClkInit.AdcClockSelection    = RCC_ADCPCLK2_DIV8;  // 8 MHz
+ 643:Src/main.c    ****   PeriphClkInit.AdcClockSelection       = RCC_ADCPCLK2_DIV4;  // 16 MHz
+  95              		.loc 1 643 3 is_stmt 1 view .LVU30
+  96              		.loc 1 643 41 is_stmt 0 view .LVU31
+  97 003c 4FF48043 		mov	r3, #16384
+  98 0040 0393     		str	r3, [sp, #12]
+ 644:Src/main.c    ****   HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit);
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 14
+
+
+  99              		.loc 1 644 3 is_stmt 1 view .LVU32
+ 100 0042 01A8     		add	r0, sp, #4
+ 101 0044 FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
+ 102              	.LVL2:
+ 645:Src/main.c    **** 
+ 646:Src/main.c    ****   /**Configure the Systick interrupt time
+ 647:Src/main.c    ****     */
+ 648:Src/main.c    ****   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / 1000);
+ 103              		.loc 1 648 3 view .LVU33
+ 104              		.loc 1 648 22 is_stmt 0 view .LVU34
+ 105 0048 FFF7FEFF 		bl	HAL_RCC_GetHCLKFreq
+ 106              	.LVL3:
+ 107              		.loc 1 648 3 view .LVU35
+ 108 004c 084B     		ldr	r3, .L3
+ 109 004e A3FB0030 		umull	r3, r0, r3, r0
+ 110 0052 8009     		lsrs	r0, r0, #6
+ 111 0054 FFF7FEFF 		bl	HAL_SYSTICK_Config
+ 112              	.LVL4:
+ 649:Src/main.c    **** 
+ 650:Src/main.c    ****   /**Configure the Systick
+ 651:Src/main.c    ****     */
+ 652:Src/main.c    ****   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+ 113              		.loc 1 652 3 is_stmt 1 view .LVU36
+ 114 0058 0420     		movs	r0, #4
+ 115 005a FFF7FEFF 		bl	HAL_SYSTICK_CLKSourceConfig
+ 116              	.LVL5:
+ 653:Src/main.c    **** 
+ 654:Src/main.c    ****   /* SysTick_IRQn interrupt configuration */
+ 655:Src/main.c    ****   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+ 117              		.loc 1 655 3 view .LVU37
+ 118 005e 2246     		mov	r2, r4
+ 119 0060 2146     		mov	r1, r4
+ 120 0062 4FF0FF30 		mov	r0, #-1
+ 121 0066 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 122              	.LVL6:
+ 656:Src/main.c    **** }
+ 123              		.loc 1 656 1 is_stmt 0 view .LVU38
+ 124 006a 17B0     		add	sp, sp, #92
+ 125              	.LCFI2:
+ 126              		.cfi_def_cfa_offset 12
+ 127              		@ sp needed
+ 128 006c 30BD     		pop	{r4, r5, pc}
+ 129              	.L4:
+ 130 006e 00BF     		.align	2
+ 131              	.L3:
+ 132 0070 D34D6210 		.word	274877907
+ 133              		.cfi_endproc
+ 134              	.LFE67:
+ 136              		.section	.text.main,"ax",%progbits
+ 137              		.align	1
+ 138              		.global	main
+ 139              		.syntax unified
+ 140              		.thumb
+ 141              		.thumb_func
+ 143              	main:
+ 144              	.LFB66:
+ 173:Src/main.c    **** 
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 15
+
+
+ 145              		.loc 1 173 16 is_stmt 1 view -0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 8
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 150              	.LCFI3:
+ 151              		.cfi_def_cfa_offset 20
+ 152              		.cfi_offset 4, -20
+ 153              		.cfi_offset 5, -16
+ 154              		.cfi_offset 6, -12
+ 155              		.cfi_offset 7, -8
+ 156              		.cfi_offset 14, -4
+ 157 0002 83B0     		sub	sp, sp, #12
+ 158              	.LCFI4:
+ 159              		.cfi_def_cfa_offset 32
+ 175:Src/main.c    ****   __HAL_RCC_AFIO_CLK_ENABLE();
+ 160              		.loc 1 175 3 view .LVU40
+ 161 0004 FFF7FEFF 		bl	HAL_Init
+ 162              	.LVL7:
+ 176:Src/main.c    ****   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+ 163              		.loc 1 176 3 view .LVU41
+ 164              	.LBB2:
+ 176:Src/main.c    ****   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+ 165              		.loc 1 176 3 view .LVU42
+ 176:Src/main.c    ****   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+ 166              		.loc 1 176 3 view .LVU43
+ 167 0008 364C     		ldr	r4, .L28
+ 168 000a A369     		ldr	r3, [r4, #24]
+ 169 000c 43F00103 		orr	r3, r3, #1
+ 170 0010 A361     		str	r3, [r4, #24]
+ 176:Src/main.c    ****   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+ 171              		.loc 1 176 3 view .LVU44
+ 172 0012 A369     		ldr	r3, [r4, #24]
+ 173 0014 03F00103 		and	r3, r3, #1
+ 174 0018 0093     		str	r3, [sp]
+ 176:Src/main.c    ****   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+ 175              		.loc 1 176 3 view .LVU45
+ 176 001a 009B     		ldr	r3, [sp]
+ 177              	.LBE2:
+ 176:Src/main.c    ****   HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+ 178              		.loc 1 176 3 view .LVU46
+ 177:Src/main.c    ****   /* System interrupt init*/
+ 179              		.loc 1 177 3 view .LVU47
+ 180 001c 0320     		movs	r0, #3
+ 181 001e FFF7FEFF 		bl	HAL_NVIC_SetPriorityGrouping
+ 182              	.LVL8:
+ 180:Src/main.c    ****   /* BusFault_IRQn interrupt configuration */
+ 183              		.loc 1 180 3 view .LVU48
+ 184 0022 0022     		movs	r2, #0
+ 185 0024 1146     		mov	r1, r2
+ 186 0026 6FF00B00 		mvn	r0, #11
+ 187 002a FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 188              	.LVL9:
+ 182:Src/main.c    ****   /* UsageFault_IRQn interrupt configuration */
+ 189              		.loc 1 182 3 view .LVU49
+ 190 002e 0022     		movs	r2, #0
+ 191 0030 1146     		mov	r1, r2
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 16
+
+
+ 192 0032 6FF00A00 		mvn	r0, #10
+ 193 0036 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 194              	.LVL10:
+ 184:Src/main.c    ****   /* SVCall_IRQn interrupt configuration */
+ 195              		.loc 1 184 3 view .LVU50
+ 196 003a 0022     		movs	r2, #0
+ 197 003c 1146     		mov	r1, r2
+ 198 003e 6FF00900 		mvn	r0, #9
+ 199 0042 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 200              	.LVL11:
+ 186:Src/main.c    ****   /* DebugMonitor_IRQn interrupt configuration */
+ 201              		.loc 1 186 3 view .LVU51
+ 202 0046 0022     		movs	r2, #0
+ 203 0048 1146     		mov	r1, r2
+ 204 004a 6FF00400 		mvn	r0, #4
+ 205 004e FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 206              	.LVL12:
+ 188:Src/main.c    ****   /* PendSV_IRQn interrupt configuration */
+ 207              		.loc 1 188 3 view .LVU52
+ 208 0052 0022     		movs	r2, #0
+ 209 0054 1146     		mov	r1, r2
+ 210 0056 6FF00300 		mvn	r0, #3
+ 211 005a FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 212              	.LVL13:
+ 190:Src/main.c    ****   /* SysTick_IRQn interrupt configuration */
+ 213              		.loc 1 190 3 view .LVU53
+ 214 005e 0022     		movs	r2, #0
+ 215 0060 1146     		mov	r1, r2
+ 216 0062 6FF00100 		mvn	r0, #1
+ 217 0066 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 218              	.LVL14:
+ 192:Src/main.c    **** 
+ 219              		.loc 1 192 3 view .LVU54
+ 220 006a 0022     		movs	r2, #0
+ 221 006c 1146     		mov	r1, r2
+ 222 006e 4FF0FF30 		mov	r0, #-1
+ 223 0072 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 224              	.LVL15:
+ 194:Src/main.c    **** 
+ 225              		.loc 1 194 3 view .LVU55
+ 226 0076 FFF7FEFF 		bl	SystemClock_Config
+ 227              	.LVL16:
+ 196:Src/main.c    ****   MX_GPIO_Init();
+ 228              		.loc 1 196 3 view .LVU56
+ 229 007a 6369     		ldr	r3, [r4, #20]
+ 230 007c 23F00103 		bic	r3, r3, #1
+ 231 0080 6361     		str	r3, [r4, #20]
+ 197:Src/main.c    ****   MX_TIM_Init();
+ 232              		.loc 1 197 3 view .LVU57
+ 233 0082 FFF7FEFF 		bl	MX_GPIO_Init
+ 234              	.LVL17:
+ 198:Src/main.c    ****   MX_ADC1_Init();
+ 235              		.loc 1 198 3 view .LVU58
+ 236 0086 FFF7FEFF 		bl	MX_TIM_Init
+ 237              	.LVL18:
+ 199:Src/main.c    ****   MX_ADC2_Init();
+ 238              		.loc 1 199 3 view .LVU59
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 17
+
+
+ 239 008a FFF7FEFF 		bl	MX_ADC1_Init
+ 240              	.LVL19:
+ 200:Src/main.c    ****   BLDC_Init();        // BLDC Controller Init
+ 241              		.loc 1 200 3 view .LVU60
+ 242 008e FFF7FEFF 		bl	MX_ADC2_Init
+ 243              	.LVL20:
+ 201:Src/main.c    **** 
+ 244              		.loc 1 201 3 view .LVU61
+ 245 0092 FFF7FEFF 		bl	BLDC_Init
+ 246              	.LVL21:
+ 203:Src/main.c    ****   Input_Lim_Init();   // Input Limitations Init
+ 247              		.loc 1 203 3 view .LVU62
+ 248 0096 0122     		movs	r2, #1
+ 249 0098 2021     		movs	r1, #32
+ 250 009a 1348     		ldr	r0, .L28+4
+ 251 009c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 252              	.LVL22:
+ 204:Src/main.c    ****   Input_Init();       // Input Init
+ 253              		.loc 1 204 3 view .LVU63
+ 254 00a0 FFF7FEFF 		bl	Input_Lim_Init
+ 255              	.LVL23:
+ 205:Src/main.c    **** 
+ 256              		.loc 1 205 3 view .LVU64
+ 257 00a4 FFF7FEFF 		bl	Input_Init
+ 258              	.LVL24:
+ 207:Src/main.c    ****   HAL_ADC_Start(&hadc2);
+ 259              		.loc 1 207 3 view .LVU65
+ 260 00a8 1048     		ldr	r0, .L28+8
+ 261 00aa FFF7FEFF 		bl	HAL_ADC_Start
+ 262              	.LVL25:
+ 208:Src/main.c    **** 
+ 263              		.loc 1 208 3 view .LVU66
+ 264 00ae 1048     		ldr	r0, .L28+12
+ 265 00b0 FFF7FEFF 		bl	HAL_ADC_Start
+ 266              	.LVL26:
+ 210:Src/main.c    ****   HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_SET);
+ 267              		.loc 1 210 3 view .LVU67
+ 268 00b4 FFF7FEFF 		bl	poweronMelody
+ 269              	.LVL27:
+ 211:Src/main.c    ****   
+ 270              		.loc 1 211 3 view .LVU68
+ 271 00b8 0122     		movs	r2, #1
+ 272 00ba 0421     		movs	r1, #4
+ 273 00bc 0D48     		ldr	r0, .L28+16
+ 274 00be FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 275              	.LVL28:
+ 213:Src/main.c    ****   int16_t board_temp_adcFilt  = adc_buffer.temp;
+ 276              		.loc 1 213 3 view .LVU69
+ 213:Src/main.c    ****   int16_t board_temp_adcFilt  = adc_buffer.temp;
+ 277              		.loc 1 213 43 is_stmt 0 view .LVU70
+ 278 00c2 0D4A     		ldr	r2, .L28+20
+ 279 00c4 138A     		ldrh	r3, [r2, #16]
+ 213:Src/main.c    ****   int16_t board_temp_adcFilt  = adc_buffer.temp;
+ 280              		.loc 1 213 49 view .LVU71
+ 281 00c6 1B04     		lsls	r3, r3, #16
+ 213:Src/main.c    ****   int16_t board_temp_adcFilt  = adc_buffer.temp;
+ 282              		.loc 1 213 11 view .LVU72
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 18
+
+
+ 283 00c8 0193     		str	r3, [sp, #4]
+ 214:Src/main.c    **** 
+ 284              		.loc 1 214 3 is_stmt 1 view .LVU73
+ 214:Src/main.c    **** 
+ 285              		.loc 1 214 43 is_stmt 0 view .LVU74
+ 286 00ca 138A     		ldrh	r3, [r2, #16]
+ 287              	.LVL29:
+ 241:Src/main.c    **** 
+ 288              		.loc 1 241 3 is_stmt 1 view .LVU75
+ 241:Src/main.c    **** 
+ 289              		.loc 1 241 8 is_stmt 0 view .LVU76
+ 290 00cc 02E0     		b	.L6
+ 291              	.L7:
+ 241:Src/main.c    **** 
+ 292              		.loc 1 241 54 is_stmt 1 discriminator 2 view .LVU77
+ 293 00ce 0A20     		movs	r0, #10
+ 294 00d0 FFF7FEFF 		bl	HAL_Delay
+ 295              	.LVL30:
+ 296              	.L6:
+ 241:Src/main.c    **** 
+ 297              		.loc 1 241 8 discriminator 1 view .LVU78
+ 241:Src/main.c    **** 
+ 298              		.loc 1 241 9 is_stmt 0 discriminator 1 view .LVU79
+ 299 00d4 0221     		movs	r1, #2
+ 300 00d6 0448     		ldr	r0, .L28+4
+ 301 00d8 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 302              	.LVL31:
+ 241:Src/main.c    **** 
+ 303              		.loc 1 241 8 discriminator 1 view .LVU80
+ 304 00dc 0028     		cmp	r0, #0
+ 305 00de F6D1     		bne	.L7
+ 306 00e0 0AE1     		b	.L8
+ 307              	.L29:
+ 308 00e2 00BF     		.align	2
+ 309              	.L28:
+ 310 00e4 00100240 		.word	1073876992
+ 311 00e8 00080140 		.word	1073809408
+ 312 00ec 00000000 		.word	hadc1
+ 313 00f0 00000000 		.word	hadc2
+ 314 00f4 000C0140 		.word	1073810432
+ 315 00f8 00000000 		.word	adc_buffer
+ 316              	.L9:
+ 318:Src/main.c    ****       rateLimiter16(input2[inIdx].cmd, rate, &speedRateFixdt);
+ 317              		.loc 1 318 7 is_stmt 1 view .LVU81
+ 318 00fc AE4C     		ldr	r4, .L30
+ 319 00fe AF4D     		ldr	r5, .L30+4
+ 320 0100 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 321 0102 C3EBC303 		rsb	r3, r3, r3, lsl #3
+ 322 0106 AE4A     		ldr	r2, .L30+8
+ 323 0108 02EB4303 		add	r3, r2, r3, lsl #1
+ 324 010c 2246     		mov	r2, r4
+ 325 010e 4FF4F071 		mov	r1, #480
+ 326 0112 B3F90200 		ldrsh	r0, [r3, #2]
+ 327 0116 FFF7FEFF 		bl	rateLimiter16
+ 328              	.LVL32:
+ 319:Src/main.c    ****       filtLowPass32(steerRateFixdt >> 4, FILTER, &steerFixdt);
+ 329              		.loc 1 319 7 view .LVU82
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 19
+
+
+ 330 011a AA4E     		ldr	r6, .L30+12
+ 331 011c 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 332 011e C3EBC303 		rsb	r3, r3, r3, lsl #3
+ 333 0122 A94A     		ldr	r2, .L30+16
+ 334 0124 02EB4303 		add	r3, r2, r3, lsl #1
+ 335 0128 3246     		mov	r2, r6
+ 336 012a 4FF4F071 		mov	r1, #480
+ 337 012e B3F90200 		ldrsh	r0, [r3, #2]
+ 338 0132 FFF7FEFF 		bl	rateLimiter16
+ 339              	.LVL33:
+ 320:Src/main.c    ****       filtLowPass32(speedRateFixdt >> 4, FILTER, &speedFixdt);
+ 340              		.loc 1 320 7 view .LVU83
+ 341 0136 A54D     		ldr	r5, .L30+20
+ 342 0138 B4F90000 		ldrsh	r0, [r4]
+ 343 013c 2A46     		mov	r2, r5
+ 344 013e 41F69911 		movw	r1, #6553
+ 345 0142 0011     		asrs	r0, r0, #4
+ 346 0144 FFF7FEFF 		bl	filtLowPass32
+ 347              	.LVL34:
+ 321:Src/main.c    ****       steer = (int16_t)(steerFixdt >> 16);  // convert fixed-point to integer
+ 348              		.loc 1 321 7 view .LVU84
+ 349 0148 A14C     		ldr	r4, .L30+24
+ 350 014a B6F90000 		ldrsh	r0, [r6]
+ 351 014e 2246     		mov	r2, r4
+ 352 0150 41F69911 		movw	r1, #6553
+ 353 0154 0011     		asrs	r0, r0, #4
+ 354 0156 FFF7FEFF 		bl	filtLowPass32
+ 355              	.LVL35:
+ 322:Src/main.c    ****       speed = (int16_t)(speedFixdt >> 16);  // convert fixed-point to integer
+ 356              		.loc 1 322 7 view .LVU85
+ 322:Src/main.c    ****       speed = (int16_t)(speedFixdt >> 16);  // convert fixed-point to integer
+ 357              		.loc 1 322 15 is_stmt 0 view .LVU86
+ 358 015a B5F90210 		ldrsh	r1, [r5, #2]
+ 322:Src/main.c    ****       speed = (int16_t)(speedFixdt >> 16);  // convert fixed-point to integer
+ 359              		.loc 1 322 13 view .LVU87
+ 360 015e 9D4B     		ldr	r3, .L30+28
+ 361 0160 1980     		strh	r1, [r3]	@ movhi
+ 323:Src/main.c    **** 
+ 362              		.loc 1 323 7 is_stmt 1 view .LVU88
+ 323:Src/main.c    **** 
+ 363              		.loc 1 323 15 is_stmt 0 view .LVU89
+ 364 0162 B4F90200 		ldrsh	r0, [r4, #2]
+ 323:Src/main.c    **** 
+ 365              		.loc 1 323 13 view .LVU90
+ 366 0166 9C4B     		ldr	r3, .L30+32
+ 367 0168 1880     		strh	r0, [r3]	@ movhi
+ 350:Src/main.c    ****       #endif
+ 368              		.loc 1 350 9 is_stmt 1 view .LVU91
+ 350:Src/main.c    ****       #endif
+ 369              		.loc 1 350 24 is_stmt 0 view .LVU92
+ 370 016a 0001     		lsls	r0, r0, #4
+ 350:Src/main.c    ****       #endif
+ 371              		.loc 1 350 36 view .LVU93
+ 372 016c 0901     		lsls	r1, r1, #4
+ 350:Src/main.c    ****       #endif
+ 373              		.loc 1 350 9 view .LVU94
+ 374 016e 9B4C     		ldr	r4, .L30+36
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 20
+
+
+ 375 0170 9B4D     		ldr	r5, .L30+40
+ 376 0172 2346     		mov	r3, r4
+ 377 0174 2A46     		mov	r2, r5
+ 378 0176 09B2     		sxth	r1, r1
+ 379 0178 00B2     		sxth	r0, r0
+ 380 017a FFF7FEFF 		bl	mixerFcn
+ 381              	.LVL36:
+ 358:Src/main.c    ****       #endif
+ 382              		.loc 1 358 9 is_stmt 1 view .LVU95
+ 358:Src/main.c    ****       #endif
+ 383              		.loc 1 358 16 is_stmt 0 view .LVU96
+ 384 017e B5F90030 		ldrsh	r3, [r5]
+ 385 0182 5B42     		rsbs	r3, r3, #0
+ 358:Src/main.c    ****       #endif
+ 386              		.loc 1 358 14 view .LVU97
+ 387 0184 974A     		ldr	r2, .L30+44
+ 388 0186 1360     		str	r3, [r2]
+ 363:Src/main.c    ****       #endif
+ 389              		.loc 1 363 9 is_stmt 1 view .LVU98
+ 363:Src/main.c    ****       #endif
+ 390              		.loc 1 363 14 is_stmt 0 view .LVU99
+ 391 0188 B4F90020 		ldrsh	r2, [r4]
+ 392 018c 964B     		ldr	r3, .L30+48
+ 393 018e 1A60     		str	r2, [r3]
+ 467:Src/main.c    ****     #endif
+ 394              		.loc 1 467 7 is_stmt 1 view .LVU100
+ 395 0190 9648     		ldr	r0, .L30+52
+ 396 0192 FFF7FEFF 		bl	sideboardLeds
+ 397              	.LVL37:
+ 478:Src/main.c    ****     board_temp_adcFilt  = (int16_t)(board_temp_adcFixdt >> 16);  // convert fixed-point to integer
+ 398              		.loc 1 478 5 view .LVU101
+ 478:Src/main.c    ****     board_temp_adcFilt  = (int16_t)(board_temp_adcFixdt >> 16);  // convert fixed-point to integer
+ 399              		.loc 1 478 29 is_stmt 0 view .LVU102
+ 400 0196 964B     		ldr	r3, .L30+56
+ 401 0198 188A     		ldrh	r0, [r3, #16]
+ 478:Src/main.c    ****     board_temp_adcFilt  = (int16_t)(board_temp_adcFixdt >> 16);  // convert fixed-point to integer
+ 402              		.loc 1 478 5 view .LVU103
+ 403 019a 01AA     		add	r2, sp, #4
+ 404 019c 40F28F21 		movw	r1, #655
+ 405 01a0 80B2     		uxth	r0, r0
+ 406 01a2 FFF7FEFF 		bl	filtLowPass32
+ 407              	.LVL38:
+ 479:Src/main.c    ****     board_temp_deg_c    = (TEMP_CAL_HIGH_DEG_C - TEMP_CAL_LOW_DEG_C) * (board_temp_adcFilt - TEMP_C
+ 408              		.loc 1 479 5 is_stmt 1 view .LVU104
+ 479:Src/main.c    ****     board_temp_deg_c    = (TEMP_CAL_HIGH_DEG_C - TEMP_CAL_LOW_DEG_C) * (board_temp_adcFilt - TEMP_C
+ 409              		.loc 1 479 25 is_stmt 0 view .LVU105
+ 410 01a6 BDF90630 		ldrsh	r3, [sp, #6]
+ 411              	.LVL39:
+ 480:Src/main.c    **** 
+ 412              		.loc 1 480 5 is_stmt 1 view .LVU106
+ 480:Src/main.c    **** 
+ 413              		.loc 1 480 92 is_stmt 0 view .LVU107
+ 414 01aa A3F27763 		subw	r3, r3, #1655
+ 415              	.LVL40:
+ 480:Src/main.c    **** 
+ 416              		.loc 1 480 70 view .LVU108
+ 417 01ae 03EB8312 		add	r2, r3, r3, lsl #6
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 21
+
+
+ 418 01b2 03EB4203 		add	r3, r3, r2, lsl #1
+ 419              	.LVL41:
+ 480:Src/main.c    **** 
+ 420              		.loc 1 480 112 view .LVU109
+ 421 01b6 8F4A     		ldr	r2, .L30+60
+ 422 01b8 82FB0312 		smull	r1, r2, r2, r3
+ 423 01bc DB17     		asrs	r3, r3, #31
+ 424 01be A3EB6203 		sub	r3, r3, r2, asr #1
+ 480:Src/main.c    **** 
+ 425              		.loc 1 480 153 view .LVU110
+ 426 01c2 03F5B373 		add	r3, r3, #358
+ 427 01c6 1BB2     		sxth	r3, r3
+ 480:Src/main.c    **** 
+ 428              		.loc 1 480 25 view .LVU111
+ 429 01c8 8B4A     		ldr	r2, .L30+64
+ 430 01ca 1380     		strh	r3, [r2]	@ movhi
+ 483:Src/main.c    **** 
+ 431              		.loc 1 483 5 is_stmt 1 view .LVU112
+ 483:Src/main.c    **** 
+ 432              		.loc 1 483 34 is_stmt 0 view .LVU113
+ 433 01cc 8B4A     		ldr	r2, .L30+68
+ 434 01ce B2F90020 		ldrsh	r2, [r2]
+ 435 01d2 40F68271 		movw	r1, #3970
+ 436 01d6 01FB02F2 		mul	r2, r1, r2
+ 483:Src/main.c    **** 
+ 437              		.loc 1 483 59 view .LVU114
+ 438 01da 01F1AF41 		add	r1, r1, #1468006400
+ 439 01de 01F5B301 		add	r1, r1, #5865472
+ 440 01e2 01F24F11 		addw	r1, r1, #335
+ 441 01e6 81FB0201 		smull	r0, r1, r1, r2
+ 442 01ea D217     		asrs	r2, r2, #31
+ 443 01ec C2EB6122 		rsb	r2, r2, r1, asr #9
+ 483:Src/main.c    **** 
+ 444              		.loc 1 483 21 view .LVU115
+ 445 01f0 12B2     		sxth	r2, r2
+ 446 01f2 8349     		ldr	r1, .L30+72
+ 447 01f4 0A80     		strh	r2, [r1]	@ movhi
+ 486:Src/main.c    ****     right_dc_curr = -(rtU_Right.i_DCLink * 100) / A2BIT_CONV;  // Right DC Link Current * 100
+ 448              		.loc 1 486 5 is_stmt 1 view .LVU116
+ 486:Src/main.c    ****     right_dc_curr = -(rtU_Right.i_DCLink * 100) / A2BIT_CONV;  // Right DC Link Current * 100
+ 449              		.loc 1 486 31 is_stmt 0 view .LVU117
+ 450 01f6 8349     		ldr	r1, .L30+76
+ 451 01f8 8989     		ldrh	r1, [r1, #12]
+ 486:Src/main.c    ****     right_dc_curr = -(rtU_Right.i_DCLink * 100) / A2BIT_CONV;  // Right DC Link Current * 100
+ 452              		.loc 1 486 48 view .LVU118
+ 453 01fa C1EBC131 		rsb	r1, r1, r1, lsl #15
+ 454 01fe 4900     		lsls	r1, r1, #1
+ 455 0200 88B2     		uxth	r0, r1
+ 486:Src/main.c    ****     right_dc_curr = -(rtU_Right.i_DCLink * 100) / A2BIT_CONV;  // Right DC Link Current * 100
+ 456              		.loc 1 486 19 view .LVU119
+ 457 0202 814C     		ldr	r4, .L30+80
+ 458 0204 2180     		strh	r1, [r4]	@ movhi
+ 487:Src/main.c    ****     dc_curr       = left_dc_curr + right_dc_curr;            // Total DC Link Current * 100
+ 459              		.loc 1 487 5 is_stmt 1 view .LVU120
+ 487:Src/main.c    ****     dc_curr       = left_dc_curr + right_dc_curr;            // Total DC Link Current * 100
+ 460              		.loc 1 487 32 is_stmt 0 view .LVU121
+ 461 0206 8149     		ldr	r1, .L30+84
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 22
+
+
+ 462 0208 8989     		ldrh	r1, [r1, #12]
+ 487:Src/main.c    ****     dc_curr       = left_dc_curr + right_dc_curr;            // Total DC Link Current * 100
+ 463              		.loc 1 487 49 view .LVU122
+ 464 020a C1EBC131 		rsb	r1, r1, r1, lsl #15
+ 465 020e 4900     		lsls	r1, r1, #1
+ 466 0210 8CB2     		uxth	r4, r1
+ 487:Src/main.c    ****     dc_curr       = left_dc_curr + right_dc_curr;            // Total DC Link Current * 100
+ 467              		.loc 1 487 19 view .LVU123
+ 468 0212 7F4D     		ldr	r5, .L30+88
+ 469 0214 2980     		strh	r1, [r5]	@ movhi
+ 488:Src/main.c    **** 
+ 470              		.loc 1 488 5 is_stmt 1 view .LVU124
+ 488:Src/main.c    **** 
+ 471              		.loc 1 488 34 is_stmt 0 view .LVU125
+ 472 0216 0119     		adds	r1, r0, r4
+ 488:Src/main.c    **** 
+ 473              		.loc 1 488 19 view .LVU126
+ 474 0218 7E48     		ldr	r0, .L30+92
+ 475 021a 0180     		strh	r1, [r0]	@ movhi
+ 511:Src/main.c    ****         Feedback.start	        = (uint16_t)SERIAL_START_FRAME;
+ 476              		.loc 1 511 7 is_stmt 1 view .LVU127
+ 511:Src/main.c    ****         Feedback.start	        = (uint16_t)SERIAL_START_FRAME;
+ 477              		.loc 1 511 29 is_stmt 0 view .LVU128
+ 478 021c 7E49     		ldr	r1, .L30+96
+ 479 021e 0968     		ldr	r1, [r1]
+ 511:Src/main.c    ****         Feedback.start	        = (uint16_t)SERIAL_START_FRAME;
+ 480              		.loc 1 511 10 view .LVU129
+ 481 0220 11F0010F 		tst	r1, #1
+ 482 0224 24D1     		bne	.L10
+ 512:Src/main.c    ****         Feedback.cmd1           = (int16_t)input1[inIdx].cmd;
+ 483              		.loc 1 512 9 is_stmt 1 view .LVU130
+ 512:Src/main.c    ****         Feedback.cmd1           = (int16_t)input1[inIdx].cmd;
+ 484              		.loc 1 512 32 is_stmt 0 view .LVU131
+ 485 0226 7D49     		ldr	r1, .L30+100
+ 486 0228 4AF6CD30 		movw	r0, #43981
+ 487 022c 0880     		strh	r0, [r1]	@ movhi
+ 513:Src/main.c    ****         Feedback.cmd2           = (int16_t)input2[inIdx].cmd;
+ 488              		.loc 1 513 9 is_stmt 1 view .LVU132
+ 513:Src/main.c    ****         Feedback.cmd2           = (int16_t)input2[inIdx].cmd;
+ 489              		.loc 1 513 35 is_stmt 0 view .LVU133
+ 490 022e 6348     		ldr	r0, .L30+4
+ 491 0230 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+ 513:Src/main.c    ****         Feedback.cmd2           = (int16_t)input2[inIdx].cmd;
+ 492              		.loc 1 513 57 view .LVU134
+ 493 0232 C0EBC005 		rsb	r5, r0, r0, lsl #3
+ 494 0236 624C     		ldr	r4, .L30+8
+ 495 0238 04EB4504 		add	r4, r4, r5, lsl #1
+ 496 023c B4F90260 		ldrsh	r6, [r4, #2]
+ 513:Src/main.c    ****         Feedback.cmd2           = (int16_t)input2[inIdx].cmd;
+ 497              		.loc 1 513 33 view .LVU135
+ 498 0240 4E80     		strh	r6, [r1, #2]	@ movhi
+ 514:Src/main.c    ****         Feedback.speedR_meas	  = (int16_t)rtY_Right.n_mot;
+ 499              		.loc 1 514 9 is_stmt 1 view .LVU136
+ 514:Src/main.c    ****         Feedback.speedR_meas	  = (int16_t)rtY_Right.n_mot;
+ 500              		.loc 1 514 57 is_stmt 0 view .LVU137
+ 501 0242 614C     		ldr	r4, .L30+16
+ 502 0244 04EB4500 		add	r0, r4, r5, lsl #1
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 23
+
+
+ 503 0248 B0F90250 		ldrsh	r5, [r0, #2]
+ 514:Src/main.c    ****         Feedback.speedR_meas	  = (int16_t)rtY_Right.n_mot;
+ 504              		.loc 1 514 33 view .LVU138
+ 505 024c 8D80     		strh	r5, [r1, #4]	@ movhi
+ 515:Src/main.c    ****         Feedback.speedL_meas	  = (int16_t)rtY_Left.n_mot;
+ 506              		.loc 1 515 9 is_stmt 1 view .LVU139
+ 515:Src/main.c    ****         Feedback.speedL_meas	  = (int16_t)rtY_Left.n_mot;
+ 507              		.loc 1 515 52 is_stmt 0 view .LVU140
+ 508 024e 7448     		ldr	r0, .L30+104
+ 509 0250 B0F90840 		ldrsh	r4, [r0, #8]
+ 515:Src/main.c    ****         Feedback.speedL_meas	  = (int16_t)rtY_Left.n_mot;
+ 510              		.loc 1 515 32 view .LVU141
+ 511 0254 CC80     		strh	r4, [r1, #6]	@ movhi
+ 516:Src/main.c    ****         Feedback.batVoltage	    = (int16_t)batVoltageCalib;
+ 512              		.loc 1 516 9 is_stmt 1 view .LVU142
+ 516:Src/main.c    ****         Feedback.batVoltage	    = (int16_t)batVoltageCalib;
+ 513              		.loc 1 516 51 is_stmt 0 view .LVU143
+ 514 0256 7348     		ldr	r0, .L30+108
+ 515 0258 B0F90800 		ldrsh	r0, [r0, #8]
+ 516:Src/main.c    ****         Feedback.batVoltage	    = (int16_t)batVoltageCalib;
+ 516              		.loc 1 516 32 view .LVU144
+ 517 025c 0881     		strh	r0, [r1, #8]	@ movhi
+ 517:Src/main.c    ****         Feedback.boardTemp	    = (int16_t)board_temp_deg_c;
+ 518              		.loc 1 517 9 is_stmt 1 view .LVU145
+ 517:Src/main.c    ****         Feedback.boardTemp	    = (int16_t)board_temp_deg_c;
+ 519              		.loc 1 517 33 is_stmt 0 view .LVU146
+ 520 025e 4A81     		strh	r2, [r1, #10]	@ movhi
+ 518:Src/main.c    **** 
+ 521              		.loc 1 518 9 is_stmt 1 view .LVU147
+ 518:Src/main.c    **** 
+ 522              		.loc 1 518 32 is_stmt 0 view .LVU148
+ 523 0260 8B81     		strh	r3, [r1, #12]	@ movhi
+ 521:Src/main.c    ****             Feedback.cmdLed     = (uint16_t)sideboard_leds_L;
+ 524              		.loc 1 521 11 is_stmt 1 view .LVU149
+ 521:Src/main.c    ****             Feedback.cmdLed     = (uint16_t)sideboard_leds_L;
+ 525              		.loc 1 521 14 is_stmt 0 view .LVU150
+ 526 0262 7149     		ldr	r1, .L30+112
+ 527 0264 096B     		ldr	r1, [r1, #48]
+ 528 0266 0968     		ldr	r1, [r1]
+ 529 0268 4968     		ldr	r1, [r1, #4]
+ 521:Src/main.c    ****             Feedback.cmdLed     = (uint16_t)sideboard_leds_L;
+ 530              		.loc 1 521 13 view .LVU151
+ 531 026a 0029     		cmp	r1, #0
+ 532 026c 00F08C80 		beq	.L23
+ 533              	.LVL42:
+ 534              	.L10:
+ 542:Src/main.c    **** 
+ 535              		.loc 1 542 5 is_stmt 1 view .LVU152
+ 536 0270 FFF7FEFF 		bl	poweroffPressCheck
+ 537              	.LVL43:
+ 545:Src/main.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 538              		.loc 1 545 5 view .LVU153
+ 550:Src/main.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 539              		.loc 1 550 12 view .LVU154
+ 550:Src/main.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 540              		.loc 1 550 33 is_stmt 0 view .LVU155
+ 541 0274 614B     		ldr	r3, .L30+68
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 24
+
+
+ 542 0276 B3F90030 		ldrsh	r3, [r3]
+ 550:Src/main.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 543              		.loc 1 550 15 view .LVU156
+ 544 027a 40F2F142 		movw	r2, #1265
+ 545 027e 9342     		cmp	r3, r2
+ 546 0280 05DC     		bgt	.L11
+ 550:Src/main.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 547              		.loc 1 550 73 discriminator 1 view .LVU157
+ 548 0282 6A4A     		ldr	r2, .L30+116
+ 549 0284 B2F90020 		ldrsh	r2, [r2]
+ 550:Src/main.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 550              		.loc 1 550 58 discriminator 1 view .LVU158
+ 551 0288 132A     		cmp	r2, #19
+ 552 028a 40F39280 		ble	.L24
+ 553              	.L11:
+ 555:Src/main.c    ****       enable = 0;
+ 554              		.loc 1 555 12 is_stmt 1 view .LVU159
+ 555:Src/main.c    ****       enable = 0;
+ 555              		.loc 1 555 24 is_stmt 0 view .LVU160
+ 556 028e 654A     		ldr	r2, .L30+108
+ 557 0290 9279     		ldrb	r2, [r2, #6]	@ zero_extendqisi2
+ 555:Src/main.c    ****       enable = 0;
+ 558              		.loc 1 555 15 view .LVU161
+ 559 0292 22B9     		cbnz	r2, .L13
+ 555:Src/main.c    ****       enable = 0;
+ 560              		.loc 1 555 47 discriminator 1 view .LVU162
+ 561 0294 624A     		ldr	r2, .L30+104
+ 562 0296 9279     		ldrb	r2, [r2, #6]	@ zero_extendqisi2
+ 555:Src/main.c    ****       enable = 0;
+ 563              		.loc 1 555 35 discriminator 1 view .LVU163
+ 564 0298 002A     		cmp	r2, #0
+ 565 029a 00F0D580 		beq	.L14
+ 566              	.L13:
+ 556:Src/main.c    ****       beepCount(1, 24, 1);
+ 567              		.loc 1 556 7 is_stmt 1 view .LVU164
+ 556:Src/main.c    ****       beepCount(1, 24, 1);
+ 568              		.loc 1 556 14 is_stmt 0 view .LVU165
+ 569 029e 644B     		ldr	r3, .L30+120
+ 570 02a0 0022     		movs	r2, #0
+ 571 02a2 1A70     		strb	r2, [r3]
+ 557:Src/main.c    ****     } else if (timeoutFlgADC) {                                                                    
+ 572              		.loc 1 557 7 is_stmt 1 view .LVU166
+ 573 02a4 0122     		movs	r2, #1
+ 574 02a6 1821     		movs	r1, #24
+ 575 02a8 1046     		mov	r0, r2
+ 576 02aa FFF7FEFF 		bl	beepCount
+ 577              	.LVL44:
+ 578              	.L12:
+ 579:Src/main.c    **** 
+ 579              		.loc 1 579 5 view .LVU167
+ 579:Src/main.c    **** 
+ 580              		.loc 1 579 31 is_stmt 0 view .LVU168
+ 581 02ae 614A     		ldr	r2, .L30+124
+ 582 02b0 1368     		ldr	r3, [r2]
+ 583 02b2 0133     		adds	r3, r3, #1
+ 584 02b4 1360     		str	r3, [r2]
+ 582:Src/main.c    ****       inactivity_timeout_counter = 0;
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 25
+
+
+ 585              		.loc 1 582 5 is_stmt 1 view .LVU169
+ 582:Src/main.c    ****       inactivity_timeout_counter = 0;
+ 586              		.loc 1 582 9 is_stmt 0 view .LVU170
+ 587 02b6 494B     		ldr	r3, .L30+36
+ 588 02b8 B3F90030 		ldrsh	r3, [r3]
+ 589 02bc 002B     		cmp	r3, #0
+ 590 02be B8BF     		it	lt
+ 591 02c0 5B42     		rsblt	r3, r3, #0
+ 592 02c2 9BB2     		uxth	r3, r3
+ 582:Src/main.c    ****       inactivity_timeout_counter = 0;
+ 593              		.loc 1 582 8 view .LVU171
+ 594 02c4 322B     		cmp	r3, #50
+ 595 02c6 08D8     		bhi	.L19
+ 582:Src/main.c    ****       inactivity_timeout_counter = 0;
+ 596              		.loc 1 582 27 discriminator 1 view .LVU172
+ 597 02c8 454B     		ldr	r3, .L30+40
+ 598 02ca B3F90030 		ldrsh	r3, [r3]
+ 599 02ce 002B     		cmp	r3, #0
+ 600 02d0 B8BF     		it	lt
+ 601 02d2 5B42     		rsblt	r3, r3, #0
+ 602 02d4 9BB2     		uxth	r3, r3
+ 582:Src/main.c    ****       inactivity_timeout_counter = 0;
+ 603              		.loc 1 582 24 discriminator 1 view .LVU173
+ 604 02d6 322B     		cmp	r3, #50
+ 605 02d8 02D9     		bls	.L20
+ 606              	.L19:
+ 583:Src/main.c    ****     }
+ 607              		.loc 1 583 7 is_stmt 1 view .LVU174
+ 583:Src/main.c    ****     }
+ 608              		.loc 1 583 34 is_stmt 0 view .LVU175
+ 609 02da 564B     		ldr	r3, .L30+124
+ 610 02dc 0022     		movs	r2, #0
+ 611 02de 1A60     		str	r2, [r3]
+ 612              	.L20:
+ 605:Src/main.c    ****     buzzerTimer_prev = buzzerTimer;
+ 613              		.loc 1 605 5 is_stmt 1 view .LVU176
+ 605:Src/main.c    ****     buzzerTimer_prev = buzzerTimer;
+ 614              		.loc 1 605 16 is_stmt 0 view .LVU177
+ 615 02e0 364B     		ldr	r3, .L30+4
+ 616 02e2 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 617 02e4 544B     		ldr	r3, .L30+128
+ 618 02e6 1A70     		strb	r2, [r3]
+ 606:Src/main.c    ****     main_loop_counter++;
+ 619              		.loc 1 606 5 is_stmt 1 view .LVU178
+ 606:Src/main.c    ****     main_loop_counter++;
+ 620              		.loc 1 606 22 is_stmt 0 view .LVU179
+ 621 02e8 544B     		ldr	r3, .L30+132
+ 622 02ea 1A68     		ldr	r2, [r3]
+ 623 02ec 544B     		ldr	r3, .L30+136
+ 624 02ee 1A60     		str	r2, [r3]
+ 607:Src/main.c    ****     }
+ 625              		.loc 1 607 5 is_stmt 1 view .LVU180
+ 607:Src/main.c    ****     }
+ 626              		.loc 1 607 22 is_stmt 0 view .LVU181
+ 627 02f0 494A     		ldr	r2, .L30+96
+ 628 02f2 1368     		ldr	r3, [r2]
+ 629 02f4 0133     		adds	r3, r3, #1
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 26
+
+
+ 630 02f6 1360     		str	r3, [r2]
+ 631              	.L8:
+ 251:Src/main.c    ****     if (buzzerTimer - buzzerTimer_prev > 16*DELAY_IN_MAIN_LOOP) {   // 1 ms = 16 ticks buzzerTimer
+ 632              		.loc 1 251 3 is_stmt 1 view .LVU182
+ 252:Src/main.c    **** 
+ 633              		.loc 1 252 5 view .LVU183
+ 252:Src/main.c    **** 
+ 634              		.loc 1 252 21 is_stmt 0 view .LVU184
+ 635 02f8 504B     		ldr	r3, .L30+132
+ 636 02fa 1B68     		ldr	r3, [r3]
+ 637 02fc 504A     		ldr	r2, .L30+136
+ 638 02fe 1268     		ldr	r2, [r2]
+ 639 0300 9B1A     		subs	r3, r3, r2
+ 252:Src/main.c    **** 
+ 640              		.loc 1 252 8 view .LVU185
+ 641 0302 502B     		cmp	r3, #80
+ 642 0304 F8D9     		bls	.L8
+ 254:Src/main.c    ****     calcAvgSpeed();                       // Calculate average measured speed: speedAvg, speedAvgAb
+ 643              		.loc 1 254 5 is_stmt 1 view .LVU186
+ 644 0306 FFF7FEFF 		bl	readCommand
+ 645              	.LVL45:
+ 255:Src/main.c    **** 
+ 646              		.loc 1 255 5 view .LVU187
+ 647 030a FFF7FEFF 		bl	calcAvgSpeed
+ 648              	.LVL46:
+ 259:Src/main.c    ****           ABS(input1[inIdx].cmd) < 50 && ABS(input2[inIdx].cmd) < 50){
+ 649              		.loc 1 259 7 view .LVU188
+ 259:Src/main.c    ****           ABS(input1[inIdx].cmd) < 50 && ABS(input2[inIdx].cmd) < 50){
+ 650              		.loc 1 259 18 is_stmt 0 view .LVU189
+ 651 030e 484B     		ldr	r3, .L30+120
+ 652 0310 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 259:Src/main.c    ****           ABS(input1[inIdx].cmd) < 50 && ABS(input2[inIdx].cmd) < 50){
+ 653              		.loc 1 259 10 view .LVU190
+ 654 0312 002B     		cmp	r3, #0
+ 655 0314 7FF4F2AE 		bne	.L9
+ 259:Src/main.c    ****           ABS(input1[inIdx].cmd) < 50 && ABS(input2[inIdx].cmd) < 50){
+ 656              		.loc 1 259 35 discriminator 1 view .LVU191
+ 657 0318 424B     		ldr	r3, .L30+108
+ 658 031a 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 259:Src/main.c    ****           ABS(input1[inIdx].cmd) < 50 && ABS(input2[inIdx].cmd) < 50){
+ 659              		.loc 1 259 23 discriminator 1 view .LVU192
+ 660 031c 002B     		cmp	r3, #0
+ 661 031e 7FF4EDAE 		bne	.L9
+ 259:Src/main.c    ****           ABS(input1[inIdx].cmd) < 50 && ABS(input2[inIdx].cmd) < 50){
+ 662              		.loc 1 259 59 discriminator 2 view .LVU193
+ 663 0322 3F4B     		ldr	r3, .L30+104
+ 664 0324 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 259:Src/main.c    ****           ABS(input1[inIdx].cmd) < 50 && ABS(input2[inIdx].cmd) < 50){
+ 665              		.loc 1 259 46 discriminator 2 view .LVU194
+ 666 0326 002B     		cmp	r3, #0
+ 667 0328 7FF4E8AE 		bne	.L9
+ 260:Src/main.c    ****         beepShort(6);                     // make 2 beeps indicating the motor enable
+ 668              		.loc 1 260 11 discriminator 3 view .LVU195
+ 669 032c 234B     		ldr	r3, .L30+4
+ 670 032e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 671 0330 C2EBC201 		rsb	r1, r2, r2, lsl #3
+ 672 0334 224B     		ldr	r3, .L30+8
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 27
+
+
+ 673 0336 03EB4103 		add	r3, r3, r1, lsl #1
+ 674 033a B3F90230 		ldrsh	r3, [r3, #2]
+ 675 033e 002B     		cmp	r3, #0
+ 676 0340 B8BF     		it	lt
+ 677 0342 5B42     		rsblt	r3, r3, #0
+ 678 0344 9BB2     		uxth	r3, r3
+ 259:Src/main.c    ****           ABS(input1[inIdx].cmd) < 50 && ABS(input2[inIdx].cmd) < 50){
+ 679              		.loc 1 259 70 discriminator 3 view .LVU196
+ 680 0346 312B     		cmp	r3, #49
+ 681 0348 3FF6D8AE 		bhi	.L9
+ 260:Src/main.c    ****         beepShort(6);                     // make 2 beeps indicating the motor enable
+ 682              		.loc 1 260 42 view .LVU197
+ 683 034c 1E4B     		ldr	r3, .L30+16
+ 684 034e 03EB4102 		add	r2, r3, r1, lsl #1
+ 685 0352 B2F90230 		ldrsh	r3, [r2, #2]
+ 686 0356 002B     		cmp	r3, #0
+ 687 0358 B8BF     		it	lt
+ 688 035a 5B42     		rsblt	r3, r3, #0
+ 689 035c 9BB2     		uxth	r3, r3
+ 260:Src/main.c    ****         beepShort(6);                     // make 2 beeps indicating the motor enable
+ 690              		.loc 1 260 39 view .LVU198
+ 691 035e 312B     		cmp	r3, #49
+ 692 0360 3FF6CCAE 		bhi	.L9
+ 261:Src/main.c    ****         beepShort(4); HAL_Delay(100);
+ 693              		.loc 1 261 9 is_stmt 1 view .LVU199
+ 694 0364 0620     		movs	r0, #6
+ 695 0366 FFF7FEFF 		bl	beepShort
+ 696              	.LVL47:
+ 262:Src/main.c    ****         steerFixdt = speedFixdt = 0;      // reset filters
+ 697              		.loc 1 262 9 view .LVU200
+ 698 036a 0420     		movs	r0, #4
+ 699 036c FFF7FEFF 		bl	beepShort
+ 700              	.LVL48:
+ 262:Src/main.c    ****         steerFixdt = speedFixdt = 0;      // reset filters
+ 701              		.loc 1 262 23 view .LVU201
+ 702 0370 6420     		movs	r0, #100
+ 703 0372 FFF7FEFF 		bl	HAL_Delay
+ 704              	.LVL49:
+ 263:Src/main.c    ****         enable = 1;                       // enable motors
+ 705              		.loc 1 263 9 view .LVU202
+ 263:Src/main.c    ****         enable = 1;                       // enable motors
+ 706              		.loc 1 263 33 is_stmt 0 view .LVU203
+ 707 0376 0023     		movs	r3, #0
+ 708 0378 154A     		ldr	r2, .L30+24
+ 709 037a 1360     		str	r3, [r2]
+ 263:Src/main.c    ****         enable = 1;                       // enable motors
+ 710              		.loc 1 263 20 view .LVU204
+ 711 037c 134A     		ldr	r2, .L30+20
+ 712 037e 1360     		str	r3, [r2]
+ 264:Src/main.c    ****         #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 713              		.loc 1 264 9 is_stmt 1 view .LVU205
+ 264:Src/main.c    ****         #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
+ 714              		.loc 1 264 16 is_stmt 0 view .LVU206
+ 715 0380 2B4B     		ldr	r3, .L30+120
+ 716 0382 0122     		movs	r2, #1
+ 717 0384 1A70     		strb	r2, [r3]
+ 718 0386 B9E6     		b	.L9
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 28
+
+
+ 719              	.LVL50:
+ 720              	.L23:
+ 522:Src/main.c    ****             Feedback.checksum   = (uint16_t)(Feedback.start ^ Feedback.cmd1 ^ Feedback.cmd2 ^ Feedb
+ 721              		.loc 1 522 13 is_stmt 1 view .LVU207
+ 522:Src/main.c    ****             Feedback.checksum   = (uint16_t)(Feedback.start ^ Feedback.cmd1 ^ Feedback.cmd2 ^ Feedb
+ 722              		.loc 1 522 35 is_stmt 0 view .LVU208
+ 723 0388 1849     		ldr	r1, .L30+52
+ 724 038a 91F800C0 		ldrb	ip, [r1]	@ zero_extendqisi2
+ 522:Src/main.c    ****             Feedback.checksum   = (uint16_t)(Feedback.start ^ Feedback.cmd1 ^ Feedback.cmd2 ^ Feedb
+ 725              		.loc 1 522 33 view .LVU209
+ 726 038e 2349     		ldr	r1, .L30+100
+ 727 0390 A1F80EC0 		strh	ip, [r1, #14]	@ movhi
+ 523:Src/main.c    ****                                            ^ Feedback.batVoltage ^ Feedback.boardTemp ^ Feedback.cm
+ 728              		.loc 1 523 13 is_stmt 1 view .LVU210
+ 523:Src/main.c    ****                                            ^ Feedback.batVoltage ^ Feedback.boardTemp ^ Feedback.cm
+ 729              		.loc 1 523 61 is_stmt 0 view .LVU211
+ 730 0394 2B4F     		ldr	r7, .L30+140
+ 731 0396 7740     		eors	r7, r7, r6
+ 523:Src/main.c    ****                                            ^ Feedback.batVoltage ^ Feedback.boardTemp ^ Feedback.cm
+ 732              		.loc 1 523 77 view .LVU212
+ 733 0398 7D40     		eors	r5, r5, r7
+ 523:Src/main.c    ****                                            ^ Feedback.batVoltage ^ Feedback.boardTemp ^ Feedback.cm
+ 734              		.loc 1 523 93 view .LVU213
+ 735 039a 6C40     		eors	r4, r4, r5
+ 523:Src/main.c    ****                                            ^ Feedback.batVoltage ^ Feedback.boardTemp ^ Feedback.cm
+ 736              		.loc 1 523 116 view .LVU214
+ 737 039c 6040     		eors	r0, r0, r4
+ 524:Src/main.c    **** 
+ 738              		.loc 1 524 44 view .LVU215
+ 739 039e 4240     		eors	r2, r2, r0
+ 524:Src/main.c    **** 
+ 740              		.loc 1 524 66 view .LVU216
+ 741 03a0 5340     		eors	r3, r3, r2
+ 524:Src/main.c    **** 
+ 742              		.loc 1 524 87 view .LVU217
+ 743 03a2 8CEA0303 		eor	r3, ip, r3
+ 523:Src/main.c    ****                                            ^ Feedback.batVoltage ^ Feedback.boardTemp ^ Feedback.cm
+ 744              		.loc 1 523 33 view .LVU218
+ 745 03a6 0B82     		strh	r3, [r1, #16]	@ movhi
+ 526:Src/main.c    ****           }
+ 746              		.loc 1 526 13 is_stmt 1 view .LVU219
+ 747 03a8 1222     		movs	r2, #18
+ 748 03aa 1F48     		ldr	r0, .L30+112
+ 749 03ac FFF7FEFF 		bl	HAL_UART_Transmit_DMA
+ 750              	.LVL51:
+ 526:Src/main.c    ****           }
+ 751              		.loc 1 526 13 is_stmt 0 view .LVU220
+ 752 03b0 5EE7     		b	.L10
+ 753              	.L24:
+ 554:Src/main.c    ****     } else if (rtY_Left.z_errCode || rtY_Right.z_errCode) {                                        
+ 754              		.loc 1 554 7 is_stmt 1 view .LVU221
+ 755 03b2 FFF7FEFF 		bl	poweroff
+ 756              	.LVL52:
+ 757 03b6 7AE7     		b	.L12
+ 758              	.L31:
+ 759              		.align	2
+ 760              	.L30:
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 29
+
+
+ 761 03b8 00000000 		.word	.LANCHOR3
+ 762 03bc 00000000 		.word	inIdx
+ 763 03c0 00000000 		.word	input1
+ 764 03c4 00000000 		.word	.LANCHOR4
+ 765 03c8 00000000 		.word	input2
+ 766 03cc 00000000 		.word	.LANCHOR2
+ 767 03d0 00000000 		.word	.LANCHOR1
+ 768 03d4 00000000 		.word	.LANCHOR5
+ 769 03d8 00000000 		.word	.LANCHOR6
+ 770 03dc 00000000 		.word	.LANCHOR7
+ 771 03e0 00000000 		.word	.LANCHOR8
+ 772 03e4 00000000 		.word	pwmr
+ 773 03e8 00000000 		.word	pwml
+ 774 03ec 00000000 		.word	.LANCHOR9
+ 775 03f0 00000000 		.word	adc_buffer
+ 776 03f4 6B4CA407 		.word	128207979
+ 777 03f8 00000000 		.word	.LANCHOR10
+ 778 03fc 00000000 		.word	batVoltage
+ 779 0400 00000000 		.word	.LANCHOR11
+ 780 0404 00000000 		.word	rtU_Left
+ 781 0408 00000000 		.word	.LANCHOR12
+ 782 040c 00000000 		.word	rtU_Right
+ 783 0410 00000000 		.word	.LANCHOR13
+ 784 0414 00000000 		.word	.LANCHOR14
+ 785 0418 00000000 		.word	.LANCHOR15
+ 786 041c 00000000 		.word	.LANCHOR16
+ 787 0420 00000000 		.word	rtY_Right
+ 788 0424 00000000 		.word	rtY_Left
+ 789 0428 00000000 		.word	huart2
+ 790 042c 00000000 		.word	speedAvgAbs
+ 791 0430 00000000 		.word	enable
+ 792 0434 00000000 		.word	.LANCHOR18
+ 793 0438 00000000 		.word	inIdx_prev
+ 794 043c 00000000 		.word	buzzerTimer
+ 795 0440 00000000 		.word	.LANCHOR0
+ 796 0444 CDABFFFF 		.word	-21555
+ 797              	.L14:
+ 558:Src/main.c    ****       beepCount(2, 24, 1);
+ 798              		.loc 1 558 12 view .LVU222
+ 558:Src/main.c    ****       beepCount(2, 24, 1);
+ 799              		.loc 1 558 16 is_stmt 0 view .LVU223
+ 800 0448 164A     		ldr	r2, .L32
+ 801 044a 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 558:Src/main.c    ****       beepCount(2, 24, 1);
+ 802              		.loc 1 558 15 view .LVU224
+ 803 044c 7AB9     		cbnz	r2, .L25
+ 560:Src/main.c    ****       beepCount(3, 24, 1);
+ 804              		.loc 1 560 12 is_stmt 1 view .LVU225
+ 560:Src/main.c    ****       beepCount(3, 24, 1);
+ 805              		.loc 1 560 16 is_stmt 0 view .LVU226
+ 806 044e 164A     		ldr	r2, .L32+4
+ 807 0450 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 560:Src/main.c    ****       beepCount(3, 24, 1);
+ 808              		.loc 1 560 15 view .LVU227
+ 809 0452 92B9     		cbnz	r2, .L26
+ 562:Src/main.c    ****       beepCount(4, 24, 1);
+ 810              		.loc 1 562 12 is_stmt 1 view .LVU228
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 30
+
+
+ 562:Src/main.c    ****       beepCount(4, 24, 1);
+ 811              		.loc 1 562 16 is_stmt 0 view .LVU229
+ 812 0454 154A     		ldr	r2, .L32+8
+ 813 0456 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 562:Src/main.c    ****       beepCount(4, 24, 1);
+ 814              		.loc 1 562 15 view .LVU230
+ 815 0458 AAB9     		cbnz	r2, .L27
+ 564:Src/main.c    ****       beepCount(5, 24, 1);
+ 816              		.loc 1 564 12 is_stmt 1 view .LVU231
+ 566:Src/main.c    ****       beepCount(0, 10, 6);
+ 817              		.loc 1 566 12 view .LVU232
+ 566:Src/main.c    ****       beepCount(0, 10, 6);
+ 818              		.loc 1 566 15 is_stmt 0 view .LVU233
+ 819 045a 40F22252 		movw	r2, #1314
+ 820 045e 9342     		cmp	r3, r2
+ 821 0460 17DC     		bgt	.L18
+ 567:Src/main.c    ****     } else if (BAT_LVL2_ENABLE && batVoltage < BAT_LVL2) {                                         
+ 822              		.loc 1 567 7 is_stmt 1 view .LVU234
+ 823 0462 0622     		movs	r2, #6
+ 824 0464 0A21     		movs	r1, #10
+ 825 0466 0020     		movs	r0, #0
+ 826 0468 FFF7FEFF 		bl	beepCount
+ 827              	.LVL53:
+ 828 046c 1FE7     		b	.L12
+ 829              	.L25:
+ 559:Src/main.c    ****     } else if (timeoutFlgSerial) {                                                                 
+ 830              		.loc 1 559 7 view .LVU235
+ 831 046e 0122     		movs	r2, #1
+ 832 0470 1821     		movs	r1, #24
+ 833 0472 0220     		movs	r0, #2
+ 834 0474 FFF7FEFF 		bl	beepCount
+ 835              	.LVL54:
+ 836 0478 19E7     		b	.L12
+ 837              	.L26:
+ 561:Src/main.c    ****     } else if (timeoutFlgGen) {                                                                    
+ 838              		.loc 1 561 7 view .LVU236
+ 839 047a 0122     		movs	r2, #1
+ 840 047c 1821     		movs	r1, #24
+ 841 047e 0320     		movs	r0, #3
+ 842 0480 FFF7FEFF 		bl	beepCount
+ 843              	.LVL55:
+ 844 0484 13E7     		b	.L12
+ 845              	.L27:
+ 563:Src/main.c    ****     } else if (TEMP_WARNING_ENABLE && board_temp_deg_c >= TEMP_WARNING) {                          
+ 846              		.loc 1 563 7 view .LVU237
+ 847 0486 0122     		movs	r2, #1
+ 848 0488 1821     		movs	r1, #24
+ 849 048a 0420     		movs	r0, #4
+ 850 048c FFF7FEFF 		bl	beepCount
+ 851              	.LVL56:
+ 852 0490 0DE7     		b	.L12
+ 853              	.L18:
+ 568:Src/main.c    ****       beepCount(0, 10, 30);
+ 854              		.loc 1 568 12 view .LVU238
+ 570:Src/main.c    ****       beepCount(0, 5, 1);
+ 855              		.loc 1 570 12 view .LVU239
+ 574:Src/main.c    ****       backwardDrive = 0;
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 31
+
+
+ 856              		.loc 1 574 7 view .LVU240
+ 857 0492 0022     		movs	r2, #0
+ 858 0494 1146     		mov	r1, r2
+ 859 0496 1046     		mov	r0, r2
+ 860 0498 FFF7FEFF 		bl	beepCount
+ 861              	.LVL57:
+ 575:Src/main.c    ****     }
+ 862              		.loc 1 575 7 view .LVU241
+ 575:Src/main.c    ****     }
+ 863              		.loc 1 575 21 is_stmt 0 view .LVU242
+ 864 049c 044B     		ldr	r3, .L32+12
+ 865 049e 0022     		movs	r2, #0
+ 866 04a0 1A70     		strb	r2, [r3]
+ 867 04a2 04E7     		b	.L12
+ 868              	.L33:
+ 869              		.align	2
+ 870              	.L32:
+ 871 04a4 00000000 		.word	timeoutFlgADC
+ 872 04a8 00000000 		.word	timeoutFlgSerial
+ 873 04ac 00000000 		.word	timeoutFlgGen
+ 874 04b0 00000000 		.word	.LANCHOR17
+ 875              		.cfi_endproc
+ 876              	.LFE66:
+ 878              		.global	cmdR
+ 879              		.global	cmdL
+ 880              		.global	dc_curr
+ 881              		.global	right_dc_curr
+ 882              		.global	left_dc_curr
+ 883              		.global	board_temp_deg_c
+ 884              		.global	batVoltageCalib
+ 885              		.global	main_loop_counter
+ 886              		.global	backwardDrive
+ 887              		.global	uart_buf
+ 888              		.section	.bss.Feedback,"aw",%nobits
+ 889              		.align	2
+ 890              		.set	.LANCHOR16,. + 0
+ 893              	Feedback:
+ 894 0000 00000000 		.space	18
+ 894      00000000 
+ 894      00000000 
+ 894      00000000 
+ 894      0000
+ 895              		.section	.bss.backwardDrive,"aw",%nobits
+ 896              		.set	.LANCHOR17,. + 0
+ 899              	backwardDrive:
+ 900 0000 00       		.space	1
+ 901              		.section	.bss.batVoltageCalib,"aw",%nobits
+ 902              		.align	1
+ 903              		.set	.LANCHOR11,. + 0
+ 906              	batVoltageCalib:
+ 907 0000 0000     		.space	2
+ 908              		.section	.bss.board_temp_deg_c,"aw",%nobits
+ 909              		.align	1
+ 910              		.set	.LANCHOR10,. + 0
+ 913              	board_temp_deg_c:
+ 914 0000 0000     		.space	2
+ 915              		.section	.bss.buzzerTimer_prev,"aw",%nobits
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 32
+
+
+ 916              		.align	2
+ 917              		.set	.LANCHOR0,. + 0
+ 920              	buzzerTimer_prev:
+ 921 0000 00000000 		.space	4
+ 922              		.section	.bss.cmdL,"aw",%nobits
+ 923              		.align	1
+ 924              		.set	.LANCHOR7,. + 0
+ 927              	cmdL:
+ 928 0000 0000     		.space	2
+ 929              		.section	.bss.cmdR,"aw",%nobits
+ 930              		.align	1
+ 931              		.set	.LANCHOR8,. + 0
+ 934              	cmdR:
+ 935 0000 0000     		.space	2
+ 936              		.section	.bss.dc_curr,"aw",%nobits
+ 937              		.align	1
+ 938              		.set	.LANCHOR14,. + 0
+ 941              	dc_curr:
+ 942 0000 0000     		.space	2
+ 943              		.section	.bss.inactivity_timeout_counter,"aw",%nobits
+ 944              		.align	2
+ 945              		.set	.LANCHOR18,. + 0
+ 948              	inactivity_timeout_counter:
+ 949 0000 00000000 		.space	4
+ 950              		.section	.bss.left_dc_curr,"aw",%nobits
+ 951              		.align	1
+ 952              		.set	.LANCHOR12,. + 0
+ 955              	left_dc_curr:
+ 956 0000 0000     		.space	2
+ 957              		.section	.bss.main_loop_counter,"aw",%nobits
+ 958              		.align	2
+ 959              		.set	.LANCHOR15,. + 0
+ 962              	main_loop_counter:
+ 963 0000 00000000 		.space	4
+ 964              		.section	.bss.right_dc_curr,"aw",%nobits
+ 965              		.align	1
+ 966              		.set	.LANCHOR13,. + 0
+ 969              	right_dc_curr:
+ 970 0000 0000     		.space	2
+ 971              		.section	.bss.sideboard_leds_L,"aw",%nobits
+ 972              		.set	.LANCHOR9,. + 0
+ 975              	sideboard_leds_L:
+ 976 0000 00       		.space	1
+ 977              		.section	.bss.speed,"aw",%nobits
+ 978              		.align	1
+ 979              		.set	.LANCHOR6,. + 0
+ 982              	speed:
+ 983 0000 0000     		.space	2
+ 984              		.section	.bss.speedFixdt,"aw",%nobits
+ 985              		.align	2
+ 986              		.set	.LANCHOR1,. + 0
+ 989              	speedFixdt:
+ 990 0000 00000000 		.space	4
+ 991              		.section	.bss.speedRateFixdt,"aw",%nobits
+ 992              		.align	1
+ 993              		.set	.LANCHOR4,. + 0
+ 996              	speedRateFixdt:
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 33
+
+
+ 997 0000 0000     		.space	2
+ 998              		.section	.bss.steer,"aw",%nobits
+ 999              		.align	1
+ 1000              		.set	.LANCHOR5,. + 0
+ 1003              	steer:
+ 1004 0000 0000     		.space	2
+ 1005              		.section	.bss.steerFixdt,"aw",%nobits
+ 1006              		.align	2
+ 1007              		.set	.LANCHOR2,. + 0
+ 1010              	steerFixdt:
+ 1011 0000 00000000 		.space	4
+ 1012              		.section	.bss.steerRateFixdt,"aw",%nobits
+ 1013              		.align	1
+ 1014              		.set	.LANCHOR3,. + 0
+ 1017              	steerRateFixdt:
+ 1018 0000 0000     		.space	2
+ 1019              		.section	.bss.uart_buf,"aw",%nobits
+ 1020              		.align	2
+ 1023              	uart_buf:
+ 1024 0000 00000000 		.space	200
+ 1024      00000000 
+ 1024      00000000 
+ 1024      00000000 
+ 1024      00000000 
+ 1025              		.text
+ 1026              	.Letext0:
+ 1027              		.file 2 "/opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/machine/_de
+ 1028              		.file 3 "/opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/sys/_stdint
+ 1029              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 1030              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 1031              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
+ 1032              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
+ 1033              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 1034              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 1035              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h"
+ 1036              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h"
+ 1037              		.file 12 "Inc/defines.h"
+ 1038              		.file 13 "Inc/util.h"
+ 1039              		.file 14 "Inc/rtwtypes.h"
+ 1040              		.file 15 "Inc/BLDC_controller.h"
+ 1041              		.file 16 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
+ 1042              		.file 17 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+ 1043              		.file 18 "Inc/setup.h"
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 34
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:18     .text.SystemClock_Config:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:24     .text.SystemClock_Config:0000000000000000 SystemClock_Config
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:132    .text.SystemClock_Config:0000000000000070 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:137    .text.main:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:143    .text.main:0000000000000000 main
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:310    .text.main:00000000000000e4 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:318    .text.main:00000000000000fc $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:761    .text.main:00000000000003b8 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:800    .text.main:0000000000000448 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:871    .text.main:00000000000004a4 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:934    .bss.cmdR:0000000000000000 cmdR
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:927    .bss.cmdL:0000000000000000 cmdL
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:941    .bss.dc_curr:0000000000000000 dc_curr
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:969    .bss.right_dc_curr:0000000000000000 right_dc_curr
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:955    .bss.left_dc_curr:0000000000000000 left_dc_curr
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:913    .bss.board_temp_deg_c:0000000000000000 board_temp_deg_c
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:906    .bss.batVoltageCalib:0000000000000000 batVoltageCalib
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:962    .bss.main_loop_counter:0000000000000000 main_loop_counter
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:899    .bss.backwardDrive:0000000000000000 backwardDrive
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:1023   .bss.uart_buf:0000000000000000 uart_buf
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:889    .bss.Feedback:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:893    .bss.Feedback:0000000000000000 Feedback
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:900    .bss.backwardDrive:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:902    .bss.batVoltageCalib:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:909    .bss.board_temp_deg_c:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:916    .bss.buzzerTimer_prev:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:920    .bss.buzzerTimer_prev:0000000000000000 buzzerTimer_prev
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:923    .bss.cmdL:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:930    .bss.cmdR:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:937    .bss.dc_curr:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:944    .bss.inactivity_timeout_counter:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:948    .bss.inactivity_timeout_counter:0000000000000000 inactivity_timeout_counter
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:951    .bss.left_dc_curr:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:958    .bss.main_loop_counter:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:965    .bss.right_dc_curr:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:975    .bss.sideboard_leds_L:0000000000000000 sideboard_leds_L
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:976    .bss.sideboard_leds_L:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:978    .bss.speed:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:982    .bss.speed:0000000000000000 speed
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:985    .bss.speedFixdt:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:989    .bss.speedFixdt:0000000000000000 speedFixdt
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:992    .bss.speedRateFixdt:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:996    .bss.speedRateFixdt:0000000000000000 speedRateFixdt
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:999    .bss.steer:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:1003   .bss.steer:0000000000000000 steer
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:1006   .bss.steerFixdt:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:1010   .bss.steerFixdt:0000000000000000 steerFixdt
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:1013   .bss.steerRateFixdt:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:1017   .bss.steerRateFixdt:0000000000000000 steerRateFixdt
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s:1020   .bss.uart_buf:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_RCCEx_PeriphCLKConfig
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccmJMyBG.s 			page 35
+
+
+HAL_RCC_GetHCLKFreq
+HAL_SYSTICK_Config
+HAL_SYSTICK_CLKSourceConfig
+HAL_NVIC_SetPriority
+HAL_Init
+HAL_NVIC_SetPriorityGrouping
+MX_GPIO_Init
+MX_TIM_Init
+MX_ADC1_Init
+MX_ADC2_Init
+BLDC_Init
+HAL_GPIO_WritePin
+Input_Lim_Init
+Input_Init
+HAL_ADC_Start
+poweronMelody
+HAL_Delay
+HAL_GPIO_ReadPin
+hadc1
+hadc2
+adc_buffer
+rateLimiter16
+filtLowPass32
+mixerFcn
+sideboardLeds
+poweroffPressCheck
+beepCount
+readCommand
+calcAvgSpeed
+beepShort
+HAL_UART_Transmit_DMA
+poweroff
+inIdx
+input1
+input2
+pwmr
+pwml
+batVoltage
+rtU_Left
+rtU_Right
+rtY_Right
+rtY_Left
+huart2
+speedAvgAbs
+enable
+inIdx_prev
+buzzerTimer
+timeoutFlgADC
+timeoutFlgSerial
+timeoutFlgGen
