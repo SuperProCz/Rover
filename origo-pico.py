@@ -3,7 +3,6 @@ import threading
 import os
 from HoverSerial import *
 import time
-import multiprocessing
 
 HOST = "10.42.0.1"
 PORT = 1532
@@ -93,13 +92,13 @@ class USARTInterface:
     def update(self):
         currentSpeed = self.getSpeed()
         currentSteer = self.getSteer()
-
         self.board.send_command(currentSteer, currentSpeed)
         #print('Sending:\t steer: '+str(currentSteer)+'speed: '+str(currentSpeed))
 
 def usartFeedback(board: Hoverboard_serial):
 
     while True:
+
         feedback = board.receive_feedback()
 
         if feedback == None:
@@ -108,11 +107,11 @@ def usartFeedback(board: Hoverboard_serial):
         #print('Receiving:\t', feedback)
 
 def usartSending(interface: USARTInterface):
-    TIME_SEND = 0.01 
-    PERCENTAGE_STEP = 0.1
+    TIME_SEND = 0.05 
+    PERCENTAGE_STEP = 0.01
     wantedSpeed = 0
     wantedSteer = 0
-
+    brokeOut = False
     while True:
         if GRADUAL_ACCELERATION:
             currentSpeed = interface.getSpeed()
@@ -123,43 +122,54 @@ def usartSending(interface: USARTInterface):
             print(f"Current steer: {currentSteer}, wantedSteer: {wantedSteer}")
             print(f"Current speed: {currentSpeed}, wantedSpeed: {wantedSpeed}")
             #Don't touch those for loops, I don't know why it works, but it does.
-#              0              1000
-            if currentSpeed < wantedSpeed and changeSpeed <= 0:
-                changeSpeed = -((currentSpeed-wantedSpeed))* PERCENTAGE_STEP
-
+            if currentSpeed < wantedSpeed:
+                for i in range(1, int(100 / (PERCENTAGE_STEP * 100)) + 1, 1):
+                    newSpeed = round(currentSpeed - ((currentSpeed-wantedSpeed) * i)* PERCENTAGE_STEP)
+                    interface.setSpeed(newSpeed)
+                    #print(f"Increasing speed: {newSpeed}, wanted speed: {wantedSpeed}")
+                    time.sleep(TIME_SEND)
+                    if interface.getTargetSpeed() != wantedSpeed:
+                        brokeOut = True
+                        break
 #                1000            0
-            elif currentSpeed > wantedSpeed and changeSpeed >= 0:
-                changeSpeed = ((wantedSpeed-currentSpeed) * PERCENTAGE_STEP)
-                    
-            elif currentSpeed == wantedSpeed:
-                changeSpeed = 0
+            elif currentSpeed > wantedSpeed:
+                for i in range(1, int(100 / (PERCENTAGE_STEP * 100)) + 1, 1):
+                    newSpeed = round(currentSpeed + ((wantedSpeed-currentSpeed) * PERCENTAGE_STEP) * i)
+                    interface.setSpeed(newSpeed)
+                    #print(f"Decreasing speed: {newSpeed}, wanted speed: {wantedSpeed}")
+                    time.sleep(TIME_SEND)
+                    if interface.getTargetSpeed() != wantedSpeed:
+                        brokeOut = True
+                        break
 
-            if currentSteer < wantedSteer and changeSteer <= 0:
-                changeSteer = -((currentSteer-wantedSteer))* PERCENTAGE_STEP
+            if currentSteer < wantedSteer:
+                for i in range(1, int(100 / (PERCENTAGE_STEP * 100)) + 1, 1):
+                    newSteer = round(currentSteer - ((currentSteer-wantedSteer) * i)* PERCENTAGE_STEP)
+                    interface.setSteer(newSteer)
+                    print(f"Increasing steer: {newSteer}, wanted speed: {wantedSteer}")
+                    time.sleep(TIME_SEND)  
+                    if interface.getTargetSteer() != wantedSteer:
+                        brokeOut = True
+                        break
 
+            elif currentSteer > wantedSteer:
+                for i in range(1, int(100 / (PERCENTAGE_STEP * 100)) + 1, 1):
+                    newSteer = round(currentSteer + ((wantedSteer-currentSteer) * PERCENTAGE_STEP) * i)
+                    interface.setSteer(newSteer)
+                    print(f"Decreasing steer: {newSteer}, wanted speed: {wantedSteer}")
+                    time.sleep(TIME_SEND)
+                    if interface.getTargetSteer() != wantedSteer:
+                        brokeOut = True
+                        break
 
-            elif currentSteer > wantedSteer and changeSteer >= 0:
-                changeSteer = ((wantedSteer-currentSteer) * PERCENTAGE_STEP)
-
-            elif currentSteer == wantedSteer:
-                changeSteer = 0
             wantedSpeed = interface.getTargetSpeed()
             wantedSteer = interface.getTargetSteer()
 
-            interface.setSpeed(round(currentSpeed + changeSpeed))
-            interface.setSteer(round(currentSteer + changeSteer))
-
-            if abs(wantedSpeed - interface.getSpeed()) < 50:
-                interface.setSpeed(wantedSpeed)
-
-            if abs(wantedSteer - interface.getSteer()) < 50:
-                interface.setSteer(wantedSteer)
-        else:
-            interface.setSteer(interface.getTargetSteer())
-            interface.setSpeed(interface.getTargetSpeed())
-        #print("UPDATED")
-        interface.update()
+        if not brokeOut:
+            print("UPDATED")
+            interface.update()
         time.sleep(TIME_SEND)
+        brokeOut = False
 
 motors1 = USARTInterface(0, 0, hover_serial)
 
@@ -193,7 +203,7 @@ def listen(conn, addr):
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind((HOST, PORT))
-    usartListenerThread = multiprocessing.Process(target=usartFeedback, args=[hover_serial,])
+    usartListenerThread = threading.Thread(target=usartFeedback, args=(hover_serial,))
     usartListenerThread.start()
     usartSendingThread = threading.Thread(target=usartSending, args=(motors1,))
     usartSendingThread.start()
