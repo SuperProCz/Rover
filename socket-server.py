@@ -4,29 +4,76 @@ import os
 from HoverSerial import *
 import time
 import multiprocessing
+import configparser
 
-HOST = "10.42.0.1"
+HOST = "10.254.180.127"
 PORT = 1532
 
-SERIAL_PORT = '/dev/ttyAMA4'
-SERIAL_BAUD = 115200
-
-GRADUAL_ACCELERATION = True
-
-hover_serial = Hoverboard_serial(SERIAL_PORT, SERIAL_BAUD)
+config = configparser.ConfigParser()
+interfaces = []
 connected = False
         
+def loadConfig():
+    global config, interfaces
+    global GRADUAL_ACCELERATION
+
+    config.read('config.ini')
+
+    GRADUAL_ACCELERATION = config.getboolean('Settings', 'gradualacceleration')
+    boards = config.items('Boards')
+    for board in boards:
+        print(board[1])
+        settings = eval(board[1])
+        SERIAL_PORT = settings['UartInterface']
+        SERIAL_BAUD = int(settings['BaudRate'])
+        SPEED_VALUES = tuple(settings['SpeedValues'])
+        STEER_VALUES = tuple(settings['SteerValues'])
+        hover_serial = Hoverboard_serial(SERIAL_PORT, SERIAL_BAUD)
+
+        interface = USARTInterface(0, 0, hover_serial, SPEED_VALUES, STEER_VALUES)
+
+        interfaces.append(interface)
+
+def createConfig():
+    global config
+    config['Boards'] = {
+        "DefaultBoard": {
+            "UartInterface": "/dev/ttyAMA4",
+            "BaudRate": 115200,
+            "SpeedValues": (1000, 0, -1000),
+            "SteerValues": (1000, 0, -1000)
+        },
+        "SecondTestBoard": {
+            "UartInterface": "/dev/ttyAMA3",
+            "BaudRate": 115200,
+            "SpeedValues": (1000, 0, -1000),
+            "SteerValues": (1000, 0, -1000)
+        },
+    }
+    config['Settings'] = {
+        "GradualAcceleration": True,
+
+    }
+
+    with open('config.ini', 'w') as configfile:
+        config.write(configfile)
+
 class USARTInterface:
     VALID_INPUT = ('steer', 'speed')
-    SPEED_MAX, SPEED_MIDDLE, SPEED_MIN = (1000, 0, -1000)
-    STEER_MAX, STEER_MIDDLE, STEER_MIN = (1000, 0, -1000)
-    def __init__(self, steer: int, speed: int, board: Hoverboard_serial) -> None:
+    #SPEED_MAX, SPEED_MIDDLE, SPEED_MIN = (1000, 0, -1000)
+    #STEER_MAX, STEER_MIDDLE, STEER_MIN = (1000, 0, -1000)
+    def __init__(self, steer: int, speed: int, board: Hoverboard_serial, speedValues, steerValues) -> None:
         self.board = board
         self.steer = steer
         self.speed = speed
         self.targetSpeed = speed
         self.targetSteer = steer
-
+        self.speedValues = speedValues
+        self.steerValues = steerValues
+    
+    def getBoard(self):
+        return self.board
+    
     def setSpeed(self, newSpeed: int):
         self.speed = newSpeed
         self.update()
@@ -57,9 +104,9 @@ class USARTInterface:
         if not value in self.VALID_INPUT:
             raise ValueError("Invalid value to change, only accepted values are: " + self.VALID_INPUT)
         if value == "steer":
-            self.setTargetSteer(self.STEER_MIN)
+            self.setTargetSteer(self.steerValues[2])
         elif value == "speed":
-            self.setTargetSpeed(self.SPEED_MIN)
+            self.setTargetSpeed(self.speedValues[2])
         else:
             print("huh? this wasn't supposed to happen")
         #print("Value changed")
@@ -69,9 +116,9 @@ class USARTInterface:
         if not value in self.VALID_INPUT:
             raise ValueError("Invalid value to change, only accepted values are: " + self.VALID_INPUT)
         if value == "steer":
-            self.setTargetSteer(self.STEER_MIDDLE)
+            self.setTargetSteer(self.steerValues[1])
         elif value == "speed":
-            self.setTargetSpeed(self.SPEED_MIDDLE)
+            self.setTargetSpeed(self.speedValues[1])
         else:
             print("huh? this wasn't supposed to happen")
         #print("Value changed")
@@ -81,9 +128,9 @@ class USARTInterface:
         if not value in self.VALID_INPUT:
             raise ValueError("Invalid value to change, only accepted values are: " + self.VALID_INPUT)
         if value == "steer":
-            self.setTargetSteer(self.STEER_MAX)
+            self.setTargetSteer(self.steerValues[0])
         elif value == "speed":
-            self.setTargetSpeed(self.SPEED_MAX)
+            self.setTargetSpeed(self.speedValues[0])
         else:
             print("huh? this wasn't supposed to happen")
         #print("Value changed")
@@ -94,74 +141,73 @@ class USARTInterface:
         currentSpeed = self.getSpeed()
         currentSteer = self.getSteer()
 
-        self.board.send_command(currentSteer, currentSpeed)
+        self.getBoard().send_command(currentSteer, currentSpeed)
         #print('Sending:\t steer: '+str(currentSteer)+'speed: '+str(currentSpeed))
 
-def usartFeedback(board: Hoverboard_serial):
-
+def usartFeedback():
     while True:
-        feedback = board.receive_feedback()
+        for interface in interfaces:
+            feedback = interface.getBoard().receive_feedback()
 
-        if feedback == None:
-            continue
-        
+            if feedback == None:
+                continue
+            
         #print('Receiving:\t', feedback)
 
-def usartSending(interface: USARTInterface):
+def usartSending():
     TIME_SEND = 0.01 
     PERCENTAGE_STEP = 0.1
     wantedSpeed = 0
     wantedSteer = 0
 
     while True:
-        if GRADUAL_ACCELERATION:
-            currentSpeed = interface.getSpeed()
-            currentSteer = interface.getSteer()
+        for interface in interfaces:
+            if GRADUAL_ACCELERATION:
+                currentSpeed = interface.getSpeed()
+                currentSteer = interface.getSteer()
 
-            wantedSpeed = interface.getTargetSpeed()
-            wantedSteer = interface.getTargetSteer()
-            print(f"Current steer: {currentSteer}, wantedSteer: {wantedSteer}")
-            print(f"Current speed: {currentSpeed}, wantedSpeed: {wantedSpeed}")
-            #Don't touch those for loops, I don't know why it works, but it does.
-#              0              1000
-            if currentSpeed < wantedSpeed and changeSpeed <= 0:
-                changeSpeed = -((currentSpeed-wantedSpeed))* PERCENTAGE_STEP
+                wantedSpeed = interface.getTargetSpeed()
+                wantedSteer = interface.getTargetSteer()
+                #print(f"Current steer: {currentSteer}, wantedSteer: {wantedSteer}")
+                #print(f"Current speed: {currentSpeed}, wantedSpeed: {wantedSpeed}")
+                #Don't touch those for loops, I don't know why it works, but it does.
+    #              0              1000
+                if currentSpeed < wantedSpeed and changeSpeed <= 0:
+                    changeSpeed = -((currentSpeed-wantedSpeed))* PERCENTAGE_STEP
 
-#                1000            0
-            elif currentSpeed > wantedSpeed and changeSpeed >= 0:
-                changeSpeed = ((wantedSpeed-currentSpeed) * PERCENTAGE_STEP)
-                    
-            elif currentSpeed == wantedSpeed:
-                changeSpeed = 0
+    #                1000            0
+                elif currentSpeed > wantedSpeed and changeSpeed >= 0:
+                    changeSpeed = ((wantedSpeed-currentSpeed) * PERCENTAGE_STEP)
+                        
+                elif currentSpeed == wantedSpeed:
+                    changeSpeed = 0
 
-            if currentSteer < wantedSteer and changeSteer <= 0:
-                changeSteer = -((currentSteer-wantedSteer))* PERCENTAGE_STEP
+                if currentSteer < wantedSteer and changeSteer <= 0:
+                    changeSteer = -((currentSteer-wantedSteer))* PERCENTAGE_STEP
 
 
-            elif currentSteer > wantedSteer and changeSteer >= 0:
-                changeSteer = ((wantedSteer-currentSteer) * PERCENTAGE_STEP)
+                elif currentSteer > wantedSteer and changeSteer >= 0:
+                    changeSteer = ((wantedSteer-currentSteer) * PERCENTAGE_STEP)
 
-            elif currentSteer == wantedSteer:
-                changeSteer = 0
-            wantedSpeed = interface.getTargetSpeed()
-            wantedSteer = interface.getTargetSteer()
+                elif currentSteer == wantedSteer:
+                    changeSteer = 0
+                wantedSpeed = interface.getTargetSpeed()
+                wantedSteer = interface.getTargetSteer()
 
-            interface.setSpeed(round(currentSpeed + changeSpeed))
-            interface.setSteer(round(currentSteer + changeSteer))
+                interface.setSpeed(round(currentSpeed + changeSpeed))
+                interface.setSteer(round(currentSteer + changeSteer))
 
-            if abs(wantedSpeed - interface.getSpeed()) < 50:
-                interface.setSpeed(wantedSpeed)
+                if abs(wantedSpeed - interface.getSpeed()) < 50:
+                    interface.setSpeed(wantedSpeed)
 
-            if abs(wantedSteer - interface.getSteer()) < 50:
-                interface.setSteer(wantedSteer)
-        else:
-            interface.setSteer(interface.getTargetSteer())
-            interface.setSpeed(interface.getTargetSpeed())
-        #print("UPDATED")
-        interface.update()
-        time.sleep(TIME_SEND)
-
-motors1 = USARTInterface(0, 0, hover_serial)
+                if abs(wantedSteer - interface.getSteer()) < 50:
+                    interface.setSteer(wantedSteer)
+            else:
+                interface.setSteer(interface.getTargetSteer())
+                interface.setSpeed(interface.getTargetSpeed())
+            #print("UPDATED")
+            interface.update()
+            time.sleep(TIME_SEND)
 
 def listen(conn, addr):
     global connected
@@ -175,47 +221,59 @@ def listen(conn, addr):
             decodedData = data.decode().split(" ")
             print(f"Got: {decodedData[0]} and {decodedData[1]}")
             if decodedData[0] == "1":
-                motors1.setMaximumValue("speed")
+                for interface in interfaces:
+                    interface.setMaximumValue("speed")
             elif decodedData[0] == "-1":
-                motors1.setMinimumValue("speed")
+                for interface in interfaces:
+                    interface.setMinimumValue("speed")
             else:
-                motors1.setMiddleValue("speed")
+                for interface in interfaces:
+                    interface.setMiddleValue("speed")
 
             if decodedData[1] == "1":
-                motors1.setMaximumValue("steer")
+                for interface in interfaces:
+                    interface.setMaximumValue("steer")
             elif decodedData[1] == "-1":
-                motors1.setMinimumValue("steer")
+                for interface in interfaces:
+                    interface.setMinimumValue("steer")
             else:
-                motors1.setMiddleValue("steer")
+                for interface in interfaces:
+                    interface.setMiddleValue("steer")
         print("umm what?")
     print('hi mf')       
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s.bind((HOST, PORT))
-    usartListenerThread = multiprocessing.Process(target=usartFeedback, args=[hover_serial,])
-    usartListenerThread.start()
-    usartSendingThread = threading.Thread(target=usartSending, args=(motors1,))
-    usartSendingThread.start()
-    print("haha")
-    while True:
-        try:
-            print("bubu")
-            s.listen()
-            conn, addr = s.accept()
-            print("accepted")
-            listenThread = threading.Thread(target=listen, args=(conn, addr))
-            listenThread.start()
-            print("this fucking thread")
-            with conn:
-                print(f"Connected by {addr}")
-                connected = True
-                while connected:
-                    if not listenThread.is_alive(): 
-                        print("Listen thread ded")
-                        continue
-            print('closed conn')
-        except KeyboardInterrupt:
-            print("keyboard interrupted, stopping program")
-            break
-    print("hey yu mf")
+def main():
+    if not os.path.isfile('config.ini'):
+        createConfig()
+    
+    loadConfig()
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        s.bind((HOST, PORT))
+        usartListenerThread = multiprocessing.Process(target=usartFeedback)
+        usartListenerThread.start()
+        usartSendingThread = threading.Thread(target=usartSending)
+        usartSendingThread.start()
+        print("haha")
+        while True:
+            try:
+                print("bubu")
+                s.listen()
+                conn, addr = s.accept()
+                print("accepted")
+                listenThread = threading.Thread(target=listen, args=(conn, addr))
+                listenThread.start()
+                with conn:
+                    print(f"Connected by {addr}")
+                    connected = True
+                    while connected:
+                        if not listenThread.is_alive(): 
+                            break
+                print('closed conn')
+            except KeyboardInterrupt:
+                print("keyboard interrupted, stopping program")
+                break
+        print("hey yu mf")
+
+if __name__ == "__main__":
+    main()

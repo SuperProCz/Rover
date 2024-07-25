@@ -2,7 +2,7 @@ import socket
 import threading
 import controller
 
-HOST = "10.42.0.1"  
+HOST = "10.254.180.127"  
 PORT = 1532 
 
 controllerThread = threading.Thread(target=controller.main)
@@ -20,6 +20,7 @@ def listen(socket):
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     controller.changeConn(s)
+    print("Changed!!")
     listenThread = threading.Thread(target=listen, args=(s,))
     listenThread.start()
     
