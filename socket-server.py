@@ -14,7 +14,8 @@ PERCENTAGE_STEP = 0.1
 config = configparser.ConfigParser()
 interfaces = []
 connected = False
-        
+showFeedback = False
+estopped = False
 def loadConfig():
     global config, interfaces
     global GRADUAL_ACCELERATION, PERCENTAGE_STEP
@@ -154,14 +155,19 @@ class USARTInterface:
         #print('Sending:\t steer: '+str(currentSteer)+'speed: '+str(currentSpeed))
 
 def usartFeedback():
+    global showFeedback
     while True:
         for interface in interfaces:
             feedback = interface.getBoard().receive_feedback()
 
             if feedback == None:
+                print("Continuing")
                 continue
-            
-        #print('Receiving:\t', feedback)
+                
+            if showFeedback:
+                print("bububu")
+                showFeedback = False    
+                print('Feedback:\t', feedback)
 
 def usartSending():
     TIME_SEND = 0.01 
@@ -169,6 +175,13 @@ def usartSending():
     wantedSteer = 0
 
     while True:
+        if estopped:
+            print("ESTOP PRESSED!! CUTTING USART COMMUNICATION!!")
+            for interface in interfaces:
+                interface.setSpeed(0)
+                interface.setSteer(0)
+                interface.update()
+            break
         for interface in interfaces:
             if GRADUAL_ACCELERATION:
                 currentSpeed = interface.getSpeed()
@@ -218,7 +231,7 @@ def usartSending():
             time.sleep(TIME_SEND)
 
 def listen(conn, addr):
-    global connected
+    global connected, showFeedback, estopped
     with conn:
         while True:
             data = conn.recv(1024)
@@ -227,29 +240,37 @@ def listen(conn, addr):
                 connected = False
                 return
             decodedData = data.decode().split(" ")
-            print(f"Got: {decodedData[0]} and {decodedData[1]}")
-            if decodedData[0] == "1":
-                for interface in interfaces:
-                    interface.setMaximumValue("speed")
-            elif decodedData[0] == "-1":
-                for interface in interfaces:
-                    interface.setMinimumValue("speed")
-            else:
-                for interface in interfaces:
-                    interface.setMiddleValue("speed")
+            cmdId = int(decodedData[0])
+            if cmdId == 0:
+                if decodedData[1] == "1":
+                    for interface in interfaces:
+                        interface.setMaximumValue("speed")
+                elif decodedData[1] == "-1":
+                    for interface in interfaces:
+                        interface.setMinimumValue("speed")
+                else:
+                    for interface in interfaces:
+                        interface.setMiddleValue("speed")
 
-            if decodedData[1] == "1":
-                for interface in interfaces:
-                    interface.setMaximumValue("steer")
-            elif decodedData[1] == "-1":
-                for interface in interfaces:
-                    interface.setMinimumValue("steer")
-            else:
-                for interface in interfaces:
-                    interface.setMiddleValue("steer")
-        print("umm what?")
-    print('hi mf')       
+                if decodedData[2] == "1":
+                    for interface in interfaces:
+                        interface.setMaximumValue("steer")
+                elif decodedData[2] == "-1":
+                    for interface in interfaces:
+                        interface.setMinimumValue("steer")
+                else:
+                    for interface in interfaces:
+                        interface.setMiddleValue("steer")
+            elif cmdId == 1:
+                showFeedback = True
+                print("Got!!")
 
+            elif cmdId == 2:
+                estopped = True
+
+            else:
+                raise ValueError(f"Invalid cmdId {cmdId}!!")
+            
 def main():
     if not os.path.isfile('config.ini'):
         createConfig()
