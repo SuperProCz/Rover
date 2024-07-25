@@ -9,17 +9,20 @@ import configparser
 HOST = "10.254.180.127"
 PORT = 1532
 
+PERCENTAGE_STEP = 0.1
+
 config = configparser.ConfigParser()
 interfaces = []
 connected = False
         
 def loadConfig():
     global config, interfaces
-    global GRADUAL_ACCELERATION
+    global GRADUAL_ACCELERATION, PERCENTAGE_STEP
 
     config.read('config.ini')
 
     GRADUAL_ACCELERATION = config.getboolean('Settings', 'gradualacceleration')
+    PERCENTAGE_STEP = config.getfloat('Settings', 'percentagestep')
     boards = config.items('Boards')
     for board in boards:
         print(board[1])
@@ -49,10 +52,16 @@ def createConfig():
             "SpeedValues": (1000, 0, -1000),
             "SteerValues": (1000, 0, -1000)
         },
+        "ThirdTestBoard": {
+            "UartInterface": "/dev/ttyAMA2",
+            "BaudRate": 115200,
+            "SpeedValues": (1000, 0, -1000),
+            "SteerValues": (1000, 0, -1000)
+        }
     }
     config['Settings'] = {
         "GradualAcceleration": True,
-
+        "PercentageStep": 0.1
     }
 
     with open('config.ini', 'w') as configfile:
@@ -156,7 +165,6 @@ def usartFeedback():
 
 def usartSending():
     TIME_SEND = 0.01 
-    PERCENTAGE_STEP = 0.1
     wantedSpeed = 0
     wantedSteer = 0
 
