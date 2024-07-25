@@ -3,6 +3,8 @@ This is a repo for a rover project I started doing in the summer break of 2024. 
 
 # TODO
 - [ ] Actually understand the code
+- [ ] Fix the `AttributeError: 'Key' object has no attribute 'char'` error
+- [ ] Make an software emergency stop
 - [ ] Make a web appplication, through which the rover could be controlled
 - [ ] Make an android app, through which the rover could be controlled
 - [x] Test
