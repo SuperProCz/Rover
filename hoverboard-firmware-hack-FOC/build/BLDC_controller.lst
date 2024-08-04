@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
   29:Src/BLDC_controller.c **** #define OPEN_MODE                      ((uint8_T)0U)
   30:Src/BLDC_controller.c **** #define SPD_MODE                       ((uint8_T)2U)
   31:Src/BLDC_controller.c **** #define TRQ_MODE                       ((uint8_T)3U)
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 2
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 2
 
 
   32:Src/BLDC_controller.c **** #define VLT_MODE                       ((uint8_T)1U)
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
   86:Src/BLDC_controller.c **** Consider adjusting Test hardware word size settings on the \
   87:Src/BLDC_controller.c **** Hardware Implementation pane to match your compiler word sizes as \
   88:Src/BLDC_controller.c **** defined in limits.h of the compiler. Alternatively, you can \
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 3
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 3
 
 
   89:Src/BLDC_controller.c **** select the Test hardware is the same as production hardware option and \
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
  140:Src/BLDC_controller.c ****   uint8_T bpIndex;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 4
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 4
 
 
   33              		.loc 1 140 3 view .LVU1
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
   69 0018 0020     		movs	r0, #0
   70              	.LVL7:
  158:Src/BLDC_controller.c ****     }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 5
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 5
 
 
  159:Src/BLDC_controller.c ****   }
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  105 0008 B0FBF2F0 		udiv	r0, r0, r2
  106              	.LVL10:
  181:Src/BLDC_controller.c ****     if (fbpIndex < maxIndex) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 6
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 6
 
 
  107              		.loc 1 181 5 is_stmt 1 view .LVU29
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  193:Src/BLDC_controller.c ****   return (((numerator < 0) != (denominator < 0)) && (numerator % denominator !=
  151              		.loc 1 193 3 view .LVU41
  152              		.loc 1 193 28 is_stmt 0 view .LVU42
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 7
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 7
 
 
  153 0000 CB0F     		lsrs	r3, r1, #31
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  198              	.LFE3:
  200              		.section	.text.Counter,"ax",%progbits
  201              		.align	1
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 8
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 8
 
 
  202              		.global	Counter
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  232              		.loc 1 227 3 is_stmt 1 view .LVU63
  233              		.loc 1 227 6 is_stmt 0 view .LVU64
  234 000a 8842     		cmp	r0, r1
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 9
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 9
 
 
  235 000c 03DA     		bge	.L16
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  273              		.loc 1 243 3 view .LVU74
  274              		.loc 1 243 33 is_stmt 0 view .LVU75
  275 0000 0023     		movs	r3, #0
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 10
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 10
 
 
  276 0002 0360     		str	r3, [r0]
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  318 000e B4F5004F 		cmp	r4, #32768
  319 0012 04DA     		bge	.L23
  258:Src/BLDC_controller.c ****     rtb_Sum3_g = 32767;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 11
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 11
 
 
  259:Src/BLDC_controller.c ****   } else {
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  350 002c BCF90200 		ldrsh	r0, [ip, #2]
  351              		.loc 1 281 54 view .LVU102
  352 0030 5C68     		ldr	r4, [r3, #4]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 12
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 12
 
 
  353              	.LVL34:
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  386              		.loc 1 301 3 is_stmt 1 view .LVU116
  387              		.loc 1 301 33 is_stmt 0 view .LVU117
  388 0052 5860     		str	r0, [r3, #4]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 13
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 13
 
 
  302:Src/BLDC_controller.c **** }
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  435              	.LFB8:
  314:Src/BLDC_controller.c **** 
  315:Src/BLDC_controller.c **** /*
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 14
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 14
 
 
  316:Src/BLDC_controller.c ****  * Output and update for atomic system:
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  464              		.loc 1 341 3 is_stmt 1 view .LVU134
  465              		.loc 1 341 6 is_stmt 0 view .LVU135
  466 000e 8842     		cmp	r0, r1
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 15
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 15
 
 
  467 0010 04D2     		bcs	.L33
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  351:Src/BLDC_controller.c **** 
  352:Src/BLDC_controller.c **** /*
  353:Src/BLDC_controller.c ****  * Output and update for atomic system:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 16
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 16
 
 
  354:Src/BLDC_controller.c ****  *    '<S21>/either_edge'
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  549              		.cfi_def_cfa_offset 8
  550              		.cfi_offset 4, -8
  551              		.cfi_offset 14, -4
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 17
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 17
 
 
  552 0002 0446     		mov	r4, r0
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  585              		.loc 1 393 1 is_stmt 0 view .LVU161
  586 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
  587              	.LCFI6:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 18
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 18
 
 
  588              		.cfi_def_cfa_offset 24
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  414:Src/BLDC_controller.c ****      *  ActionPort: '<S25>/Action Port'
  415:Src/BLDC_controller.c ****      */
  416:Src/BLDC_controller.c **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 19
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 19
 
 
  417:Src/BLDC_controller.c ****     /* Outputs for Atomic SubSystem: '<S25>/Counter' */
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  457:Src/BLDC_controller.c ****   /* End of If: '<S21>/If2' */
  458:Src/BLDC_controller.c **** 
  459:Src/BLDC_controller.c ****   /* Update for UnitDelay: '<S21>/UnitDelay' */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 20
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 20
 
 
  460:Src/BLDC_controller.c ****   localDW->UnitDelay_DSTATE = *rty_y;
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  680              	.L47:
  427:Src/BLDC_controller.c **** 
  681              		.loc 1 427 39 view .LVU190
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 21
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 21
 
 
  682 005e 0023     		movs	r3, #0
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  466:Src/BLDC_controller.c ****  *    '<S83>/I_backCalc_fixdt1'
  467:Src/BLDC_controller.c ****  *    '<S82>/I_backCalc_fixdt'
  468:Src/BLDC_controller.c ****  */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 22
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 22
 
 
  469:Src/BLDC_controller.c **** void I_backCalc_fixdt_Init(DW_I_backCalc_fixdt *localDW, int32_T rtp_yInit)
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  762 0006 7047     		bx	lr
  763              		.cfi_endproc
  764              	.LFE13:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 23
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 23
 
 
  766              		.section	.text.I_backCalc_fixdt,"ax",%progbits
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  801 0010 1CD4     		bmi	.L65
  802              	.LVL66:
  803              	.L56:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 24
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 24
 
 
  509:Src/BLDC_controller.c ****   {
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  531:Src/BLDC_controller.c ****    *  Switch: '<S91>/Switch'
  532:Src/BLDC_controller.c ****    */
  533:Src/BLDC_controller.c ****   if (rtb_DataTypeConversion1_gf > rtu_satMax) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 25
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 25
 
 
  835              		.loc 1 533 3 is_stmt 1 view .LVU231
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  867 0050 D4F800C0 		ldr	ip, [r4]
  868 0054 8445     		cmp	ip, r0
  869 0056 DCDA     		bge	.L56
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 26
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 26
 
 
  510:Src/BLDC_controller.c ****   } else if ((rtb_Sum1_o > 0) && (localDW->UnitDelay_DSTATE > MAX_int32_T
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  912 0000 0123     		movs	r3, #1
  913 0002 0371     		strb	r3, [r0, #4]
  560:Src/BLDC_controller.c **** }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 27
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 27
 
 
  914              		.loc 1 560 1 view .LVU257
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  576:Src/BLDC_controller.c ****                     *localDW)
  577:Src/BLDC_controller.c **** {
  957              		.loc 1 577 1 is_stmt 1 view -0
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 28
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 28
 
 
  958              		.cfi_startproc
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  998              	.L71:
  592:Src/BLDC_controller.c ****     q0 = MAX_int32_T;
  593:Src/BLDC_controller.c ****   } else {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 29
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 29
 
 
  594:Src/BLDC_controller.c ****     q0 += rtu_ext_limProt;
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1028              	.LVL82:
  619:Src/BLDC_controller.c **** 
  620:Src/BLDC_controller.c ****   /* Product: '<S74>/Divide5' */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 30
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 30
 
 
  621:Src/BLDC_controller.c ****   tmp = (rtu_err * rtu_P) >> 11;
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1071 0068 47F6FF73 		movw	r3, #32767
  1072              	.LVL89:
  1073              	.L74:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 31
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 31
 
 
  627:Src/BLDC_controller.c ****     }
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  649:Src/BLDC_controller.c ****    *  Sum: '<S74>/Sum1'
  650:Src/BLDC_controller.c ****    */
  651:Src/BLDC_controller.c ****   rtb_UpperRelop_f = ((int16_T)tmp < rtu_satMin);
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 32
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 32
 
 
  1105              		.loc 1 651 3 is_stmt 1 view .LVU322
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1128              		.loc 1 682 6 is_stmt 0 view .LVU332
  1129 00a4 002B     		cmp	r3, #0
  1130 00a6 16DB     		blt	.L90
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 33
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 33
 
 
  683:Src/BLDC_controller.c ****     tmp_0 = -1;
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  661:Src/BLDC_controller.c ****   } else {
  1163              		.loc 1 661 5 is_stmt 1 view .LVU345
  661:Src/BLDC_controller.c ****   } else {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 34
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 34
 
 
  1164              		.loc 1 661 14 is_stmt 0 view .LVU346
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1207              	.LVL105:
  696:Src/BLDC_controller.c ****     rtb_UpperRelop_f));
  1208              		.loc 1 696 47 view .LVU358
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 35
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 35
 
 
  1209 00ee E2E7     		b	.L81
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  714:Src/BLDC_controller.c ****   /* InitializeConditions for UnitDelay: '<S65>/UnitDelay1' */
  715:Src/BLDC_controller.c ****   localDW->UnitDelay1_DSTATE = false;
  1256              		.loc 1 715 3 view .LVU364
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 36
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 36
 
 
  1257              		.loc 1 715 30 is_stmt 0 view .LVU365
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1298              		.loc 1 730 3 view .LVU374
  731:Src/BLDC_controller.c ****   int32_T tmp;
  1299              		.loc 1 731 3 view .LVU375
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 37
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 37
 
 
  732:Src/BLDC_controller.c ****   int16_T tmp_0;
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1337              	.L105:
  749:Src/BLDC_controller.c ****   }
  750:Src/BLDC_controller.c **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 38
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 38
 
 
  751:Src/BLDC_controller.c ****   /* Switch: '<S65>/Switch1' incorporates:
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  775:Src/BLDC_controller.c ****       tmp = -32768;
  1368              		.loc 1 775 11 view .LVU407
  1369 004e 294B     		ldr	r3, .L130
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 39
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 39
 
 
  1370              	.LVL116:
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1409 007a 04DA     		bge	.L120
  785:Src/BLDC_controller.c ****     tmp = 32767;
  786:Src/BLDC_controller.c ****   } else {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 40
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 40
 
 
  787:Src/BLDC_controller.c ****     if (tmp < -32768) {
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  811:Src/BLDC_controller.c ****   } else {
  812:Src/BLDC_controller.c ****     *rty_out = (int16_T)tmp;
  813:Src/BLDC_controller.c ****   }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 41
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 41
 
 
  814:Src/BLDC_controller.c **** 
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  844:Src/BLDC_controller.c ****    */
  845:Src/BLDC_controller.c ****   localDW->UnitDelay1_DSTATE = ((q0 == tmp_0) && (rtb_LowerRelop1_l ||
  1463              		.loc 1 845 3 is_stmt 1 view .LVU441
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 42
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 42
 
 
  1464              		.loc 1 845 47 is_stmt 0 view .LVU442
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1504              		.loc 1 832 11 view .LVU456
  1505 00d8 4FF0FF31 		mov	r1, #-1
  1506 00dc E9E7     		b	.L113
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 43
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 43
 
 
  1507              	.LVL131:
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1551              		.loc 1 855 1 is_stmt 1 view -0
  1552              		.cfi_startproc
  1553              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 44
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 44
 
 
  1554              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1598              		.thumb_func
  1600              	PI_clamp_fixdt_k:
  1601              	.LVL139:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 45
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 45
 
 
  1602              	.LFB23:
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1635              		.loc 1 889 13 is_stmt 0 view .LVU488
  1636 0016 002A     		cmp	r2, #0
  1637 0018 05DD     		ble	.L137
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 46
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 46
 
 
  1638              		.loc 1 889 57 discriminator 1 view .LVU489
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1673              		.loc 1 908 9 discriminator 4 view .LVU504
  1674 003e 1314     		asrs	r3, r2, #16
  1675              	.LVL143:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 47
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 47
 
 
  1676              		.loc 1 908 9 discriminator 4 view .LVU505
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1714              		.loc 1 919 9 view .LVU518
  1715 0068 CB12     		asrs	r3, r1, #11
  1716              	.LVL149:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 48
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 48
 
 
  920:Src/BLDC_controller.c ****   if (tmp_0 > 32767) {
@@ -2878,7 +2878,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1753              		.loc 1 936 13 view .LVU534
  1754 0092 01E0     		b	.L142
  1755              	.LVL155:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 49
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 49
 
 
  1756              	.L155:
@@ -2938,7 +2938,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1777 00a4 BCF1000F 		cmp	ip, #0
  1778 00a8 1CDB     		blt	.L157
  969:Src/BLDC_controller.c ****     q0 = -1;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 50
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 50
 
 
  970:Src/BLDC_controller.c ****   } else {
@@ -2998,7 +2998,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1809 00ca E370     		strb	r3, [r4, #3]
  994:Src/BLDC_controller.c ****     rtb_UpperRelop_i));
  995:Src/BLDC_controller.c **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 51
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 51
 
 
  996:Src/BLDC_controller.c ****   /* Update for Delay: '<S72>/Resettable Delay' */
@@ -3058,7 +3058,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1850 00f0 7345     		cmp	r3, lr
  1851 00f2 03DC     		bgt	.L160
  993:Src/BLDC_controller.c ****     rtb_UpperRelop_i));
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 52
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 52
 
 
  1852              		.loc 1 993 68 discriminator 4 view .LVU570
@@ -3118,7 +3118,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1898              		.cfi_def_cfa_offset 36
  1899              		.cfi_offset 4, -36
  1900              		.cfi_offset 5, -32
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 53
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 53
 
 
  1901              		.cfi_offset 6, -28
@@ -3178,7 +3178,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1020:Src/BLDC_controller.c ****   int16_T rtb_Merge_m;
  1939              		.loc 1 1020 3 view .LVU599
 1021:Src/BLDC_controller.c ****   int16_T rtb_Merge1;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 54
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 54
 
 
  1940              		.loc 1 1021 3 view .LVU600
@@ -3238,7 +3238,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  1970 001e B079     		ldrb	r0, [r6, #6]	@ zero_extendqisi2
 1043:Src/BLDC_controller.c ****     (uint8_T)(rtU->b_hallB << 1)) + rtU->b_hallC);
  1971              		.loc 1 1043 7 view .LVU621
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 55
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 55
 
 
  1972 0020 0244     		add	r2, r2, r0
@@ -3298,7 +3298,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2006              		.loc 1 1063 6 is_stmt 0 view .LVU630
  2007 0064 9942     		cmp	r1, r3
  2008 0066 56D0     		beq	.L169
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 56
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 56
 
 
 1064:Src/BLDC_controller.c ****     /* Outputs for IfAction SubSystem: '<S3>/F01_03_Direction_Detection' incorporates:
@@ -3358,7 +3358,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2034              		.loc 1 1090 23 is_stmt 0 view .LVU642
  2035 008a FF23     		movs	r3, #255
  2036              	.LVL181:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 57
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 57
 
 
  2037              		.loc 1 1090 23 view .LVU643
@@ -3418,7 +3418,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2065 00ac AEEB0C03 		sub	r3, lr, ip
  2066              		.loc 1 1113 13 view .LVU656
  2067 00b0 1BB2     		sxth	r3, r3
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 58
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 58
 
 
  2068              	.LVL186:
@@ -3478,7 +3478,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2097              		.loc 1 1138 50 view .LVU670
  2098 00d0 8342     		cmp	r3, r0
  2099 00d2 14BF     		ite	ne
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 59
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 59
 
 
  2100 00d4 4FF0010C 		movne	ip, #1
@@ -3538,7 +3538,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1172:Src/BLDC_controller.c ****        */
 1173:Src/BLDC_controller.c ****       rtb_Switch1_l = (int16_T)(((uint16_T)(rtP->cf_speedCoef << 2) << 4) /
 1174:Src/BLDC_controller.c ****         (int16_T)(((rtDW->UnitDelay2_DSTATE + rtDW->UnitDelay3_DSTATE_o) +
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 60
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 60
 
 
 1175:Src/BLDC_controller.c ****                    rtDW->UnitDelay5_DSTATE) + rtDW->z_counterRawPrev));
@@ -3598,7 +3598,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2149              	.L169:
 1201:Src/BLDC_controller.c **** 
 1202:Src/BLDC_controller.c ****     /* End of Outputs for SubSystem: '<S13>/Raw_Motor_Speed_Estimation' */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 61
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 61
 
 
 1203:Src/BLDC_controller.c ****   }
@@ -3658,7 +3658,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1225:Src/BLDC_controller.c ****   }
  2175              		.loc 1 1225 13 view .LVU705
  2176 0138 0B9B     		ldr	r3, [sp, #44]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 62
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 62
 
 
 1225:Src/BLDC_controller.c ****   }
@@ -3718,7 +3718,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1160:Src/BLDC_controller.c ****         rtDW->z_counterRawPrev);
  2216              		.loc 1 1160 52 view .LVU721
  2217 015e 0001     		lsls	r0, r0, #4
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 63
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 63
 
 
 1160:Src/BLDC_controller.c ****         rtDW->z_counterRawPrev);
@@ -3778,7 +3778,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2256 0192 00B2     		sxth	r0, r0
  2257              	.LVL208:
 1173:Src/BLDC_controller.c ****         (int16_T)(((rtDW->UnitDelay2_DSTATE + rtDW->UnitDelay3_DSTATE_o) +
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 64
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 64
 
 
  2258              		.loc 1 1173 21 view .LVU738
@@ -3838,7 +3838,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1242:Src/BLDC_controller.c ****   } else {
 1243:Src/BLDC_controller.c ****     if (Abs5 <= rtP->n_commAcvLo) {
 1244:Src/BLDC_controller.c ****       rtDW->n_commDeacv_Mode = false;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 65
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 65
 
 
 1245:Src/BLDC_controller.c ****     }
@@ -3898,7 +3898,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2333 01e2 D2B2     		uxtb	r2, r2
  2334 01e4 0892     		str	r2, [sp, #32]
  2335              	.LVL216:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 66
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 66
 
 
 1256:Src/BLDC_controller.c **** 
@@ -3958,7 +3958,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2371 0214 17DB     		blt	.L355
 1275:Src/BLDC_controller.c ****     rtb_Saturation = -27200;
 1276:Src/BLDC_controller.c ****   } else {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 67
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 67
 
 
 1277:Src/BLDC_controller.c ****     rtb_Saturation = (int16_T)(rtU->i_phaAB << 4);
@@ -4018,7 +4018,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2409              		.loc 1 1291 21 is_stmt 0 view .LVU794
  2410 0240 0FFA88F8 		sxth	r8, r8
  2411              	.LVL226:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 68
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 68
 
 
  2412              		.loc 1 1291 21 view .LVU795
@@ -4078,7 +4078,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2440 025c B4F95600 		ldrsh	r0, [r4, #86]
  2441              	.LVL232:
  2442              		.loc 1 1314 10 view .LVU806
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 69
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 69
 
 
  2443 0260 0C9B     		ldr	r3, [sp, #48]
@@ -4138,7 +4138,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2477              		.loc 1 1334 33 view .LVU820
  2478 0286 01FB03F3 		mul	r3, r1, r3
 1333:Src/BLDC_controller.c ****         rtDW->z_counterRawPrev) * rtDW->Switch2_e) + (rtb_Sum2_h << 14)) >> 2);
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 70
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 70
 
 
  2479              		.loc 1 1333 32 view .LVU821
@@ -4198,7 +4198,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2498 029c 43F30F13 		sbfx	r3, r3, #4, #16
  2499 02a0 0A93     		str	r3, [sp, #40]
  2500              	.LVL239:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 71
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 71
 
 
  2501              	.L195:
@@ -4258,7 +4258,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1406:Src/BLDC_controller.c ****   rtDW->If1_ActiveSubsystem = UnitDelay3;
  2517              		.loc 1 1406 3 is_stmt 1 view .LVU836
  2518              		.loc 1 1406 29 is_stmt 0 view .LVU837
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 72
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 72
 
 
  2519 02b4 84F89090 		strb	r9, [r4, #144]
@@ -4318,7 +4318,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2551              		.loc 1 1428 20 is_stmt 0 view .LVU855
  2552 02dc A4F87E30 		strh	r3, [r4, #126]	@ movhi
 1429:Src/BLDC_controller.c **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 73
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 73
 
 
 1430:Src/BLDC_controller.c ****     /* Disable for Outport: '<S45>/iq' */
@@ -4378,7 +4378,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2581              	.LVL244:
 1456:Src/BLDC_controller.c **** 
 1457:Src/BLDC_controller.c ****       /* Sum: '<S53>/Sum1' incorporates:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 74
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 74
 
 
 1458:Src/BLDC_controller.c ****        *  Gain: '<S53>/Gain2'
@@ -4438,7 +4438,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2623              	.LVL249:
 1289:Src/BLDC_controller.c ****   } else {
  2624              		.loc 1 1289 21 view .LVU887
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 75
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 75
 
 
  2625 0338 8AE7     		b	.L185
@@ -4498,7 +4498,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2666              		.loc 1 1351 19 view .LVU900
  2667 036a 1BB2     		sxth	r3, r3
  2668              	.LVL255:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 76
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 76
 
 
 1351:Src/BLDC_controller.c ****     }
@@ -4558,7 +4558,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2708              		.loc 1 1389 64 view .LVU915
  2709 0396 80B2     		uxth	r0, r0
 1390:Src/BLDC_controller.c **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 77
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 77
 
 
  2710              		.loc 1 1390 44 view .LVU916
@@ -4618,7 +4618,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1471:Src/BLDC_controller.c ****       rtb_Merge1 = (int16_T)rtb_Gain3;
  2751              		.loc 1 1471 7 is_stmt 1 view .LVU927
  2752              		.loc 1 1471 18 is_stmt 0 view .LVU928
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 78
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 78
 
 
  2753 03d2 0FFA83F8 		sxth	r8, r3
@@ -4678,7 +4678,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1523:Src/BLDC_controller.c ****       rtb_Gain3 = -(((rtb_Gain3 < 0 ? 32767 : 0) + rtb_Gain3) >> 15) - (int16_T)
 1524:Src/BLDC_controller.c ****         (((rtb_Sum1_jt < 0 ? 16383 : 0) + rtb_Sum1_jt) >> 14);
 1525:Src/BLDC_controller.c ****       if (rtb_Gain3 > 32767) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 79
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 79
 
 
 1526:Src/BLDC_controller.c ****         rtb_Gain3 = 32767;
@@ -4738,7 +4738,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2781 03fa 94F99830 		ldrsb	r3, [r4, #152]
  2782              	.LVL273:
 1555:Src/BLDC_controller.c ****     UnitDelay3 = -1;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 80
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 80
 
 
  2783              		.loc 1 1555 5 is_stmt 1 view .LVU940
@@ -4798,7 +4798,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2818              		.loc 1 1573 10 is_stmt 0 view .LVU959
  2819 0426 002B     		cmp	r3, #0
  2820 0428 6FD1     		bne	.L442
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 81
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 81
 
 
  2821              	.LVL275:
@@ -4858,7 +4858,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2849              		.loc 1 1597 9 is_stmt 1 view .LVU972
  2850              		.loc 1 1597 12 is_stmt 0 view .LVU973
  2851 0450 18F5004F 		cmn	r8, #32768
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 82
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 82
 
 
  2852 0454 60DA     		bge	.L215
@@ -4918,7 +4918,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1524:Src/BLDC_controller.c ****       if (rtb_Gain3 > 32767) {
  2892              		.loc 1 1524 41 discriminator 4 view .LVU989
  2893 0480 9044     		add	r8, r8, r2
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 83
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 83
 
 
 1523:Src/BLDC_controller.c ****         (((rtb_Sum1_jt < 0 ? 16383 : 0) + rtb_Sum1_jt) >> 14);
@@ -4978,7 +4978,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1485:Src/BLDC_controller.c ****         }
  2932              		.loc 1 1485 21 view .LVU1006
  2933 04b0 01E0     		b	.L206
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 84
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 84
 
 
  2934              	.LVL289:
@@ -5038,7 +5038,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  2973 04de 06DA     		bge	.L208
 1501:Src/BLDC_controller.c ****         }
  2974              		.loc 1 1501 21 view .LVU1022
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 85
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 85
 
 
  2975 04e0 5B49     		ldr	r1, .L471+4
@@ -5098,7 +5098,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1533:Src/BLDC_controller.c **** 
  3017              		.loc 1 1533 18 view .LVU1035
  3018 0508 65E7     		b	.L204
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 86
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 86
 
 
  3019              	.LVL307:
@@ -5158,7 +5158,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3048              		.loc 1 1618 7 is_stmt 1 view .LVU1047
  3049              		.loc 1 1618 10 is_stmt 0 view .LVU1048
  3050 052e B3F5004F 		cmp	r3, #32768
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 87
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 87
 
 
  3051 0532 04DA     		bge	.L376
@@ -5218,7 +5218,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3079              		.loc 1 1643 7 is_stmt 1 view .LVU1058
  3080              		.loc 1 1643 35 is_stmt 0 view .LVU1059
  3081 0558 B4F95230 		ldrsh	r3, [r4, #82]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 88
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 88
 
 
  3082              		.loc 1 1643 10 view .LVU1060
@@ -5278,7 +5278,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1679:Src/BLDC_controller.c ****        *  Constant: '<S13>/n_stdStillDet'
 1680:Src/BLDC_controller.c ****        *  Constant: '<S20>/CTRL_COMM4'
 1681:Src/BLDC_controller.c ****        *  Constant: '<S20>/r_errInpTgtThres'
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 89
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 89
 
 
 1682:Src/BLDC_controller.c ****        *  Inport: '<Root>/b_motEna'
@@ -5338,7 +5338,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3116 058c 4FF00008 		mov	r8, #0
  3117              	.L224:
  3118              		.loc 1 1720 69 discriminator 4 view .LVU1076
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 90
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 90
 
 
  3119 0590 BBF1000F 		cmp	fp, #0
@@ -5398,7 +5398,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3151 05d0 9DF84F30 		ldrb	r3, [sp, #79]	@ zero_extendqisi2
  3152              		.loc 1 1741 10 discriminator 4 view .LVU1084
  3153 05d4 002B     		cmp	r3, #0
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 91
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 91
 
 
  3154 05d6 35D0     		beq	.L225
@@ -5458,7 +5458,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3176              		.loc 1 1773 11 discriminator 4 view .LVU1095
  3177 05f0 7378     		ldrb	r3, [r6, #1]	@ zero_extendqisi2
 1772:Src/BLDC_controller.c ****       (rtU->z_ctrlModReq == 0));
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 92
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 92
 
 
  3178              		.loc 1 1772 69 discriminator 4 view .LVU1096
@@ -5518,7 +5518,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3217 0620 0BDB     		blt	.L380
 1706:Src/BLDC_controller.c ****       }
  3218              		.loc 1 1706 31 view .LVU1112
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 93
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 93
 
 
  3219 0622 0023     		movs	r3, #0
@@ -5578,7 +5578,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3260              	.L225:
 1748:Src/BLDC_controller.c ****       }
  3261              		.loc 1 1748 9 is_stmt 1 view .LVU1126
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 94
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 94
 
 
 1748:Src/BLDC_controller.c ****       }
@@ -5638,7 +5638,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3303              		.loc 1 1781 28 discriminator 6 view .LVU1139
  3304 0676 C8B2     		uxtb	r0, r1
  3305              	.LVL329:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 95
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 95
 
 
 1782:Src/BLDC_controller.c **** 
@@ -5698,7 +5698,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1808:Src/BLDC_controller.c ****         rtDW->z_ctrlMod = OPEN_MODE;
 1809:Src/BLDC_controller.c ****       } else {
 1810:Src/BLDC_controller.c ****         switch (rtDW->is_ACTIVE) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 96
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 96
 
 
 1811:Src/BLDC_controller.c ****          case IN_SPEED_MODE:
@@ -5758,7 +5758,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1865:Src/BLDC_controller.c ****         } else if (rtb_LogicalOperator1_j) {
 1866:Src/BLDC_controller.c ****           rtDW->is_ACTIVE = IN_SPEED_MODE;
 1867:Src/BLDC_controller.c ****           rtDW->z_ctrlMod = SPD_MODE;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 97
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 97
 
 
 1868:Src/BLDC_controller.c ****         } else {
@@ -5818,7 +5818,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1916:Src/BLDC_controller.c ****       rtb_Saturation = (int16_T)(((uint16_T)((tmp[rtU->z_ctrlModReq] << 5) / 125)
 1917:Src/BLDC_controller.c ****         * DataTypeConversion2) >> 12);
 1918:Src/BLDC_controller.c **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 98
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 98
 
 
 1919:Src/BLDC_controller.c ****       /* End of Outputs for SubSystem: '<S33>/FOC_Control_Type' */
@@ -5878,7 +5878,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3371 06ca D8E7     		b	.L229
  3372              	.LVL334:
  3373              	.L230:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 99
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 99
 
 
 1804:Src/BLDC_controller.c ****       if (rtb_RelationalOperator1_mv) {
@@ -5938,7 +5938,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1864:Src/BLDC_controller.c ****         } else if (rtb_LogicalOperator1_j) {
  3411              		.loc 1 1864 11 is_stmt 1 view .LVU1183
 1864:Src/BLDC_controller.c ****         } else if (rtb_LogicalOperator1_j) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 100
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 100
 
 
  3412              		.loc 1 1864 27 is_stmt 0 view .LVU1184
@@ -5998,7 +5998,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3450 072c B4D0     		beq	.L231
  3451              	.L239:
 1842:Src/BLDC_controller.c ****             if (rtb_LogicalOperator2_p) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 101
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 101
 
 
  3452              		.loc 1 1842 13 is_stmt 1 view .LVU1201
@@ -6058,7 +6058,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3488              		.loc 1 1817 15 is_stmt 1 view .LVU1219
 1817:Src/BLDC_controller.c ****             } else {
  3489              		.loc 1 1817 31 is_stmt 0 view .LVU1220
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 102
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 102
 
 
  3490 075c 0323     		movs	r3, #3
@@ -6118,7 +6118,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3528              	.L238:
 1833:Src/BLDC_controller.c ****               rtDW->z_ctrlMod = VLT_MODE;
  3529              		.loc 1 1833 15 is_stmt 1 view .LVU1237
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 103
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 103
 
 
 1833:Src/BLDC_controller.c ****               rtDW->z_ctrlMod = VLT_MODE;
@@ -6178,7 +6178,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1867:Src/BLDC_controller.c ****         } else {
  3567              		.loc 1 1867 27 is_stmt 0 view .LVU1255
  3568 07c0 0223     		movs	r3, #2
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 104
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 104
 
 
  3569 07c2 84F89930 		strb	r3, [r4, #153]
@@ -6238,7 +6238,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1903:Src/BLDC_controller.c ****           DataTypeConversion2 = -16000;
  3606              		.loc 1 1903 9 is_stmt 1 view .LVU1273
 1903:Src/BLDC_controller.c ****           DataTypeConversion2 = -16000;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 105
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 105
 
 
  3607              		.loc 1 1903 12 is_stmt 0 view .LVU1274
@@ -6298,7 +6298,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1940:Src/BLDC_controller.c ****     } else {
 1941:Src/BLDC_controller.c ****       /* Outputs for IfAction SubSystem: '<S33>/Default_Control_Type' incorporates:
 1942:Src/BLDC_controller.c ****        *  ActionPort: '<S34>/Action Port'
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 106
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 106
 
 
 1943:Src/BLDC_controller.c ****        */
@@ -6358,7 +6358,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1973:Src/BLDC_controller.c ****         rtDW->UnitDelay_DSTATE = 0;
 1974:Src/BLDC_controller.c **** 
 1975:Src/BLDC_controller.c ****         /* End of SystemReset for SubSystem: '<S37>/Rate_Limiter' */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 107
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 107
 
 
 1976:Src/BLDC_controller.c ****         /* End of SystemReset for SubSystem: '<S33>/Open_Mode' */
@@ -6418,7 +6418,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2030:Src/BLDC_controller.c ****          *  RelationalOperator: '<S41>/UpperRelop'
 2031:Src/BLDC_controller.c ****          */
 2032:Src/BLDC_controller.c ****         if (rtb_Sum1 < rtb_Gain3) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 108
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 108
 
 
 2033:Src/BLDC_controller.c ****           rtb_Sum1 = rtb_Gain3;
@@ -6478,7 +6478,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3678              		.loc 1 2080 7 is_stmt 1 view .LVU1298
  3679              		.loc 1 2080 18 is_stmt 0 view .LVU1299
  3680 085e A4F87630 		strh	r3, [r4, #118]	@ movhi
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 109
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 109
 
 
  3681              	.LVL343:
@@ -6538,7 +6538,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2133:Src/BLDC_controller.c ****        *  Constant: '<S42>/n_fieldWeakAuthLo'
 2134:Src/BLDC_controller.c ****        *  RelationalOperator: '<S43>/LowerRelop1'
 2135:Src/BLDC_controller.c ****        *  RelationalOperator: '<S43>/UpperRelop'
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 110
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 110
 
 
 2136:Src/BLDC_controller.c ****        *  Switch: '<S43>/Switch'
@@ -6598,7 +6598,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2190:Src/BLDC_controller.c ****       } else {
 2191:Src/BLDC_controller.c ****         rtb_Saturation1 = rtP->a_phaAdvMax;
 2192:Src/BLDC_controller.c ****       }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 111
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 111
 
 
 2193:Src/BLDC_controller.c **** 
@@ -6658,7 +6658,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2247:Src/BLDC_controller.c ****         45U)];
 2248:Src/BLDC_controller.c **** 
 2249:Src/BLDC_controller.c ****       /* End of Interpolation_n-D: '<S80>/Vq_max_M1' */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 112
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 112
 
 
 2250:Src/BLDC_controller.c **** 
@@ -6718,7 +6718,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2304:Src/BLDC_controller.c ****         UnitDelay3 = 1;
 2305:Src/BLDC_controller.c ****         break;
 2306:Src/BLDC_controller.c **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 113
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 113
 
 
 2307:Src/BLDC_controller.c ****        case 3:
@@ -6778,7 +6778,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2361:Src/BLDC_controller.c ****          *  RelationalOperator: '<S84>/LowerRelop1'
 2362:Src/BLDC_controller.c ****          *  RelationalOperator: '<S84>/UpperRelop'
 2363:Src/BLDC_controller.c ****          *  Switch: '<S84>/Switch'
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 114
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 114
 
 
 2364:Src/BLDC_controller.c ****          */
@@ -6838,7 +6838,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2418:Src/BLDC_controller.c **** 
 2419:Src/BLDC_controller.c ****       /* Gain: '<S80>/Gain4' */
 2420:Src/BLDC_controller.c ****       rtDW->Gain4 = (int16_T)-rtDW->i_max;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 115
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 115
 
 
 2421:Src/BLDC_controller.c **** 
@@ -6898,7 +6898,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2475:Src/BLDC_controller.c ****         }
 2476:Src/BLDC_controller.c **** 
 2477:Src/BLDC_controller.c ****         rtDW->SwitchCase_ActiveSubsystem = UnitDelay3;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 116
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 116
 
 
 2478:Src/BLDC_controller.c ****         switch (UnitDelay3) {
@@ -6958,7 +6958,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2532:Src/BLDC_controller.c ****          case 1:
 2533:Src/BLDC_controller.c ****           if (UnitDelay3 != rtb_Sum2_h) {
 2534:Src/BLDC_controller.c ****             /* SystemReset for IfAction SubSystem: '<S59>/Speed_Mode' incorporates:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 117
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 117
 
 
 2535:Src/BLDC_controller.c ****              *  ActionPort: '<S61>/Action Port'
@@ -7018,7 +7018,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2589:Src/BLDC_controller.c ****             rtb_TmpSignalConversionAtLow_Pa[0] = rtDW->Vq_max_M1;
 2590:Src/BLDC_controller.c ****             rtb_TmpSignalConversionAtLow_Pa[1] = rtDW->Gain5;
 2591:Src/BLDC_controller.c ****           }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 118
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 118
 
 
 2592:Src/BLDC_controller.c **** 
@@ -7078,7 +7078,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2646:Src/BLDC_controller.c ****           rtb_Saturation = (int16_T)-rtDW->Switch2_i;
 2647:Src/BLDC_controller.c **** 
 2648:Src/BLDC_controller.c ****           /* Switch: '<S70>/Switch2' incorporates:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 119
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 119
 
 
 2649:Src/BLDC_controller.c ****            *  RelationalOperator: '<S70>/LowerRelop1'
@@ -7138,7 +7138,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2703:Src/BLDC_controller.c **** 
 2704:Src/BLDC_controller.c ****           /* End of Outputs for SubSystem: '<S62>/PI_clamp_fixdt' */
 2705:Src/BLDC_controller.c **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 120
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 120
 
 
 2706:Src/BLDC_controller.c ****           /* End of Outputs for SubSystem: '<S59>/Torque_Mode' */
@@ -7198,7 +7198,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2760:Src/BLDC_controller.c ****            *  Switch: '<S75>/Switch'
 2761:Src/BLDC_controller.c ****            */
 2762:Src/BLDC_controller.c ****           if (rtb_Saturation > rtDW->i_max) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 121
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 121
 
 
 2763:Src/BLDC_controller.c ****             rtb_Saturation = rtDW->i_max;
@@ -7258,7 +7258,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2812:Src/BLDC_controller.c ****   if (rtP->z_ctrlTypSel == 2) {
  3688              		.loc 1 2812 3 view .LVU1303
  3689              		.loc 1 2812 10 is_stmt 0 view .LVU1304
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 122
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 122
 
 
  3690 0866 95F8F930 		ldrb	r3, [r5, #249]	@ zero_extendqisi2
@@ -7318,7 +7318,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2831:Src/BLDC_controller.c ****     /* Sum: '<S58>/Sum6' incorporates:
 2832:Src/BLDC_controller.c ****      *  Product: '<S58>/Divide1'
 2833:Src/BLDC_controller.c ****      *  Product: '<S58>/Divide4'
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 123
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 123
 
 
 2834:Src/BLDC_controller.c ****      */
@@ -7378,7 +7378,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3767 08d2 B0E7     		b	.L247
  3768              	.LVL353:
  3769              	.L248:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 124
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 124
 
 
 1959:Src/BLDC_controller.c ****         /* SystemReset for IfAction SubSystem: '<S33>/Open_Mode' incorporates:
@@ -7438,7 +7438,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 1996:Src/BLDC_controller.c **** 
  3807              		.loc 1 1996 32 discriminator 4 view .LVU1357
  3808 08fa 84F8A630 		strb	r3, [r4, #166]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 125
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 125
 
 
 2004:Src/BLDC_controller.c ****         rtb_Switch1 = rtb_Sum1_jt;
@@ -7498,7 +7498,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3846              	.LVL363:
  3847              	.L259:
 2032:Src/BLDC_controller.c ****           rtb_Sum1 = rtb_Gain3;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 126
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 126
 
 
  3848              		.loc 1 2032 9 is_stmt 1 discriminator 4 view .LVU1375
@@ -7558,7 +7558,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3886 093e 22F07842 		bic	r2, r2, #-134217728
  3887              	.LVL369:
 1986:Src/BLDC_controller.c ****         rtb_Gain3 & 134217727;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 127
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 127
 
 
  3888              		.loc 1 1986 75 discriminator 2 view .LVU1392
@@ -7618,7 +7618,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3930              	.LVL379:
  3931              	.L453:
 2078:Src/BLDC_controller.c ****     } else {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 128
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 128
 
 
  3932              		.loc 1 2078 7 view .LVU1405
@@ -7678,7 +7678,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  3972 099c 0ADB     		blt	.L393
 2111:Src/BLDC_controller.c ****           /* Switch: '<S44>/Switch' incorporates:
  3973              		.loc 1 2111 9 is_stmt 1 view .LVU1420
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 129
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 129
 
 
 2111:Src/BLDC_controller.c ****           /* Switch: '<S44>/Switch' incorporates:
@@ -7738,7 +7738,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2128:Src/BLDC_controller.c ****         rtP->r_fieldWeakLo));
  4013              		.loc 1 2128 36 view .LVU1436
  4014 09c6 93FBF2F3 		sdiv	r3, r3, r2
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 130
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 130
 
 
 2127:Src/BLDC_controller.c ****         rtP->r_fieldWeakLo) << 15) / (int16_T)(rtP->r_fieldWeakHi -
@@ -7798,7 +7798,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2158:Src/BLDC_controller.c ****         rtP->n_fieldWeakAuthLo));
  4053              		.loc 1 2158 42 view .LVU1453
  4054 09f2 12B2     		sxth	r2, r2
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 131
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 131
 
 
 2158:Src/BLDC_controller.c ****         rtP->n_fieldWeakAuthLo));
@@ -7858,7 +7858,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4092              		.loc 1 2211 5 is_stmt 1 view .LVU1470
 2211:Src/BLDC_controller.c ****     UnitDelay3 = -1;
  4093              		.loc 1 2211 16 is_stmt 0 view .LVU1471
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 132
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 132
 
 
  4094 0a1a 94F99520 		ldrsb	r2, [r4, #149]
@@ -7918,7 +7918,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2227:Src/BLDC_controller.c **** 
  4131              		.loc 1 2227 21 view .LVU1489
  4132 0a44 A4F85C30 		strh	r3, [r4, #92]	@ movhi
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 133
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 133
 
 
 2232:Src/BLDC_controller.c **** 
@@ -7978,7 +7978,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4170              		.loc 1 2252 21 view .LVU1506
  4171 0a7c 5B42     		rsbs	r3, r3, #0
 2252:Src/BLDC_controller.c ****       rtDW->i_max = rtP->i_max;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 134
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 134
 
 
  4172              		.loc 1 2252 19 view .LVU1507
@@ -8038,7 +8038,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4210 0aaa B5F9D030 		ldrsh	r3, [r5, #208]
  4211              	.LVL402:
 2189:Src/BLDC_controller.c ****       } else {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 135
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 135
 
 
  4212              		.loc 1 2189 25 view .LVU1524
@@ -8098,7 +8098,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2276:Src/BLDC_controller.c ****            0U, 1311U, 49U)] * rtDW->i_max) >> 16);
  4254              		.loc 1 2276 39 view .LVU1537
  4255 0ad4 FFF7FEFF 		bl	plook_u8u16_evencka
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 136
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 136
 
 
  4256              	.LVL411:
@@ -8158,7 +8158,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4294 0b12 84F89630 		strb	r3, [r4, #150]
 2313:Src/BLDC_controller.c ****        case 0:
  4295              		.loc 1 2313 7 is_stmt 1 view .LVU1554
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 137
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 137
 
 
  4296              	.LVL413:
@@ -8218,7 +8218,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4335 0b50 4FF0000C 		mov	ip, #0
  4336 0b54 CDF800C0 		str	ip, [sp]
  4337 0b58 00B2     		sxth	r0, r0
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 138
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 138
 
 
  4338 0b5a FFF7FEFF 		bl	I_backCalc_fixdt
@@ -8278,7 +8278,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4374              		.loc 1 2381 11 view .LVU1587
  4375 0b80 02FB03F3 		mul	r3, r2, r3
 2380:Src/BLDC_controller.c ****           * rtP->cf_iqKiLimProt;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 139
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 139
 
 
  4376              		.loc 1 2380 23 view .LVU1588
@@ -8338,7 +8338,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4415              		.loc 1 2347 39 is_stmt 0 view .LVU1603
  4416 0bc4 B5F8DA00 		ldrh	r0, [r5, #218]
 2347:Src/BLDC_controller.c ****                          rtP->cf_KbLimProt, rtDW->Abs1, 0, &rtDW->Switch2_o,
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 140
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 140
 
 
  4417              		.loc 1 2347 47 view .LVU1604
@@ -8398,7 +8398,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4463 0c1e 85E7     		b	.L285
  4464              	.LVL431:
  4465              	.L266:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 141
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 141
 
 
 2428:Src/BLDC_controller.c ****       /* Outputs for Function Call SubSystem: '<S7>/FOC' */
@@ -8458,7 +8458,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2445:Src/BLDC_controller.c ****       }
  4502              		.loc 1 2445 9 is_stmt 1 view .LVU1631
 2445:Src/BLDC_controller.c ****       }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 142
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 142
 
 
  4503              		.loc 1 2445 37 is_stmt 0 view .LVU1632
@@ -8518,7 +8518,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4541              	.LVL438:
  4542              	.L400:
 2436:Src/BLDC_controller.c ****       }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 143
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 143
 
 
  4543              		.loc 1 2436 20 is_stmt 0 view .LVU1649
@@ -8578,7 +8578,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2655:Src/BLDC_controller.c ****             /* Switch: '<S70>/Switch' */
  4581              		.loc 1 2655 41 is_stmt 0 view .LVU1666
  4582 0ca0 B4F96800 		ldrsh	r0, [r4, #104]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 144
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 144
 
 
 2655:Src/BLDC_controller.c ****             /* Switch: '<S70>/Switch' */
@@ -8638,7 +8638,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4620              		.loc 1 2533 11 view .LVU1683
 2533:Src/BLDC_controller.c ****             /* SystemReset for IfAction SubSystem: '<S59>/Speed_Mode' incorporates:
  4621              		.loc 1 2533 14 is_stmt 0 view .LVU1684
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 145
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 145
 
 
  4622 0cca 8B42     		cmp	r3, r1
@@ -8698,7 +8698,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4659 0cf8 41DD     		ble	.L310
 2570:Src/BLDC_controller.c ****               } else {
  4660              		.loc 1 2570 17 is_stmt 1 view .LVU1702
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 146
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 146
 
 
 2570:Src/BLDC_controller.c ****               } else {
@@ -8758,7 +8758,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4703              	.LVL453:
 2497:Src/BLDC_controller.c ****             rtb_Saturation1 = -1;
  4704              		.loc 1 2497 11 is_stmt 1 view .LVU1715
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 147
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 147
 
 
 2497:Src/BLDC_controller.c ****             rtb_Saturation1 = -1;
@@ -8818,7 +8818,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4744              		.loc 1 2516 43 is_stmt 0 view .LVU1730
  4745 0d62 B4F96220 		ldrsh	r2, [r4, #98]
 2516:Src/BLDC_controller.c ****             /* Switch: '<S79>/Switch' incorporates:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 148
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 148
 
 
  4746              		.loc 1 2516 21 view .LVU1731
@@ -8878,7 +8878,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4785              		.loc 1 2584 15 is_stmt 1 view .LVU1746
 2584:Src/BLDC_controller.c ****             }
  4786              		.loc 1 2584 56 is_stmt 0 view .LVU1747
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 149
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 149
 
 
  4787 0d94 B4F96220 		ldrsh	r2, [r4, #98]
@@ -8938,7 +8938,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4824 0dc2 09DA     		bge	.L402
 2609:Src/BLDC_controller.c ****               rtb_Gain3 = -32768;
  4825              		.loc 1 2609 13 is_stmt 1 view .LVU1765
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 150
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 150
 
 
 2609:Src/BLDC_controller.c ****               rtb_Gain3 = -32768;
@@ -8998,7 +8998,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4870              		.loc 1 2729 9 is_stmt 1 view .LVU1775
 2730:Src/BLDC_controller.c ****           UnitDelay3 = 0;
  4871              		.loc 1 2730 9 view .LVU1776
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 151
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 151
 
 
 2730:Src/BLDC_controller.c ****           UnitDelay3 = 0;
@@ -9058,7 +9058,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2755:Src/BLDC_controller.c **** 
  4909              		.loc 1 2755 26 view .LVU1794
  4910 0e42 1846     		mov	r0, r3
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 152
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 152
 
 
  4911              	.L324:
@@ -9118,7 +9118,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4950 0e6a 9045     		cmp	r8, r2
  4951 0e6c 00DD     		ble	.L319
 2676:Src/BLDC_controller.c ****           } else {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 153
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 153
 
 
  4952              		.loc 1 2676 29 view .LVU1810
@@ -9178,7 +9178,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  4995              	.LVL488:
  4996              	.L465:
 2744:Src/BLDC_controller.c **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 154
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 154
 
 
  4997              		.loc 1 2744 13 view .LVU1822
@@ -9238,7 +9238,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  5042              	.LVL497:
  5043              	.L330:
 2842:Src/BLDC_controller.c ****       }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 155
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 155
 
 
 2843:Src/BLDC_controller.c ****     }
@@ -9298,7 +9298,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  5075              		.loc 1 2862 5 is_stmt 1 view .LVU1845
  5076              		.loc 1 2862 17 is_stmt 0 view .LVU1846
  5077 0f20 43F26D73 		movw	r3, #14189
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 156
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 156
 
 
  5078 0f24 03FB02F2 		mul	r2, r3, r2
@@ -9358,7 +9358,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2869:Src/BLDC_controller.c ****       ((int16_T)(((int16_T)rtb_Gain3 < 0) + (int16_T)rtb_Gain3) >> 1);
  5118              		.loc 1 2869 46 view .LVU1862
  5119 0f52 43F6FF73 		movw	r3, #16383
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 157
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 157
 
 
  5120 0f56 EAE7     		b	.L332
@@ -9418,7 +9418,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2891:Src/BLDC_controller.c **** 
 2892:Src/BLDC_controller.c ****     /* MinMax: '<S57>/MinMax1' incorporates:
 2893:Src/BLDC_controller.c ****      *  Sum: '<S57>/Sum2'
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 158
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 158
 
 
 2894:Src/BLDC_controller.c ****      *  Sum: '<S57>/Sum6'
@@ -9478,7 +9478,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  5186              		.loc 1 2916 5 is_stmt 1 view .LVU1888
  5187              		.loc 1 2916 8 is_stmt 0 view .LVU1889
  5188 0f8c 9342     		cmp	r3, r2
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 159
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 159
 
 
  5189 0f8e 00DB     		blt	.L338
@@ -9538,7 +9538,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2936:Src/BLDC_controller.c ****     rtb_Merge1 = (int16_T)(rtb_Sum1 >> 1);
  5222              		.loc 1 2936 5 is_stmt 1 view .LVU1901
  5223              		.loc 1 2936 16 is_stmt 0 view .LVU1902
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 160
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 160
 
 
  5224 0fac 42F34F02 		sbfx	r2, r2, #1, #16
@@ -9598,7 +9598,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 2954:Src/BLDC_controller.c **** 
 2955:Src/BLDC_controller.c ****     /* Sum: '<S57>/Add1' incorporates:
 2956:Src/BLDC_controller.c ****      *  Sum: '<S57>/Sum6'
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 161
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 161
 
 
 2957:Src/BLDC_controller.c ****      */
@@ -9658,7 +9658,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  5294 0ffc 9A1A     		subs	r2, r3, r2
  5295              	.LVL537:
 2976:Src/BLDC_controller.c ****     if (rtb_Gain3 > 32767) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 162
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 162
 
 
  5296              		.loc 1 2976 5 is_stmt 1 view .LVU1932
@@ -9718,7 +9718,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3001:Src/BLDC_controller.c ****    *  Logic: '<S8>/Logical Operator2'
 3002:Src/BLDC_controller.c ****    *  LookupNDDirect: '<S94>/z_commutMap_M1'
 3003:Src/BLDC_controller.c ****    *  RelationalOperator: '<S8>/Relational Operator1'
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 163
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 163
 
 
 3004:Src/BLDC_controller.c ****    *  RelationalOperator: '<S8>/Relational Operator2'
@@ -9778,7 +9778,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3038:Src/BLDC_controller.c ****       DataTypeConversion2 = rtb_Merge_m;
 3039:Src/BLDC_controller.c ****     }
 3040:Src/BLDC_controller.c **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 164
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 164
 
 
 3041:Src/BLDC_controller.c ****     /* End of Switch: '<S97>/Switch_PhaAdv' */
@@ -9838,7 +9838,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3014:Src/BLDC_controller.c ****     rtb_Saturation1 = rtDW->Gain4_e[1];
  5362              		.loc 1 3014 25 is_stmt 0 view .LVU1958
  5363 104e B4F94C10 		ldrsh	r1, [r4, #76]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 165
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 165
 
 
  5364              	.LVL542:
@@ -9898,7 +9898,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3035:Src/BLDC_controller.c ****         (DataTypeConversion2, 23040) * 360) << 6);
  5402              		.loc 1 3035 7 is_stmt 1 view .LVU1975
 3035:Src/BLDC_controller.c ****         (DataTypeConversion2, 23040) * 360) << 6);
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 166
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 166
 
 
  5403              		.loc 1 3035 59 is_stmt 0 view .LVU1976
@@ -9958,7 +9958,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3053:Src/BLDC_controller.c ****       rtConstP.r_sin3PhaB_M1_Table[Sum]) >> 14);
  5444              		.loc 1 3053 5 is_stmt 1 view .LVU1990
 3054:Src/BLDC_controller.c ****     rtb_Merge1 = (int16_T)((rtb_Saturation * rtConstP.r_sin3PhaC_M1_Table[Sum]) >>
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 167
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 167
 
 
  5445              		.loc 1 3054 35 is_stmt 0 view .LVU1991
@@ -10018,7 +10018,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3084:Src/BLDC_controller.c ****        */
 3085:Src/BLDC_controller.c ****       rtb_Sum2_h = rtConstP.vec_hallToPos_Value[Sum];
 3086:Src/BLDC_controller.c ****     }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 168
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 168
 
 
 3087:Src/BLDC_controller.c **** 
@@ -10078,7 +10078,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  5513              		.loc 1 3107 60 is_stmt 0 view .LVU2015
  5514 111a 0230     		adds	r0, r0, #2
  5515              	.LVL560:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 169
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 169
 
 
  5516              		.loc 1 3107 57 view .LVU2016
@@ -10138,7 +10138,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3131:Src/BLDC_controller.c ****    *  Inport: '<Root>/b_hallB'
 3132:Src/BLDC_controller.c ****    */
 3133:Src/BLDC_controller.c ****   rtDW->UnitDelay1_DSTATE = rtU->b_hallB;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 170
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 170
 
 
  5547              		.loc 1 3133 3 is_stmt 1 view .LVU2030
@@ -10198,7 +10198,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3157:Src/BLDC_controller.c ****   /* Update for UnitDelay: '<S8>/UnitDelay4' */
 3158:Src/BLDC_controller.c ****   rtDW->UnitDelay4_DSTATE_eu = rtb_Saturation;
  5578              		.loc 1 3158 3 is_stmt 1 view .LVU2047
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 171
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 171
 
 
  5579              		.loc 1 3158 30 is_stmt 0 view .LVU2048
@@ -10258,7 +10258,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  5609              		.loc 1 3182 1 view .LVU2064
  5610 1188 15B0     		add	sp, sp, #84
  5611              	.LCFI16:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 172
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 172
 
 
  5612              		.cfi_def_cfa_offset 36
@@ -10318,7 +10318,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3193:Src/BLDC_controller.c **** 
 3194:Src/BLDC_controller.c ****   /* Start for IfAction SubSystem: '<S7>/Clarke_Park_Transform_Forward' */
 3195:Src/BLDC_controller.c ****   /* Start for If: '<S45>/If2' */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 173
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 173
 
 
 3196:Src/BLDC_controller.c ****   rtDW->If2_ActiveSubsystem_a = -1;
@@ -10378,7 +10378,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  5678 0024 84F89430 		strb	r3, [r4, #148]
 3230:Src/BLDC_controller.c **** 
 3231:Src/BLDC_controller.c ****   /* End of Start for SubSystem: '<S47>/FOC_Enabled' */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 174
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 174
 
 
 3232:Src/BLDC_controller.c **** 
@@ -10438,7 +10438,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3263:Src/BLDC_controller.c ****   Debounce_Filter_Init(&rtDW->Debounce_Filter_k);
  5702              		.loc 1 3263 3 is_stmt 1 view .LVU2100
  5703 004a 04F12E00 		add	r0, r4, #46
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 175
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 175
 
 
  5704 004e FFF7FEFF 		bl	Debounce_Filter_Init
@@ -10498,7 +10498,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  5719              		.loc 1 3302 3 view .LVU2105
  5720 006e 4FF06171 		mov	r1, #58982400
  5721 0072 04F11400 		add	r0, r4, #20
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 176
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 176
 
 
  5722 0076 FFF7FEFF 		bl	I_backCalc_fixdt_Init
@@ -10558,7 +10558,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
 3330:Src/BLDC_controller.c ****   rtDW->Gain1 = -12000;
  5749              		.loc 1 3330 3 is_stmt 1 view .LVU2120
  5750              		.loc 1 3330 15 is_stmt 0 view .LVU2121
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 177
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 177
 
 
  5751 00a6 A4F86830 		strh	r3, [r4, #104]	@ movhi
@@ -10618,7 +10618,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  5765 00be 38BD     		pop	{r3, r4, r5, pc}
  5766              		.loc 1 3370 1 view .LVU2126
  5767              		.cfi_endproc
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 178
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 178
 
 
  5768              	.LFE25:
@@ -10626,83 +10626,83 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 1
  5771              	.Letext0:
  5772              		.file 2 "Inc/rtwtypes.h"
  5773              		.file 3 "Inc/BLDC_controller.h"
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 179
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 179
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 BLDC_controller.c
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:18     .text.plook_u8s16_evencka:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:24     .text.plook_u8s16_evencka:0000000000000000 plook_u8s16_evencka
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:78     .text.plook_u8u16_evencka:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:84     .text.plook_u8u16_evencka:0000000000000000 plook_u8u16_evencka
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:137    .text.div_nde_s32_floor:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:143    .text.div_nde_s32_floor:0000000000000000 div_nde_s32_floor
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:178    .text.Counter_Init:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:184    .text.Counter_Init:0000000000000000 Counter_Init
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:201    .text.Counter:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:207    .text.Counter:0000000000000000 Counter
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:259    .text.Low_Pass_Filter_Reset:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:265    .text.Low_Pass_Filter_Reset:0000000000000000 Low_Pass_Filter_Reset
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:286    .text.Low_Pass_Filter:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:292    .text.Low_Pass_Filter:0000000000000000 Low_Pass_Filter
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:399    .text.Low_Pass_Filter:0000000000000058 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:404    .text.Counter_b_Init:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:410    .text.Counter_b_Init:0000000000000000 Counter_b_Init
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:427    .text.Counter_n:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:433    .text.Counter_n:0000000000000000 Counter_n
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:501    .text.either_edge:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:507    .text.either_edge:0000000000000000 either_edge
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:533    .text.Debounce_Filter_Init:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:539    .text.Debounce_Filter_Init:0000000000000000 Debounce_Filter_Init
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:572    .text.Debounce_Filter:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:578    .text.Debounce_Filter:0000000000000000 Debounce_Filter
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:717    .text.I_backCalc_fixdt_Init:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:723    .text.I_backCalc_fixdt_Init:0000000000000000 I_backCalc_fixdt_Init
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:740    .text.I_backCalc_fixdt_Reset:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:746    .text.I_backCalc_fixdt_Reset:0000000000000000 I_backCalc_fixdt_Reset
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:767    .text.I_backCalc_fixdt:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:773    .text.I_backCalc_fixdt:0000000000000000 I_backCalc_fixdt
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:896    .text.PI_clamp_fixdt_Init:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:902    .text.PI_clamp_fixdt_Init:0000000000000000 PI_clamp_fixdt_Init
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:920    .text.PI_clamp_fixdt_Reset:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:926    .text.PI_clamp_fixdt_Reset:0000000000000000 PI_clamp_fixdt_Reset
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:948    .text.PI_clamp_fixdt:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:954    .text.PI_clamp_fixdt:0000000000000000 PI_clamp_fixdt
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1213   .text.PI_clamp_fixdt:00000000000000f0 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1218   .text.PI_clamp_fixdt_d_Init:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1224   .text.PI_clamp_fixdt_d_Init:0000000000000000 PI_clamp_fixdt_d_Init
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1242   .text.PI_clamp_fixdt_b_Reset:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1248   .text.PI_clamp_fixdt_b_Reset:0000000000000000 PI_clamp_fixdt_b_Reset
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1270   .text.PI_clamp_fixdt_l:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1276   .text.PI_clamp_fixdt_l:0000000000000000 PI_clamp_fixdt_l
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1537   .text.PI_clamp_fixdt_l:00000000000000f4 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1542   .text.PI_clamp_fixdt_f_Init:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1548   .text.PI_clamp_fixdt_f_Init:0000000000000000 PI_clamp_fixdt_f_Init
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1566   .text.PI_clamp_fixdt_g_Reset:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1572   .text.PI_clamp_fixdt_g_Reset:0000000000000000 PI_clamp_fixdt_g_Reset
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1594   .text.PI_clamp_fixdt_k:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1600   .text.PI_clamp_fixdt_k:0000000000000000 PI_clamp_fixdt_k
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1877   .text.PI_clamp_fixdt_k:0000000000000104 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1882   .text.BLDC_controller_step:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:1888   .text.BLDC_controller_step:0000000000000000 BLDC_controller_step
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:2639   .text.BLDC_controller_step:0000000000000344 $d
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s 			page 180
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:18     .text.plook_u8s16_evencka:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:24     .text.plook_u8s16_evencka:0000000000000000 plook_u8s16_evencka
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:78     .text.plook_u8u16_evencka:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:84     .text.plook_u8u16_evencka:0000000000000000 plook_u8u16_evencka
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:137    .text.div_nde_s32_floor:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:143    .text.div_nde_s32_floor:0000000000000000 div_nde_s32_floor
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:178    .text.Counter_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:184    .text.Counter_Init:0000000000000000 Counter_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:201    .text.Counter:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:207    .text.Counter:0000000000000000 Counter
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:259    .text.Low_Pass_Filter_Reset:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:265    .text.Low_Pass_Filter_Reset:0000000000000000 Low_Pass_Filter_Reset
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:286    .text.Low_Pass_Filter:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:292    .text.Low_Pass_Filter:0000000000000000 Low_Pass_Filter
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:399    .text.Low_Pass_Filter:0000000000000058 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:404    .text.Counter_b_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:410    .text.Counter_b_Init:0000000000000000 Counter_b_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:427    .text.Counter_n:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:433    .text.Counter_n:0000000000000000 Counter_n
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:501    .text.either_edge:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:507    .text.either_edge:0000000000000000 either_edge
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:533    .text.Debounce_Filter_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:539    .text.Debounce_Filter_Init:0000000000000000 Debounce_Filter_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:572    .text.Debounce_Filter:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:578    .text.Debounce_Filter:0000000000000000 Debounce_Filter
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:717    .text.I_backCalc_fixdt_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:723    .text.I_backCalc_fixdt_Init:0000000000000000 I_backCalc_fixdt_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:740    .text.I_backCalc_fixdt_Reset:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:746    .text.I_backCalc_fixdt_Reset:0000000000000000 I_backCalc_fixdt_Reset
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:767    .text.I_backCalc_fixdt:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:773    .text.I_backCalc_fixdt:0000000000000000 I_backCalc_fixdt
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:896    .text.PI_clamp_fixdt_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:902    .text.PI_clamp_fixdt_Init:0000000000000000 PI_clamp_fixdt_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:920    .text.PI_clamp_fixdt_Reset:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:926    .text.PI_clamp_fixdt_Reset:0000000000000000 PI_clamp_fixdt_Reset
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:948    .text.PI_clamp_fixdt:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:954    .text.PI_clamp_fixdt:0000000000000000 PI_clamp_fixdt
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1213   .text.PI_clamp_fixdt:00000000000000f0 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1218   .text.PI_clamp_fixdt_d_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1224   .text.PI_clamp_fixdt_d_Init:0000000000000000 PI_clamp_fixdt_d_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1242   .text.PI_clamp_fixdt_b_Reset:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1248   .text.PI_clamp_fixdt_b_Reset:0000000000000000 PI_clamp_fixdt_b_Reset
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1270   .text.PI_clamp_fixdt_l:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1276   .text.PI_clamp_fixdt_l:0000000000000000 PI_clamp_fixdt_l
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1537   .text.PI_clamp_fixdt_l:00000000000000f4 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1542   .text.PI_clamp_fixdt_f_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1548   .text.PI_clamp_fixdt_f_Init:0000000000000000 PI_clamp_fixdt_f_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1566   .text.PI_clamp_fixdt_g_Reset:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1572   .text.PI_clamp_fixdt_g_Reset:0000000000000000 PI_clamp_fixdt_g_Reset
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1594   .text.PI_clamp_fixdt_k:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1600   .text.PI_clamp_fixdt_k:0000000000000000 PI_clamp_fixdt_k
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1877   .text.PI_clamp_fixdt_k:0000000000000104 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1882   .text.BLDC_controller_step:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:1888   .text.BLDC_controller_step:0000000000000000 BLDC_controller_step
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:2639   .text.BLDC_controller_step:0000000000000344 $d
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s 			page 180
 
 
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:2647   .text.BLDC_controller_step:0000000000000354 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:3270   .text.BLDC_controller_step:000000000000064c $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:3274   .text.BLDC_controller_step:0000000000000654 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:3943   .text.BLDC_controller_step:0000000000000970 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:3950   .text.BLDC_controller_step:000000000000097c $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:4676   .text.BLDC_controller_step:0000000000000d10 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:4680   .text.BLDC_controller_step:0000000000000d20 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:4837   .text.BLDC_controller_step:0000000000000dd0 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:4842   .text.BLDC_controller_step:0000000000000dd8 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:5475   .text.BLDC_controller_step:00000000000010e8 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:5479   .text.BLDC_controller_step:00000000000010f0 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:5620   .text.BLDC_controller_step:0000000000001190 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:5625   .text.BLDC_controller_initialize:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccy4POAm.s:5631   .text.BLDC_controller_initialize:0000000000000000 BLDC_controller_initialize
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:2647   .text.BLDC_controller_step:0000000000000354 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:3270   .text.BLDC_controller_step:000000000000064c $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:3274   .text.BLDC_controller_step:0000000000000654 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:3943   .text.BLDC_controller_step:0000000000000970 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:3950   .text.BLDC_controller_step:000000000000097c $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:4676   .text.BLDC_controller_step:0000000000000d10 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:4680   .text.BLDC_controller_step:0000000000000d20 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:4837   .text.BLDC_controller_step:0000000000000dd0 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:4842   .text.BLDC_controller_step:0000000000000dd8 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:5475   .text.BLDC_controller_step:00000000000010e8 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:5479   .text.BLDC_controller_step:00000000000010f0 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:5620   .text.BLDC_controller_step:0000000000001190 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:5625   .text.BLDC_controller_initialize:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cccje1sL.s:5631   .text.BLDC_controller_initialize:0000000000000000 BLDC_controller_initialize
 
 UNDEFINED SYMBOLS
 rtConstP

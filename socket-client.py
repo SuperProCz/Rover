@@ -2,7 +2,7 @@ import socket
 import threading
 import controller
 
-HOST = "10.254.180.127"  
+HOST = "10.42.0.1"  
 PORT = 1532 
 
 controllerThread = threading.Thread(target=controller.main)

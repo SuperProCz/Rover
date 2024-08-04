@@ -6,6 +6,18 @@ from pynput.keyboard import Key, Listener, KeyCode
 xVel = 0
 yVel = 0
 alreadyPressed = {'w': False, 's': False, 'a': False, 'd': False}
+speedChange = {
+    '1': 100,
+    '2': 200,
+    '3': 300,
+    '4': 400,
+    '5': 500,
+    '6': 600,
+    '7': 700,
+    '8': 800,
+    '9': 900,
+    '0': 1000
+}
 conn = None
 
 def changeVel(axis, value):
@@ -45,6 +57,9 @@ def on_press(key):
             changeVel('y', 1)
         elif key.char == 'p':
             sendCommand(2)
+        elif key.char in speedChange:
+            sendCommand(3, speedChange[key.char])
+            
     elif type(key) == Key:
         if key == Key.space:
             sendCommand(1)

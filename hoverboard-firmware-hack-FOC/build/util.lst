@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
   30:Src/util.c    **** #include "BLDC_controller.h"
   31:Src/util.c    **** #include "rtwtypes.h"
   32:Src/util.c    **** #include "comms.h"
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 2
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 2
 
 
   33:Src/util.c    **** 
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
   87:Src/util.c    **** DW       rtDW_Right;                    /* Observable states */
   88:Src/util.c    **** ExtU     rtU_Right;                     /* External inputs */
   89:Src/util.c    **** ExtY     rtY_Right;                     /* External outputs */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 3
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 3
 
 
   90:Src/util.c    **** //---------------
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  144:Src/util.c    **** static uint8_t  rx_buffer_L[SERIAL_BUFFER_SIZE];      // USART Rx DMA circular buffer
  145:Src/util.c    **** static uint32_t rx_buffer_L_len = ARRAY_LEN(rx_buffer_L);
  146:Src/util.c    **** #endif
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 4
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 4
 
 
  147:Src/util.c    **** #if defined(CONTROL_SERIAL_USART2) || defined(SIDEBOARD_SERIAL_USART2)
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  201:Src/util.c    **** #endif
  202:Src/util.c    **** 
  203:Src/util.c    **** /* =========================== Retargeting printf =========================== */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 5
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 5
 
 
  204:Src/util.c    **** /* retarget the C library printf function to the USART */
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
   48 000e 0222     		movs	r2, #2
   49 0010 84F8F920 		strb	r2, [r4, #249]
  237:Src/util.c    ****   rtP_Left.b_diagEna            = DIAG_ENA;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 6
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 6
 
 
   50              		.loc 1 237 3 is_stmt 1 view .LVU7
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
   91              		.loc 1 250 33 is_stmt 0 view .LVU28
   92 0058 0C48     		ldr	r0, .L3+8
   93 005a 0460     		str	r4, [r0]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 7
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 7
 
 
  251:Src/util.c    ****   rtM_Left->dwork               = &rtDW_Left;
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  134 0084 00000000 		.word	rtP_Left
  135 0088 00000000 		.word	.LANCHOR0
  136 008c 00000000 		.word	.LANCHOR1
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 8
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 8
 
 
  137 0090 00000000 		.word	.LANCHOR2
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  186              		.loc 1 271 15 is_stmt 0 view .LVU57
  187 0022 064B     		ldr	r3, .L9+8
  188 0024 4FF47A72 		mov	r2, #1000
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 9
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 9
 
 
  189 0028 1A80     		strh	r2, [r3]	@ movhi
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  300:Src/util.c    ****   #if !defined(VARIANT_HOVERBOARD) && !defined(VARIANT_TRANSPOTTER)
  301:Src/util.c    ****     uint16_t writeCheck, readVal;
  302:Src/util.c    ****     HAL_FLASH_Unlock();
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 10
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 10
 
 
  303:Src/util.c    ****     EE_Init();            /* EEPROM Init */
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  357:Src/util.c    **** 
  358:Src/util.c    ****     setDistance = saveValue / 1000.0;
  359:Src/util.c    ****     if (setDistance < 0.2) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 11
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 11
 
 
  360:Src/util.c    ****       setDistance = 1.0;
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  220              		@ frame_needed = 0, uses_anonymous_args = 0
  221              		@ link register save eliminated.
  411:Src/util.c    ****   CLEAR_BIT(huart->Instance->CR1, USART_CR1_PEIE);    /* Disable PE (Parity Error) interrupts */  
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 12
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 12
 
 
  222              		.loc 1 411 3 view .LVU62
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  268              	.LVL5:
  269              	.L14:
  422:Src/util.c    ****       buzzerFreq = (uint8_t)i;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 13
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 13
 
 
  270              		.loc 1 422 7 is_stmt 1 discriminator 3 view .LVU72
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  316              		.cfi_startproc
  317              		@ args = 0, pretend = 0, frame = 0
  318              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 14
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 14
 
 
  319              		@ link register save eliminated.
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  368 0004 044B     		ldr	r3, .L23
  369 0006 1D70     		strb	r5, [r3]
  436:Src/util.c    ****     buzzerFreq = freq;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 15
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 15
 
 
  370              		.loc 1 436 5 is_stmt 1 view .LVU95
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  443:Src/util.c    ****     buzzerFreq = freq;
  420              		.loc 1 443 5 is_stmt 1 view .LVU106
  421              		.loc 1 443 16 is_stmt 0 view .LVU107
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 16
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 16
 
 
  422 0008 044C     		ldr	r4, .L27+4
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  471              	.LBB3:
  472              		.loc 1 450 11 view .LVU118
  473              		.loc 1 450 19 is_stmt 0 view .LVU119
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 17
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 17
 
 
  474 0008 4400     		lsls	r4, r0, #1
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  512              		.loc 1 454 38 discriminator 3 view .LVU130
  454:Src/util.c    ****         beepShort(i + 3);
  513              		.loc 1 454 39 is_stmt 0 discriminator 3 view .LVU131
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 18
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 18
 
 
  514 0028 0235     		adds	r5, r5, #2
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  557 000c 8BB2     		uxth	r3, r1
  558              		.loc 1 467 18 view .LVU141
  559 000e 1180     		strh	r1, [r2]	@ movhi
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 19
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 19
 
 
  468:Src/util.c    ****       #endif
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  594              		.section	.text.standstillHold,"ax",%progbits
  595              		.align	1
  596              		.global	standstillHold
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 20
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 20
 
 
  597              		.syntax unified
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  538:Src/util.c    ****     INPUT1_MID_temp = (int16_t)(input1_fixdt >> 16);// CLAMP(input1_fixdt >> 16, INPUT1_MIN, INPUT1
  539:Src/util.c    ****     INPUT2_MID_temp = (int16_t)(input2_fixdt >> 16);// CLAMP(input2_fixdt >> 16, INPUT2_MIN, INPUT2
  540:Src/util.c    ****     INPUT1_MIN_temp = MIN(INPUT1_MIN_temp, INPUT1_MID_temp);
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 21
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 21
 
 
  541:Src/util.c    ****     INPUT1_MAX_temp = MAX(INPUT1_MAX_temp, INPUT1_MID_temp);
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  595:Src/util.c    ****     #endif
  596:Src/util.c    ****   }else{
  597:Src/util.c    ****     #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 22
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 22
 
 
  598:Src/util.c    ****     printf("Both inputs cannot be ignored, calibration rejected.\r\n");
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  652:Src/util.c    ****   }
  653:Src/util.c    **** 
  654:Src/util.c    ****   #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 23
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 23
 
 
  655:Src/util.c    ****   // cur_spd_valid: 0 = No limit changed, 1 = Current limit changed, 2 = Speed limit changed, 3 = B
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  622              	.LFB79:
  692:Src/util.c    **** 
  693:Src/util.c    ****  /*
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 24
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 24
 
 
  694:Src/util.c    ****  * Electric Brake Function
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  730:Src/util.c    ****  /*
  731:Src/util.c    ****  * Cruise Control Function
  732:Src/util.c    ****  * This function activates/deactivates cruise control.
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 25
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 25
 
 
  733:Src/util.c    ****  * 
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  672              		.cfi_offset 14, -4
  760:Src/util.c    **** 
  761:Src/util.c    ****   int type = 0;  
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 26
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 26
 
 
  673              		.loc 1 761 3 is_stmt 1 view .LVU160
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  708 003e 0220     		movs	r0, #2
  709              	.LVL32:
  781:Src/util.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 27
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 27
 
 
  782:Src/util.c    ****       printf("a mid-resting pot");   // it's a mid resting pot
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  741 0050 FAE7     		b	.L43
  742              	.LVL41:
  743              	.L48:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 28
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 28
 
 
  769:Src/util.c    ****     #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  788              		.loc 1 286 5 view .LVU186
  789 0006 FFF7FEFF 		bl	UART2_Init
  790              	.LVL43:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 29
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 29
 
 
  292:Src/util.c    ****     UART_DisableRxErrors(&huart2);
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  310:Src/util.c    ****       EE_ReadVariable(VirtAddVarTab[2] , &readVal); rtP_Left.n_max = rtP_Right.n_max = (int16_t)rea
  834              		.loc 1 310 53 view .LVU198
  310:Src/util.c    ****       EE_ReadVariable(VirtAddVarTab[2] , &readVal); rtP_Left.n_max = rtP_Right.n_max = (int16_t)rea
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 30
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 30
 
 
  835              		.loc 1 310 88 is_stmt 0 view .LVU199
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  873 007a DFF8AC81 		ldr	r8, .L69+8
  874 007e 07A9     		add	r1, sp, #28
  875 0080 38F81300 		ldrh	r0, [r8, r3, lsl #1]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 31
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 31
 
 
  876 0084 FFF7FEFF 		bl	EE_ReadVariable
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  913              		.loc 1 316 41 is_stmt 0 discriminator 3 view .LVU232
  914 00ba A31D     		adds	r3, r4, #6
  316:Src/util.c    ****         EE_ReadVariable(VirtAddVarTab[ 7+8*i] , &readVal); input2[i].typ = (uint8_t)readVal;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 32
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 32
 
 
  915              		.loc 1 316 9 discriminator 3 view .LVU233
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  954 00fe FB80     		strh	r3, [r7, #6]	@ movhi
  319:Src/util.c    ****         EE_ReadVariable(VirtAddVarTab[10+8*i] , &readVal); input2[i].max = (int16_t)readVal;
  955              		.loc 1 319 9 is_stmt 1 discriminator 3 view .LVU249
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 33
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 33
 
 
  319:Src/util.c    ****         EE_ReadVariable(VirtAddVarTab[10+8*i] , &readVal); input2[i].max = (int16_t)readVal;
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  993 013a 0290     		str	r0, [sp, #8]
  994 013c 0191     		str	r1, [sp, #4]
  995 013e 0092     		str	r2, [sp]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 34
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 34
 
 
  996 0140 B5F90830 		ldrsh	r3, [r5, #8]
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1038 0182 3ED0     		beq	.L68
  340:Src/util.c    ****         }
  1039              		.loc 1 340 11 is_stmt 1 view .LVU279
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 35
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 35
 
 
  340:Src/util.c    ****         }
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1082 01d6 EDB2     		uxtb	r5, r5
  1083              	.LVL66:
  1084              	.L55:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 36
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 36
 
 
  331:Src/util.c    ****         if (input1[i].typDef == 3) {  // If Input type defined is 3 (auto), identify the input type
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1129              	.LVL71:
  338:Src/util.c    ****         } else {
  1130              		.loc 1 338 25 view .LVU302
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 37
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 37
 
 
  1131 021a 3071     		strb	r0, [r6, #4]
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  815:Src/util.c    ****       } else if(in->raw > in->mid) {
  816:Src/util.c    ****         in->cmd = CLAMP(MAP(in->raw, in->mid + in->dband, in->max, 0, out_max), 0, out_max);
  817:Src/util.c    ****       } else {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 38
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 38
 
 
  818:Src/util.c    ****         in->cmd = CLAMP(MAP(in->raw, in->mid - in->dband, in->min, 0, out_min), out_min, 0);
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1209              		.cfi_offset 14, -4
  813:Src/util.c    ****         in->cmd = 0;
  1210              		.loc 1 813 7 is_stmt 1 view .LVU319
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 39
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 39
 
 
  813:Src/util.c    ****         in->cmd = 0;
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  816:Src/util.c    ****       } else {
  1250              		.loc 1 816 19 discriminator 1 view .LVU335
  1251 0082 23EAE372 		bic	r2, r3, r3, asr #31
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 40
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 40
 
 
  1252              	.LVL77:
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1296              		.global	readInputRaw
  1297              		.syntax unified
  1298              		.thumb
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 41
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 41
 
 
  1299              		.thumb_func
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1314              		.loc 1 865 9 is_stmt 1 view .LVU350
  1315              		.loc 1 865 37 is_stmt 0 view .LVU351
  1316 0006 094A     		ldr	r2, .L89+4
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 42
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 42
 
 
  1317 0008 B2F902C0 		ldrsh	ip, [r2, #2]
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  905:Src/util.c    ****     if (inIdx == CONTROL_PPM_RIGHT) {
  906:Src/util.c    ****       input1[inIdx].raw = (ppm_captured_value[0] - 500) * 2;
  907:Src/util.c    ****       input2[inIdx].raw = (ppm_captured_value[1] - 500) * 2;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 43
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 43
 
 
  908:Src/util.c    ****     }
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  943:Src/util.c    **** void handleTimeout(void) {
  1353              		.loc 1 943 26 is_stmt 1 view -0
  1354              		.cfi_startproc
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 44
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 44
 
 
  1355              		@ args = 0, pretend = 0, frame = 0
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  971:Src/util.c    ****           } else {
  972:Src/util.c    ****             inIdx = !SIDEBOARD_SERIAL_USART2;
  973:Src/util.c    ****           }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 45
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 45
 
 
  974:Src/util.c    ****         #elif defined(DUAL_INPUTS) && (defined(CONTROL_SERIAL_USART2) && CONTROL_SERIAL_USART2 == 1
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1021:Src/util.c    ****           inIdx = 0;                                    // Switch to Primary input in case of Timeo
 1022:Src/util.c    ****         #endif
 1023:Src/util.c    ****       } else {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 46
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 46
 
 
 1024:Src/util.c    ****         #if defined(DUAL_INPUTS) && ((defined(CONTROL_PPM_LEFT)  && CONTROL_PPM_LEFT == 1) || (defi
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1425 004c 114B     		ldr	r3, .L101+24
  1426 004e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  1427              		.loc 1 1041 8 view .LVU382
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 47
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 47
 
 
  1428 0050 13B1     		cbz	r3, .L96
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1473 008c 00000000 		.word	timeoutFlgGen
  1474 0090 00000000 		.word	.LANCHOR23
  1475 0094 00000000 		.word	.LANCHOR17
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 48
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 48
 
 
  1476 0098 00000000 		.word	.LANCHOR15
@@ -2878,7 +2878,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1058:Src/util.c    ****       #if !defined(VARIANT_SKATEBOARD)
 1059:Src/util.c    ****         calcInputCmd(&input2[inIdx], INPUT_MIN, INPUT_MAX);
  1521              		.loc 1 1059 9 is_stmt 1 view .LVU399
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 49
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 49
 
 
  1522              		.loc 1 1059 29 is_stmt 0 view .LVU400
@@ -2938,7 +2938,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1552              		.syntax unified
  1553              		.thumb
  1554              		.thumb_func
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 50
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 50
 
 
  1556              	usart3_rx_check:
@@ -2998,7 +2998,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1137:Src/util.c    ****       memcpy(ptr, &rx_buffer_L[old_pos], Sideboard_L_len);              // Copy data. This is possi
 1138:Src/util.c    ****       usart_process_sideboard(&Sideboard_L_raw, &Sideboard_L, 2);       // Process data
 1139:Src/util.c    ****     } else if ((rx_buffer_L_len - old_pos + pos) == Sideboard_L_len) {  // "Overflow" buffer mode: 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 51
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 51
 
 
 1140:Src/util.c    ****       memcpy(ptr, &rx_buffer_L[old_pos], rx_buffer_L_len - old_pos);    // First copy data from the
@@ -3058,7 +3058,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1189:Src/util.c    ****   if (pos != old_pos) {                                                 // Check change in received
 1190:Src/util.c    ****     ptr = (uint8_t *)&commandR_raw;                                     // Initialize the pointer w
 1191:Src/util.c    ****     if (pos > old_pos && (pos - old_pos) == commandR_len) {             // "Linear" buffer mode: ch
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 52
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 52
 
 
 1192:Src/util.c    ****       memcpy(ptr, &rx_buffer_R[old_pos], commandR_len);                 // Copy data. This is possi
@@ -3118,7 +3118,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1233:Src/util.c    ****  */
 1234:Src/util.c    **** #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
 1235:Src/util.c    **** void usart_process_debug(uint8_t *userCommand, uint32_t len)
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 53
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 53
 
 
 1236:Src/util.c    **** {
@@ -3178,7 +3178,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1592              	.L108:
 1276:Src/util.c    ****     checksum = (uint16_t)(command_in->start ^ command_in->steer ^ command_in->speed);
 1277:Src/util.c    ****     if (command_in->checksum == checksum) {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 54
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 54
 
 
 1278:Src/util.c    ****       *command_out = *command_in;
@@ -3238,7 +3238,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1619 0028 D0F800C0 		ldr	ip, [r0]	@ unaligned
  1620 002c 4368     		ldr	r3, [r0, #4]	@ unaligned
  1621              	.LVL93:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 55
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 55
 
 
 1278:Src/util.c    ****       if (usart_idx == 2) {             // Sideboard USART2
@@ -3298,7 +3298,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1668              		.cfi_offset 4, -12
  1669              		.cfi_offset 5, -8
  1670              		.cfi_offset 14, -4
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 56
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 56
 
 
 1094:Src/util.c    ****   uint32_t pos;
@@ -3358,7 +3358,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1707 0024 082A     		cmp	r2, #8
  1708 0026 13D0     		beq	.L120
  1709              	.LVL97:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 57
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 57
 
 
  1710              	.L114:
@@ -3418,7 +3418,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1752              	.LVL101:
  1753              	.L116:
 1127:Src/util.c    ****     }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 58
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 58
 
 
  1754              		.loc 1 1127 7 is_stmt 1 view .LVU465
@@ -3478,7 +3478,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1803              	.LFB89:
 1294:Src/util.c    **** #endif
 1295:Src/util.c    **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 59
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 59
 
 
 1296:Src/util.c    **** /*
@@ -3538,7 +3538,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1345:Src/util.c    ****     if (backwardDrive && (main_loop_counter % 50 == 0)) {
 1346:Src/util.c    ****       *leds ^= LED5_SET;
 1347:Src/util.c    ****     }
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 60
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 60
 
 
 1348:Src/util.c    **** 
@@ -3598,7 +3598,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1814              		.section	.text.sideboardSensors,"ax",%progbits
  1815              		.align	1
  1816              		.global	sideboardSensors
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 61
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 61
 
 
  1817              		.syntax unified
@@ -3658,7 +3658,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1441:Src/util.c    ****           ctrlModReqRaw         = SPD_MODE;
 1442:Src/util.c    ****           break;
 1443:Src/util.c    ****         case 2:     // FOC TORQUE
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 62
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 62
 
 
 1444:Src/util.c    ****           rtP_Left.z_ctrlTypSel = rtP_Right.z_ctrlTypSel = FOC_CTRL;
@@ -3718,7 +3718,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1829              		.loc 1 1497 1 view .LVU476
  1830 0000 7047     		bx	lr
  1831              		.cfi_endproc
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 63
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 63
 
 
  1832              	.LFE90:
@@ -3778,7 +3778,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1517:Src/util.c    ****       #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
 1518:Src/util.c    ****         printf("Saving configuration to EEprom\r\n");
 1519:Src/util.c    ****       #endif
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 64
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 64
 
 
 1520:Src/util.c    **** 
@@ -3838,7 +3838,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1907 003e FFF7FEFF 		bl	HAL_FLASH_Lock
  1908              	.LVL114:
  1909              	.L127:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 65
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 65
 
 
 1536:Src/util.c    ****     }
@@ -3898,7 +3898,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  1948 0076 36F81300 		ldrh	r0, [r6, r3, lsl #1]
  1949 007a FFF7FEFF 		bl	EE_WriteVariable
  1950              	.LVL118:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 66
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 66
 
 
 1529:Src/util.c    ****         EE_WriteVariable(VirtAddVarTab[ 7+8*i] , (uint16_t)input2[i].typ);
@@ -3958,7 +3958,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1532:Src/util.c    ****         EE_WriteVariable(VirtAddVarTab[10+8*i] , (uint16_t)input2[i].max);
  1990              		.loc 1 1532 9 discriminator 3 view .LVU525
  1991 00c2 89B2     		uxth	r1, r1
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 67
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 67
 
 
  1992 00c4 36F81300 		ldrh	r0, [r6, r3, lsl #1]
@@ -4018,7 +4018,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2038              	.LCFI15:
  2039              		.cfi_def_cfa_offset 8
  2040              		.cfi_offset 4, -8
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 68
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 68
 
 
  2041              		.cfi_offset 14, -4
@@ -4078,7 +4078,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1552:Src/util.c    ****   saveConfig();
  2081              		.loc 1 1552 3 is_stmt 1 view .LVU550
  2082 0022 FFF7FEFF 		bl	saveConfig
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 69
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 69
 
 
  2083              	.LVL129:
@@ -4138,7 +4138,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1576:Src/util.c    ****         } else {                                          // Long press: Calibrate ADC Limits
 1577:Src/util.c    ****           #ifdef AUTO_CALIBRATION_ENA
 1578:Src/util.c    ****           beepLong(16); 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 70
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 70
 
 
 1579:Src/util.c    ****           adcCalibLim();
@@ -4198,7 +4198,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1633:Src/util.c    ****   * Example: 
 1634:Src/util.c    ****   * If coef = 0.8 (in floating point), then coef = 0.8 * 2^16 = 52429 (in fixed-point)
 1635:Src/util.c    ****   * filtLowPass16(u, 52429, &y);
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 71
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 71
 
 
 1636:Src/util.c    ****   * yint = (int16_t)(y >> 16); // the integer output is the fixed-point ouput shifted by 16 bits
@@ -4258,7 +4258,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2164              	.LVL137:
  2165              	.L143:
 1642:Src/util.c    ****   *y = (int32_t)tmp + (*y);
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 72
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 72
 
 
  2166              		.loc 1 1642 3 is_stmt 1 discriminator 4 view .LVU570
@@ -4318,7 +4318,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2216 0010 052B     		cmp	r3, #5
  2217 0012 02DD     		ble	.L160
  2218              	.L147:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 73
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 73
 
 
  604:Src/util.c    ****  /*
@@ -4378,7 +4378,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2257              		.loc 1 522 3 view .LVU594
  523:Src/util.c    ****   uint16_t input_cal_timeout = 0;
  2258              		.loc 1 523 3 view .LVU595
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 74
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 74
 
 
  524:Src/util.c    ****   
@@ -4438,7 +4438,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2297 0072 C3EBC303 		rsb	r3, r3, r3, lsl #3
  536:Src/util.c    ****     
  2298              		.loc 1 536 5 view .LVU612
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 75
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 75
 
 
  2299 0076 6A46     		mov	r2, sp
@@ -4498,7 +4498,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2340              	.LVL151:
  533:Src/util.c    ****     readInputRaw();
  2341              		.loc 1 533 73 is_stmt 0 view .LVU626
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 76
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 76
 
 
  2342 00ac A146     		mov	r9, r4
@@ -4558,7 +4558,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2384 00e6 032B     		cmp	r3, #3
  2385 00e8 01D0     		beq	.L153
  556:Src/util.c    ****     #if defined(DEBUG_SERIAL_USART2) || defined(DEBUG_SERIAL_USART3)
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 77
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 77
 
 
  2386              		.loc 1 556 19 view .LVU639
@@ -4618,7 +4618,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2427 0120 0D4B     		ldr	r3, .L161+8
  2428 0122 03EB4203 		add	r3, r3, r2, lsl #1
  2429 0126 83F80490 		strb	r9, [r3, #4]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 78
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 78
 
 
  581:Src/util.c    ****     input1[inIdx].mid = INPUT1_MID_temp;
@@ -4678,7 +4678,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2468 0164 00080140 		.word	1073809408
  2469 0168 00000000 		.word	.LANCHOR28
  2470              		.cfi_endproc
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 79
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 79
 
 
  2471              	.LFE76:
@@ -4738,7 +4738,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  625:Src/util.c    ****   uint16_t cur_factor;    // fixdt(0,16,16)
  2517              		.loc 1 625 40 is_stmt 0 view .LVU679
  2518 0026 4D4A     		ldr	r2, .L176+12
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 80
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 80
 
 
  2519 0028 32F91130 		ldrsh	r3, [r2, r1, lsl #1]
@@ -4798,7 +4798,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2557              		.loc 1 635 5 view .LVU695
  2558 005a 6A46     		mov	r2, sp
  2559 005c 41F69911 		movw	r1, #6553
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 81
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 81
 
 
  2560 0060 3E48     		ldr	r0, .L176+12
@@ -4858,7 +4858,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2604 00ac 4ADA     		bge	.L173
  639:Src/util.c    ****   spd_factor = CLAMP((input2_fixdt - (input2[inIdx].min << 16)) / (input2[inIdx].max - input2[inIdx
  2605              		.loc 1 639 16 discriminator 1 view .LVU706
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 82
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 82
 
 
  2606 00ae 41F69911 		movw	r1, #6553
@@ -4918,7 +4918,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  644:Src/util.c    ****     cur_spd_valid   = 1;  // Mark update to be saved in Flash at shutdown
  2649              		.loc 1 644 41 view .LVU718
  2650 0100 1213     		asrs	r2, r2, #12
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 83
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 83
 
 
  644:Src/util.c    ****     cur_spd_valid   = 1;  // Mark update to be saved in Flash at shutdown
@@ -4978,7 +4978,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  661:Src/util.c    **** 
  2691              		.loc 1 661 1 view .LVU733
  2692 0140 03B0     		add	sp, sp, #12
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 84
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 84
 
 
  2693              	.LCFI24:
@@ -5038,7 +5038,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2744              		.loc 1 1560 8 is_stmt 0 view .LVU738
  2745 0002 0221     		movs	r1, #2
  2746 0004 2448     		ldr	r0, .L193
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 85
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 85
 
 
  2747 0006 FFF7FEFF 		bl	HAL_GPIO_ReadPin
@@ -5098,7 +5098,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2789 0032 0025     		movs	r5, #0
  2790 0034 ECE7     		b	.L179
  2791              	.LVL185:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 86
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 86
 
 
  2792              	.L191:
@@ -5158,7 +5158,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2831              		.loc 1 1579 11 view .LVU765
  2832 0066 FFF7FEFF 		bl	adcCalibLim
  2833              	.LVL190:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 87
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 87
 
 
 1580:Src/util.c    ****           #endif
@@ -5218,7 +5218,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2882              	rateLimiter16:
  2883              	.LVL197:
  2884              	.LFB95:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 88
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 88
 
 
 1644:Src/util.c    ****   // Old filter
@@ -5278,7 +5278,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  2911              	.LVL200:
  2912              		.loc 1 1671 8 view .LVU786
  2913 0010 09B2     		sxth	r1, r1
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 89
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 89
 
 
  2914              	.LVL201:
@@ -5338,7 +5338,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1687:Src/util.c    ****     int16_t prodSpeed;
  2954              		.loc 1 1687 5 is_stmt 1 view .LVU796
 1688:Src/util.c    ****     int16_t prodSteer;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 90
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 90
 
 
  2955              		.loc 1 1688 5 view .LVU797
@@ -5398,7 +5398,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  3000 0032 1180     		strh	r1, [r2]	@ movhi
 1698:Src/util.c    **** 
 1699:Src/util.c    ****     tmp         = prodSpeed + prodSteer;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 91
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 91
 
 
  3001              		.loc 1 1699 5 is_stmt 1 discriminator 4 view .LVU816
@@ -5458,7 +5458,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  3048 0064 6146     		mov	r1, ip
  3049 0066 E4E7     		b	.L199
  3050              	.LVL215:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 92
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 92
 
 
  3051              	.L204:
@@ -5518,7 +5518,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  3090              		.loc 1 1718 3 view .LVU841
 1719:Src/util.c    ****   uint8_t   z_pulseCntRst;
  3091              		.loc 1 1719 3 view .LVU842
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 93
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 93
 
 
 1720:Src/util.c    ****   uint32_t 	t_time; 
@@ -5578,7 +5578,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  3129              	.L212:
 1737:Src/util.c    ****   }
 1738:Src/util.c    **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 94
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 94
 
 
 1739:Src/util.c    ****   // Create timeout boolean
@@ -5638,7 +5638,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
 1726:Src/util.c    ****   }
  3168              		.loc 1 1726 17 view .LVU874
  3169 004a E0E7     		b	.L210
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 95
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 95
 
 
  3170              	.LVL227:
@@ -5698,7 +5698,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  3210 006e 5071     		strb	r0, [r2, #5]
  3211              	.LVL233:
 1765:Src/util.c    ****   x->t_timePrev 	  = t_time;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 96
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 96
 
 
  3212              		.loc 1 1765 3 is_stmt 1 view .LVU891
@@ -5758,7 +5758,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  3271              		.align	2
  3272              		.set	.LANCHOR27,. + 0
  3275              	commandL_raw:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 97
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 97
 
 
  3276 0000 00000000 		.space	8
@@ -5818,7 +5818,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  3335      00000000 
  3335      00000000 
  3335      00000000 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 98
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 98
 
 
  3336              		.section	.bss.rtP_Right,"aw",%nobits
@@ -5878,7 +5878,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  3384 0000 0000     		.space	2
  3385              		.section	.bss.speedAvgAbs,"aw",%nobits
  3386              		.align	1
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 99
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 99
 
 
  3387              		.set	.LANCHOR12,. + 0
@@ -5938,7 +5938,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  3457 0006 18FC     		.short	-1000
  3458 0008 0000     		.short	0
  3459 000a E803     		.short	1000
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 100
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 100
 
 
  3460 000c 0000     		.short	0
@@ -5985,164 +5985,164 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 1
  3509              		.file 15 "/opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.10/gcc/arm-none-eabi/include/stdio.h"
  3510              		.file 16 "Inc/setup.h"
  3511              		.file 17 "<built-in>"
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 101
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 101
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 util.c
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:18     .text.BLDC_Init:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:24     .text.BLDC_Init:0000000000000000 BLDC_Init
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:134    .text.BLDC_Init:0000000000000084 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:148    .text.Input_Lim_Init:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:154    .text.Input_Lim_Init:0000000000000000 Input_Lim_Init
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:200    .text.Input_Lim_Init:0000000000000034 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:208    .text.UART_DisableRxErrors:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:214    .text.UART_DisableRxErrors:0000000000000000 UART_DisableRxErrors
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:238    .text.poweronMelody:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:244    .text.poweronMelody:0000000000000000 poweronMelody
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:300    .text.poweronMelody:0000000000000024 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:306    .text.beepCount:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:312    .text.beepCount:0000000000000000 beepCount
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:337    .text.beepCount:0000000000000010 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:344    .text.beepLong:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:350    .text.beepLong:0000000000000000 beepLong
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:388    .text.beepLong:0000000000000018 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:394    .text.beepShort:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:400    .text.beepShort:0000000000000000 beepShort
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:438    .text.beepShort:0000000000000018 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:444    .text.beepShortMany:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:450    .text.beepShortMany:0000000000000000 beepShortMany
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:535    .text.calcAvgSpeed:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:541    .text.calcAvgSpeed:0000000000000000 calcAvgSpeed
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:587    .text.calcAvgSpeed:0000000000000030 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:595    .text.standstillHold:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:601    .text.standstillHold:0000000000000000 standstillHold
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:614    .text.electricBrake:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:620    .text.electricBrake:0000000000000000 electricBrake
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:634    .text.cruiseControl:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:640    .text.cruiseControl:0000000000000000 cruiseControl
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:654    .text.checkInputType:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:660    .text.checkInputType:0000000000000000 checkInputType
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:752    .text.checkInputType:0000000000000058 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:757    .rodata.Input_Init.str1.4:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:762    .text.Input_Init:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:768    .text.Input_Init:0000000000000000 Input_Init
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1136   .text.Input_Init:0000000000000220 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1149   .text.calcInputCmd:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1155   .text.calcInputCmd:0000000000000000 calcInputCmd
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1295   .text.readInputRaw:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1301   .text.readInputRaw:0000000000000000 readInputRaw
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1337   .text.readInputRaw:0000000000000028 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1345   .text.handleTimeout:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1351   .text.handleTimeout:0000000000000000 handleTimeout
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1469   .text.handleTimeout:000000000000007c $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1484   .text.readCommand:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1490   .text.readCommand:0000000000000000 readCommand
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1541   .text.readCommand:0000000000000044 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1550   .text.usart3_rx_check:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1556   .text.usart3_rx_check:0000000000000000 usart3_rx_check
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1569   .text.usart_process_command:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1575   .text.usart_process_command:0000000000000000 usart_process_command
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1646   .text.usart_process_command:0000000000000044 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1652   .text.usart2_rx_check:0000000000000000 $t
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 102
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:18     .text.BLDC_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:24     .text.BLDC_Init:0000000000000000 BLDC_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:134    .text.BLDC_Init:0000000000000084 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:148    .text.Input_Lim_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:154    .text.Input_Lim_Init:0000000000000000 Input_Lim_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:200    .text.Input_Lim_Init:0000000000000034 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:208    .text.UART_DisableRxErrors:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:214    .text.UART_DisableRxErrors:0000000000000000 UART_DisableRxErrors
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:238    .text.poweronMelody:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:244    .text.poweronMelody:0000000000000000 poweronMelody
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:300    .text.poweronMelody:0000000000000024 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:306    .text.beepCount:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:312    .text.beepCount:0000000000000000 beepCount
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:337    .text.beepCount:0000000000000010 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:344    .text.beepLong:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:350    .text.beepLong:0000000000000000 beepLong
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:388    .text.beepLong:0000000000000018 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:394    .text.beepShort:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:400    .text.beepShort:0000000000000000 beepShort
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:438    .text.beepShort:0000000000000018 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:444    .text.beepShortMany:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:450    .text.beepShortMany:0000000000000000 beepShortMany
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:535    .text.calcAvgSpeed:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:541    .text.calcAvgSpeed:0000000000000000 calcAvgSpeed
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:587    .text.calcAvgSpeed:0000000000000030 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:595    .text.standstillHold:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:601    .text.standstillHold:0000000000000000 standstillHold
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:614    .text.electricBrake:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:620    .text.electricBrake:0000000000000000 electricBrake
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:634    .text.cruiseControl:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:640    .text.cruiseControl:0000000000000000 cruiseControl
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:654    .text.checkInputType:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:660    .text.checkInputType:0000000000000000 checkInputType
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:752    .text.checkInputType:0000000000000058 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:757    .rodata.Input_Init.str1.4:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:762    .text.Input_Init:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:768    .text.Input_Init:0000000000000000 Input_Init
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1136   .text.Input_Init:0000000000000220 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1149   .text.calcInputCmd:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1155   .text.calcInputCmd:0000000000000000 calcInputCmd
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1295   .text.readInputRaw:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1301   .text.readInputRaw:0000000000000000 readInputRaw
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1337   .text.readInputRaw:0000000000000028 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1345   .text.handleTimeout:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1351   .text.handleTimeout:0000000000000000 handleTimeout
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1469   .text.handleTimeout:000000000000007c $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1484   .text.readCommand:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1490   .text.readCommand:0000000000000000 readCommand
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1541   .text.readCommand:0000000000000044 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1550   .text.usart3_rx_check:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1556   .text.usart3_rx_check:0000000000000000 usart3_rx_check
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1569   .text.usart_process_command:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1575   .text.usart_process_command:0000000000000000 usart_process_command
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1646   .text.usart_process_command:0000000000000044 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1652   .text.usart2_rx_check:0000000000000000 $t
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 102
 
 
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1658   .text.usart2_rx_check:0000000000000000 usart2_rx_check
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1786   .text.usart2_rx_check:0000000000000080 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1795   .text.sideboardLeds:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1801   .text.sideboardLeds:0000000000000000 sideboardLeds
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1815   .text.sideboardSensors:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1821   .text.sideboardSensors:0000000000000000 sideboardSensors
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1835   .text.saveConfig:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:1841   .text.saveConfig:0000000000000000 saveConfig
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2014   .text.saveConfig:00000000000000e4 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2025   .text.poweroff:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2031   .text.poweroff:0000000000000000 poweroff
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2098   .text.poweroff:0000000000000034 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2107   .text.filtLowPass32:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2113   .text.filtLowPass32:0000000000000000 filtLowPass32
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2181   .text.adcCalibLim:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2187   .text.adcCalibLim:0000000000000000 adcCalibLim
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2463   .text.adcCalibLim:0000000000000150 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2474   .text.updateCurSpdLim:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2480   .text.updateCurSpdLim:0000000000000000 updateCurSpdLim
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2712   .text.updateCurSpdLim:0000000000000150 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2724   .text.poweroffPressCheck:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2730   .text.poweroffPressCheck:0000000000000000 poweroffPressCheck
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2869   .text.poweroffPressCheck:0000000000000098 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2876   .text.rateLimiter16:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2882   .text.rateLimiter16:0000000000000000 rateLimiter16
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2935   .text.mixerFcn:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:2941   .text.mixerFcn:0000000000000000 mixerFcn
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3060   .text.mixerFcn:0000000000000070 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3067   .text.multipleTapDet:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3073   .text.multipleTapDet:0000000000000000 multipleTapDet
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3415   .data.VirtAddVarTab:0000000000000000 VirtAddVarTab
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3439   .data.ctrlModReq:0000000000000000 ctrlModReq
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3445   .data.ctrlModReqRaw:0000000000000000 ctrlModReqRaw
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3402   .bss.timeoutFlgSerial:0000000000000000 timeoutFlgSerial
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3396   .bss.timeoutFlgADC:0000000000000000 timeoutFlgADC
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3390   .bss.speedAvgAbs:0000000000000000 speedAvgAbs
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3383   .bss.speedAvg:0000000000000000 speedAvg
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3466   .data.input2:0000000000000000 input2
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3452   .data.input1:0000000000000000 input1
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3293   .bss.inIdx_prev:0000000000000000 inIdx_prev
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3287   .bss.inIdx:0000000000000000 inIdx
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3369   .bss.rtY_Right:0000000000000000 rtY_Right
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3355   .bss.rtU_Right:0000000000000000 rtU_Right
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3320   .bss.rtDW_Right:0000000000000000 rtDW_Right
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3341   .bss.rtP_Right:0000000000000000 rtP_Right
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3362   .bss.rtY_Left:0000000000000000 rtY_Left
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3348   .bss.rtU_Left:0000000000000000 rtU_Left
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3313   .bss.rtDW_Left:0000000000000000 rtDW_Left
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3492   .rodata.rtM_Right:0000000000000000 rtM_Right
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3486   .rodata.rtM_Left:0000000000000000 rtM_Left
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3334   .bss.rtM_Right_:0000000000000000 rtM_Right_
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3327   .bss.rtM_Left_:0000000000000000 rtM_Left_
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3250   .bss.INPUT_MAX:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3254   .bss.INPUT_MAX:0000000000000000 INPUT_MAX
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3257   .bss.INPUT_MIN:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3261   .bss.INPUT_MIN:0000000000000000 INPUT_MIN
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3264   .bss.commandL:0000000000000000 $d
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 103
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1658   .text.usart2_rx_check:0000000000000000 usart2_rx_check
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1786   .text.usart2_rx_check:0000000000000080 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1795   .text.sideboardLeds:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1801   .text.sideboardLeds:0000000000000000 sideboardLeds
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1815   .text.sideboardSensors:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1821   .text.sideboardSensors:0000000000000000 sideboardSensors
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1835   .text.saveConfig:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:1841   .text.saveConfig:0000000000000000 saveConfig
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2014   .text.saveConfig:00000000000000e4 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2025   .text.poweroff:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2031   .text.poweroff:0000000000000000 poweroff
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2098   .text.poweroff:0000000000000034 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2107   .text.filtLowPass32:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2113   .text.filtLowPass32:0000000000000000 filtLowPass32
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2181   .text.adcCalibLim:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2187   .text.adcCalibLim:0000000000000000 adcCalibLim
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2463   .text.adcCalibLim:0000000000000150 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2474   .text.updateCurSpdLim:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2480   .text.updateCurSpdLim:0000000000000000 updateCurSpdLim
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2712   .text.updateCurSpdLim:0000000000000150 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2724   .text.poweroffPressCheck:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2730   .text.poweroffPressCheck:0000000000000000 poweroffPressCheck
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2869   .text.poweroffPressCheck:0000000000000098 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2876   .text.rateLimiter16:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2882   .text.rateLimiter16:0000000000000000 rateLimiter16
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2935   .text.mixerFcn:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:2941   .text.mixerFcn:0000000000000000 mixerFcn
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3060   .text.mixerFcn:0000000000000070 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3067   .text.multipleTapDet:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3073   .text.multipleTapDet:0000000000000000 multipleTapDet
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3415   .data.VirtAddVarTab:0000000000000000 VirtAddVarTab
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3439   .data.ctrlModReq:0000000000000000 ctrlModReq
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3445   .data.ctrlModReqRaw:0000000000000000 ctrlModReqRaw
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3402   .bss.timeoutFlgSerial:0000000000000000 timeoutFlgSerial
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3396   .bss.timeoutFlgADC:0000000000000000 timeoutFlgADC
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3390   .bss.speedAvgAbs:0000000000000000 speedAvgAbs
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3383   .bss.speedAvg:0000000000000000 speedAvg
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3466   .data.input2:0000000000000000 input2
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3452   .data.input1:0000000000000000 input1
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3293   .bss.inIdx_prev:0000000000000000 inIdx_prev
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3287   .bss.inIdx:0000000000000000 inIdx
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3369   .bss.rtY_Right:0000000000000000 rtY_Right
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3355   .bss.rtU_Right:0000000000000000 rtU_Right
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3320   .bss.rtDW_Right:0000000000000000 rtDW_Right
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3341   .bss.rtP_Right:0000000000000000 rtP_Right
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3362   .bss.rtY_Left:0000000000000000 rtY_Left
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3348   .bss.rtU_Left:0000000000000000 rtU_Left
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3313   .bss.rtDW_Left:0000000000000000 rtDW_Left
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3492   .rodata.rtM_Right:0000000000000000 rtM_Right
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3486   .rodata.rtM_Left:0000000000000000 rtM_Left
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3334   .bss.rtM_Right_:0000000000000000 rtM_Right_
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3327   .bss.rtM_Left_:0000000000000000 rtM_Left_
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3250   .bss.INPUT_MAX:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3254   .bss.INPUT_MAX:0000000000000000 INPUT_MAX
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3257   .bss.INPUT_MIN:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3261   .bss.INPUT_MIN:0000000000000000 INPUT_MIN
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3264   .bss.commandL:0000000000000000 $d
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 103
 
 
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3268   .bss.commandL:0000000000000000 commandL
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3271   .bss.commandL_raw:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3275   .bss.commandL_raw:0000000000000000 commandL_raw
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3281   .bss.cur_spd_valid:0000000000000000 cur_spd_valid
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3282   .bss.cur_spd_valid:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3288   .bss.inIdx:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3294   .bss.inIdx_prev:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3299   .bss.inp_cal_valid:0000000000000000 inp_cal_valid
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3300   .bss.inp_cal_valid:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3302   .bss.old_pos.0:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3306   .bss.old_pos.0:0000000000000000 old_pos.0
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3309   .bss.rtDW_Left:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3316   .bss.rtDW_Right:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3323   .bss.rtM_Left_:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3330   .bss.rtM_Right_:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3337   .bss.rtP_Right:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3344   .bss.rtU_Left:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3351   .bss.rtU_Right:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3358   .bss.rtY_Left:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3365   .bss.rtY_Right:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3372   .bss.rx_buffer_L:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3376   .bss.rx_buffer_L:0000000000000000 rx_buffer_L
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3379   .bss.speedAvg:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3386   .bss.speedAvgAbs:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3397   .bss.timeoutFlgADC:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3403   .bss.timeoutFlgSerial:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3408   .bss.timeoutFlgSerial_L:0000000000000000 timeoutFlgSerial_L
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3409   .bss.timeoutFlgSerial_L:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3411   .data.VirtAddVarTab:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3448   .data.input1:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3462   .data.input2:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3476   .data.timeoutCntSerial_L:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3480   .data.timeoutCntSerial_L:0000000000000000 timeoutCntSerial_L
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3483   .rodata.rtM_Left:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s:3489   .rodata.rtM_Right:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3268   .bss.commandL:0000000000000000 commandL
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3271   .bss.commandL_raw:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3275   .bss.commandL_raw:0000000000000000 commandL_raw
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3281   .bss.cur_spd_valid:0000000000000000 cur_spd_valid
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3282   .bss.cur_spd_valid:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3288   .bss.inIdx:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3294   .bss.inIdx_prev:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3299   .bss.inp_cal_valid:0000000000000000 inp_cal_valid
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3300   .bss.inp_cal_valid:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3302   .bss.old_pos.0:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3306   .bss.old_pos.0:0000000000000000 old_pos.0
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3309   .bss.rtDW_Left:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3316   .bss.rtDW_Right:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3323   .bss.rtM_Left_:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3330   .bss.rtM_Right_:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3337   .bss.rtP_Right:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3344   .bss.rtU_Left:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3351   .bss.rtU_Right:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3358   .bss.rtY_Left:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3365   .bss.rtY_Right:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3372   .bss.rx_buffer_L:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3376   .bss.rx_buffer_L:0000000000000000 rx_buffer_L
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3379   .bss.speedAvg:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3386   .bss.speedAvgAbs:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3397   .bss.timeoutFlgADC:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3403   .bss.timeoutFlgSerial:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3408   .bss.timeoutFlgSerial_L:0000000000000000 timeoutFlgSerial_L
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3409   .bss.timeoutFlgSerial_L:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3411   .data.VirtAddVarTab:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3448   .data.input1:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3462   .data.input2:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3476   .data.timeoutCntSerial_L:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3480   .data.timeoutCntSerial_L:0000000000000000 timeoutCntSerial_L
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3483   .rodata.rtM_Left:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s:3489   .rodata.rtM_Right:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 memcpy
@@ -6165,6 +6165,6 @@ EE_WriteVariable
 HAL_GPIO_WritePin
 enable
 HAL_GPIO_ReadPin
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc5GyBBm.s 			page 104
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccbQOeYf.s 			page 104
 
 

@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
   29:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
   30:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
   31:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 2
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 2
 
 
   32:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
   86:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****                 ##### Extended Peripheral Control functions  #####
   87:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****  ===============================================================================  
   88:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     [..]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 3
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 3
 
 
   89:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     This subsection provides a set of functions allowing to control the RCC Clocks 
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  125:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   /* Check the parameters */
  126:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   assert_param(IS_RCC_PERIPHCLOCK(PeriphClkInit->PeriphClockSelection));
   46              		.loc 1 126 3 view .LVU3
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 4
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 4
 
 
  127:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
   85              	.L3:
  143:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     }
  144:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 5
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 5
 
 
  145:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     if(HAL_IS_BIT_CLR(PWR->CR, PWR_CR_DBP))
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  117              	.LVL8:
  118              		.loc 1 167 16 view .LVU33
  119 0050 23F44070 		bic	r0, r3, #768
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 6
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 6
 
 
  120              	.LVL9:
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  148              	.LVL11:
  149              	.L2:
  150              		.loc 1 193 7 view .LVU43
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 7
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 7
 
 
  151              	.LBE2:
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  232:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   if (HAL_IS_BIT_SET(RCC->CFGR2, RCC_CFGR2_I2S2SRC) || HAL_IS_BIT_SET(RCC->CFGR2, RCC_CFGR2_I2S3SRC
  233:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   {
  234:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     /* Update flag to indicate that PLL I2S should be active */
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 8
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 8
 
 
  235:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****     pllactive = 1;
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  289:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****  || defined(STM32F103xB) || defined(STM32F103xE) || defined(STM32F103xG)\
  290:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****  || defined(STM32F105xC) || defined(STM32F107xC)
  291:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   /*------------------------------ USB clock Configuration ------------------*/ 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 9
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 9
 
 
  292:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   if(((PeriphClkInit->PeriphClockSelection) & RCC_PERIPHCLK_USB) == RCC_PERIPHCLK_USB)
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  204              		.loc 1 153 7 is_stmt 1 view .LVU60
  205              	.L5:
  153:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       {
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 10
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 10
 
 
  206              		.loc 1 153 12 view .LVU61
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  244              		.loc 1 183 15 is_stmt 0 view .LVU77
  245 00e8 FFF7FEFF 		bl	HAL_GetTick
  246              	.LVL20:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 11
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 11
 
 
  183:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****           {
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  304:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** 
  305:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** /**
  306:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * @brief  Get the PeriphClkInit according to the internal
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 12
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 12
 
 
  307:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   * RCC configuration registers.
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  329:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   /* Get the I2S2 clock configuration -----------------------------------------*/
  330:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   PeriphClkInit->PeriphClockSelection |= RCC_PERIPHCLK_I2S2;
  331:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   PeriphClkInit->I2s2ClockSelection = __HAL_RCC_GET_I2S2_SOURCE();
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 13
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 13
 
 
  332:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** 
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  357 0036 00BF     		.align	2
  358              	.L23:
  359 0038 00100240 		.word	1073876992
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 14
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 14
 
 
  360              		.cfi_endproc
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  393:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   *            @arg @ref RCC_PERIPHCLK_I2S3 I2S3 peripheral clock
  394:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   *            @arg @ref RCC_PERIPHCLK_I2S2 I2S2 peripheral clock
  395:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   *            @arg @ref RCC_PERIPHCLK_USB  USB peripheral clock
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 15
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 15
 
 
  396:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   @endif
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  422:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** 
  423:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   /* Check the parameters */
  424:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****   assert_param(IS_RCC_PERIPHCLOCK(PeriphClk));
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 16
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 16
 
 
  406              		.loc 1 424 3 view .LVU124
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  445              		.loc 1 439 36 view .LVU133
  446 0046 1833     		adds	r3, r3, #24
  447 0048 6B44     		add	r3, sp, r3
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 17
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 17
 
 
  448 004a 13F8100C 		ldrb	r0, [r3, #-16]	@ zero_extendqisi2
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  467              		.loc 1 474 44 is_stmt 0 view .LVU142
  468 0064 294B     		ldr	r3, .L44+8
  469 0066 B3FBF2F3 		udiv	r3, r3, r2
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 18
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 18
 
 
  470              		.loc 1 474 20 view .LVU143
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  491 0082 36E0     		b	.L25
  492              	.LVL36:
  493              	.L33:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 19
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 19
 
 
  481:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****         }
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  542:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** #if defined(STM32F103xE) || defined(STM32F103xG)
  543:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       /* SYSCLK used as source clock for I2S3 */
  544:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       frequency = HAL_RCC_GetSysClockFreq();
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 20
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 20
 
 
  511              		.loc 1 544 7 view .LVU157
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  532              		.loc 1 577 27 is_stmt 0 view .LVU166
  533 00a8 03F44073 		and	r3, r3, #768
  534              	.LVL44:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 21
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 21
 
 
  535              		.loc 1 577 15 view .LVU167
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  594:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c ****       frequency = HAL_RCC_GetPCLK2Freq() / (((__HAL_RCC_GET_ADC_SOURCE() >> RCC_CFGR_ADCPRE_Pos) + 
  568              		.loc 1 594 7 is_stmt 1 view .LVU177
  569              		.loc 1 594 19 is_stmt 0 view .LVU178
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 22
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 22
 
 
  570 00da FFF7FEFF 		bl	HAL_RCC_GetPCLK2Freq
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  611              		.loc 1 602 3 is_stmt 1 view .LVU189
  602:Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c **** }
  612              		.loc 1 602 9 is_stmt 0 view .LVU190
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 23
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 23
 
 
  613 0102 F6E7     		b	.L25
@@ -1342,23 +1342,23 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 1
  632              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h"
  633              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h"
  634              		.file 9 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s 			page 24
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f1xx_hal_rcc_ex.c
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:18     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:24     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 HAL_RCCEx_PeriphCLKConfig
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:281    .text.HAL_RCCEx_PeriphCLKConfig:000000000000010c $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:288    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:294    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 HAL_RCCEx_GetPeriphCLKConfig
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:359    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000038 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:364    .rodata.HAL_RCCEx_GetPeriphCLKFreq.str1.4:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:369    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:375    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 HAL_RCCEx_GetPeriphCLKFreq
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:413    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000026 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:429    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000036 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccNAsbxq.s:617    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000104 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:18     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:24     .text.HAL_RCCEx_PeriphCLKConfig:0000000000000000 HAL_RCCEx_PeriphCLKConfig
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:281    .text.HAL_RCCEx_PeriphCLKConfig:000000000000010c $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:288    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:294    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000000 HAL_RCCEx_GetPeriphCLKConfig
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:359    .text.HAL_RCCEx_GetPeriphCLKConfig:0000000000000038 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:364    .rodata.HAL_RCCEx_GetPeriphCLKFreq.str1.4:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:369    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:375    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000000 HAL_RCCEx_GetPeriphCLKFreq
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:413    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000026 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:429    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000036 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccRAgHTA.s:617    .text.HAL_RCCEx_GetPeriphCLKFreq:0000000000000104 $d
 
 UNDEFINED SYMBOLS
 HAL_GetTick

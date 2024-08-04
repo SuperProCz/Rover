@@ -6,10 +6,24 @@ import time
 import multiprocessing
 import configparser
 
-HOST = "10.254.180.127"
+HOST = "10.42.0.1"
+HOSTNAME = socket.gethostname()
+#HOST = socket.gethostbyname(HOSTNAME)
 PORT = 1532
 
+print(HOST)
+print(HOSTNAME)
 PERCENTAGE_STEP = 0.1
+
+WANTED_SPEED = 0
+WANTED_STEER = 0
+
+CURRENT_SPEED = 0
+CURRENT_STEER = 0
+
+
+SPEED_VALUES = ()
+STEER_VALUES = ()
 
 config = configparser.ConfigParser()
 interfaces = []
@@ -24,14 +38,20 @@ def loadConfig():
 
     GRADUAL_ACCELERATION = config.getboolean('Settings', 'gradualacceleration')
     PERCENTAGE_STEP = config.getfloat('Settings', 'percentagestep')
+
     boards = config.items('Boards')
     for board in boards:
         print(board[1])
         settings = eval(board[1])
         SERIAL_PORT = settings['UartInterface']
         SERIAL_BAUD = int(settings['BaudRate'])
-        SPEED_VALUES = tuple(settings['SpeedValues'])
-        STEER_VALUES = tuple(settings['SteerValues'])
+        if config.getboolean("Settings", 'unitedspeed'):
+            speed = config.getint('Settings', 'speed')
+            SPEED_VALUES = (speed, 0, -speed)
+            STEER_VALUES = (speed, 0, -speed)
+        else:    
+            SPEED_VALUES = tuple(settings['SpeedValues'])
+            STEER_VALUES = tuple(settings['SteerValues'])
         hover_serial = Hoverboard_serial(SERIAL_PORT, SERIAL_BAUD)
 
         interface = USARTInterface(0, 0, hover_serial, SPEED_VALUES, STEER_VALUES)
@@ -62,13 +82,16 @@ def createConfig():
     }
     config['Settings'] = {
         "GradualAcceleration": True,
-        "PercentageStep": 0.1
+        "PercentageStep": 0.1,
+        "UnitedSpeed": False,
+        "Speed": 1000
     }
 
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
 
 class USARTInterface:
+    global WANTED_SPEED, WANTED_STEER, CURRENT_SPEED, CURRENT_STEER
     VALID_INPUT = ('steer', 'speed')
     #SPEED_MAX, SPEED_MIDDLE, SPEED_MIN = (1000, 0, -1000)
     #STEER_MAX, STEER_MIDDLE, STEER_MIN = (1000, 0, -1000)
@@ -81,14 +104,25 @@ class USARTInterface:
         self.speedValues = speedValues
         self.steerValues = steerValues
     
+    def changeSpeedValues(self, newValues):
+        self.speedValues = newValues
+
+    def changeSteerValues(self, newValues):
+        self.steerValues = newValues
+
+
     def getBoard(self):
         return self.board
     
     def setSpeed(self, newSpeed: int):
+        global CURRENT_SPEED
+        CURRENT_SPEED = newSpeed
         self.speed = newSpeed
         self.update()
         
     def setSteer(self, newSteer: int):
+        global CURRENT_STEER
+        CURRENT_STEER = newSteer
         self.steer = newSteer
         self.update()
 
@@ -111,36 +145,39 @@ class USARTInterface:
         return self.steer
 
     def setMinimumValue(self, value: str):
+        global WANTED_SPEED, WANTED_STEER
         if not value in self.VALID_INPUT:
             raise ValueError("Invalid value to change, only accepted values are: " + self.VALID_INPUT)
         if value == "steer":
-            self.setTargetSteer(self.steerValues[2])
+            WANTED_STEER = self.steerValues[2]
         elif value == "speed":
-            self.setTargetSpeed(self.speedValues[2])
+            WANTED_SPEED = self.speedValues[2]
         else:
             print("huh? this wasn't supposed to happen")
         #print("Value changed")
         #self.update()
 
     def setMiddleValue(self, value: str):
+        global WANTED_SPEED, WANTED_STEER
         if not value in self.VALID_INPUT:
             raise ValueError("Invalid value to change, only accepted values are: " + self.VALID_INPUT)
         if value == "steer":
-            self.setTargetSteer(self.steerValues[1])
+            WANTED_STEER = self.steerValues[1]
         elif value == "speed":
-            self.setTargetSpeed(self.speedValues[1])
+            WANTED_SPEED = self.speedValues[1]
         else:
             print("huh? this wasn't supposed to happen")
         #print("Value changed")
         #self.update()
 
     def setMaximumValue(self, value: str):
+        global WANTED_SPEED, WANTED_STEER
         if not value in self.VALID_INPUT:
             raise ValueError("Invalid value to change, only accepted values are: " + self.VALID_INPUT)
         if value == "steer":
-            self.setTargetSteer(self.steerValues[0])
+            WANTED_STEER = self.steerValues[0]
         elif value == "speed":
-            self.setTargetSpeed(self.speedValues[0])
+            WANTED_SPEED = self.speedValues[0]
         else:
             print("huh? this wasn't supposed to happen")
         #print("Value changed")
@@ -148,8 +185,8 @@ class USARTInterface:
 
     
     def update(self):
-        currentSpeed = self.getSpeed()
-        currentSteer = self.getSteer()
+        currentSpeed = CURRENT_SPEED
+        currentSteer = CURRENT_STEER
 
         self.getBoard().send_command(currentSteer, currentSpeed)
         #print('Sending:\t steer: '+str(currentSteer)+'speed: '+str(currentSpeed))
@@ -161,7 +198,7 @@ def usartFeedback():
             feedback = interface.getBoard().receive_feedback()
 
             if feedback == None:
-                print("Continuing")
+                #print("Continuing")
                 continue
                 
             if showFeedback:
@@ -182,39 +219,39 @@ def usartSending():
                 interface.setSteer(0)
                 interface.update()
             break
-        for interface in interfaces:
-            if GRADUAL_ACCELERATION:
-                currentSpeed = interface.getSpeed()
-                currentSteer = interface.getSteer()
+        if GRADUAL_ACCELERATION:
+            currentSpeed = CURRENT_SPEED
+            currentSteer = CURRENT_STEER
 
-                wantedSpeed = interface.getTargetSpeed()
-                wantedSteer = interface.getTargetSteer()
-                #print(f"Current steer: {currentSteer}, wantedSteer: {wantedSteer}")
-                #print(f"Current speed: {currentSpeed}, wantedSpeed: {wantedSpeed}")
-                #Don't touch those for loops, I don't know why it works, but it does.
-    #              0              1000
-                if currentSpeed < wantedSpeed and changeSpeed <= 0:
-                    changeSpeed = -((currentSpeed-wantedSpeed))* PERCENTAGE_STEP
+            wantedSpeed = WANTED_SPEED
+            wantedSteer = WANTED_STEER
+            #print(f"Current steer: {currentSteer}, wantedSteer: {wantedSteer}")
+            #print(f"Current speed: {currentSpeed}, wantedSpeed: {wantedSpeed}")
+            #Don't touch those for loops, I don't know why it works, but it does.
+#              0              1000
+            if currentSpeed < wantedSpeed and changeSpeed <= 0:
+                changeSpeed = -((currentSpeed-wantedSpeed))* PERCENTAGE_STEP
 
-    #                1000            0
-                elif currentSpeed > wantedSpeed and changeSpeed >= 0:
-                    changeSpeed = ((wantedSpeed-currentSpeed) * PERCENTAGE_STEP)
-                        
-                elif currentSpeed == wantedSpeed:
-                    changeSpeed = 0
+#                1000            0
+            elif currentSpeed > wantedSpeed and changeSpeed >= 0:
+                changeSpeed = ((wantedSpeed-currentSpeed) * PERCENTAGE_STEP)
+                    
+            elif currentSpeed == wantedSpeed:
+                changeSpeed = 0
 
-                if currentSteer < wantedSteer and changeSteer <= 0:
-                    changeSteer = -((currentSteer-wantedSteer))* PERCENTAGE_STEP
+            if currentSteer < wantedSteer and changeSteer <= 0:
+                changeSteer = -((currentSteer-wantedSteer))* PERCENTAGE_STEP
 
 
-                elif currentSteer > wantedSteer and changeSteer >= 0:
-                    changeSteer = ((wantedSteer-currentSteer) * PERCENTAGE_STEP)
+            elif currentSteer > wantedSteer and changeSteer >= 0:
+                changeSteer = ((wantedSteer-currentSteer) * PERCENTAGE_STEP)
 
-                elif currentSteer == wantedSteer:
-                    changeSteer = 0
-                wantedSpeed = interface.getTargetSpeed()
-                wantedSteer = interface.getTargetSteer()
+            elif currentSteer == wantedSteer:
+                changeSteer = 0
+            wantedSpeed = WANTED_SPEED
+            wantedSteer = WANTED_STEER
 
+            for interface in interfaces:
                 interface.setSpeed(round(currentSpeed + changeSpeed))
                 interface.setSteer(round(currentSteer + changeSteer))
 
@@ -223,15 +260,17 @@ def usartSending():
 
                 if abs(wantedSteer - interface.getSteer()) < 50:
                     interface.setSteer(wantedSteer)
-            else:
-                interface.setSteer(interface.getTargetSteer())
-                interface.setSpeed(interface.getTargetSpeed())
-            #print("UPDATED")
+        else:
+            for interface in interfaces:
+                interface.setSteer(WANTED_STEER)
+                interface.setSpeed(WANTED_SPEED)
+        #print("UPDATED")
+        for interface in interfaces:
             interface.update()
-            time.sleep(TIME_SEND)
+        time.sleep(TIME_SEND)
 
 def listen(conn, addr):
-    global connected, showFeedback, estopped
+    global connected, showFeedback, estopped, SPEED_VALUES, STEER_VALUES
     with conn:
         while True:
             data = conn.recv(1024)
@@ -241,6 +280,7 @@ def listen(conn, addr):
                 return
             decodedData = data.decode().split(" ")
             cmdId = int(decodedData[0])
+            #print(decodedData)
             if cmdId == 0:
                 if decodedData[1] == "1":
                     for interface in interfaces:
@@ -267,6 +307,13 @@ def listen(conn, addr):
 
             elif cmdId == 2:
                 estopped = True
+            
+            elif cmdId == 3:
+                newSpeed = int(decodedData[1])
+                newValues = (newSpeed, 0, -newSpeed)
+                for interface in interfaces:
+                    interface.changeSpeedValues(newValues)
+                    interface.changeSteerValues(newValues)
 
             else:
                 raise ValueError(f"Invalid cmdId {cmdId}!!")
