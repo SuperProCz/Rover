@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
   30:Src/bldc.c    **** 
   31:Src/bldc.c    **** // Matlab includes and defines - from auto-code generation
   32:Src/bldc.c    **** // ###############################################################################
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 2
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 2
 
 
   33:Src/bldc.c    **** #include "BLDC_controller.h"           /* Model's header file */
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
   87:Src/bldc.c    **** void DMA1_Channel1_IRQHandler(void) {
   27              		.loc 1 87 37 view -0
   28              		.cfi_startproc
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 3
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 3
 
 
   29              		@ args = 0, pretend = 0, frame = 0
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  108:Src/bldc.c    **** 
  109:Src/bldc.c    ****   // Get Left motor currents
  110:Src/bldc.c    ****   curL_phaA = (int16_t)(offsetrlA - adc_buffer.rlA);
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 4
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 4
 
 
   62              		.loc 1 110 3 is_stmt 1 view .LVU10
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  110              		.loc 1 116 47 is_stmt 0 view .LVU28
  111 006a 5989     		ldrh	r1, [r3, #10]
  112 006c 88B2     		uxth	r0, r1
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 5
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 5
 
 
  113              		.loc 1 116 35 view .LVU29
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  127:Src/bldc.c    ****   if(ABS(curR_DC)  > curDC_max || enable == 0) {
  157              		.loc 1 127 3 is_stmt 1 view .LVU43
  158              		.loc 1 127 6 is_stmt 0 view .LVU44
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 6
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 6
 
 
  159 00ac 002B     		cmp	r3, #0
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  205 00f4 B3FBF1F0 		udiv	r0, r3, r1
  206 00f8 01FB1033 		mls	r3, r1, r0, r3
  207              		.loc 1 135 23 discriminator 1 view .LVU58
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 7
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 7
 
 
  208 00fc 002B     		cmp	r3, #0
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  255 013e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  256              		.loc 1 142 39 discriminator 1 view .LVU75
  257 0140 9A42     		cmp	r2, r3
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 8
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 8
 
 
  258 0142 01D9     		bls	.L14
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
   96:Src/bldc.c    ****     offsetrrB = (adc_buffer.rrB + offsetrrB) / 2;
  301              		.loc 1 96 46 view .LVU88
  302 017a 03EBD373 		add	r3, r3, r3, lsr #31
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 9
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 9
 
 
  303 017e 5B10     		asrs	r3, r3, #1
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  342 01ba 5B10     		asrs	r3, r3, #1
   99:Src/bldc.c    ****     offsetdcr = (adc_buffer.dcr + offsetdcr) / 2;
  343              		.loc 1 99 15 view .LVU104
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 10
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 10
 
 
  344 01bc 0380     		strh	r3, [r0]	@ movhi
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  124:Src/bldc.c    ****   }
  385              		.loc 1 124 20 is_stmt 0 view .LVU118
  386 01f0 2F49     		ldr	r1, .L46+72
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 11
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 11
 
 
  387 01f2 4A6C     		ldr	r2, [r1, #68]
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  161:Src/bldc.c    ****   static boolean_T OverrunFlag = false;
  422              		.loc 1 161 3 view .LVU131
  162:Src/bldc.c    **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 12
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 12
 
 
  163:Src/bldc.c    ****   /* Check for overrun */
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  466 0258 1A4B     		ldr	r3, .L46+92
  467 025a 0022     		movs	r2, #0
  468 025c 1A70     		strb	r2, [r3]
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 13
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 13
 
 
  469 025e D6E7     		b	.L13
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  521 02f6 1A70     		strb	r2, [r3]
  171:Src/bldc.c    ****  
  172:Src/bldc.c    ****   // ========================= LEFT MOTOR ============================ 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 14
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 14
 
 
  173:Src/bldc.c    ****     // Get hall sensors values
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  566 032e 1C71     		strb	r4, [r3, #4]
  183:Src/bldc.c    ****     rtU_Left.b_hallB      = hall_vl;
  567              		.loc 1 183 5 is_stmt 1 discriminator 8 view .LVU169
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 15
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 15
 
 
  568              		.loc 1 183 27 is_stmt 0 discriminator 8 view .LVU170
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  607              	.LVL10:
  199:Src/bldc.c    ****   // errCodeLeft  = rtY_Left.z_errCode;
  200:Src/bldc.c    ****   // motSpeedLeft = rtY_Left.n_mot;
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 16
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 16
 
 
  201:Src/bldc.c    ****   // motAngleLeft = rtY_Left.a_elecAngle;
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  207:Src/bldc.c    ****   // =================================================================
  208:Src/bldc.c    ****   
  209:Src/bldc.c    **** 
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 17
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 17
 
 
  210:Src/bldc.c    ****   // ========================= RIGHT MOTOR ===========================  
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  220:Src/bldc.c    ****     rtU_Right.b_hallA       = hall_ur;
  700              		.loc 1 220 5 is_stmt 1 discriminator 8 view .LVU219
  701              		.loc 1 220 29 is_stmt 0 discriminator 8 view .LVU220
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 18
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 18
 
 
  702 03d2 1871     		strb	r0, [r3, #4]
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  741              		.loc 1 235 30 is_stmt 0 discriminator 8 view .LVU238
  742 03f8 B3F90220 		ldrsh	r2, [r3, #2]
  743              	.LVL24:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 19
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 19
 
 
  236:Src/bldc.c    ****     wr            = rtY_Right.DC_phaC;
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  789 0436 9BB2     		uxth	r3, r3
  790              	.L34:
  791              		.loc 1 244 29 discriminator 8 view .LVU256
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 20
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 20
 
 
  792 0438 304A     		ldr	r2, .L48+80
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  205:Src/bldc.c    ****     LEFT_TIM->LEFT_TIM_W    = (uint16_t)CLAMP(wl + pwm_res / 2, pwm_margin, pwm_res-pwm_margin);
  831              		.loc 1 205 41 discriminator 2 view .LVU267
  832 045c 02F57A71 		add	r1, r2, #1000
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 21
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 21
 
 
  205:Src/bldc.c    ****     LEFT_TIM->LEFT_TIM_W    = (uint16_t)CLAMP(wl + pwm_res / 2, pwm_margin, pwm_res-pwm_margin);
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  874              	.LVL42:
  875              	.L29:
  242:Src/bldc.c    ****     RIGHT_TIM->RIGHT_TIM_V  = (uint16_t)CLAMP(vr + pwm_res / 2, pwm_margin, pwm_res-pwm_margin);
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 22
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 22
 
 
  876              		.loc 1 242 31 discriminator 5 view .LVU281
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  919 04b4 00000000 		.word	rtU_Left
  920 04b8 00000000 		.word	ctrlModReq
  921 04bc 00000000 		.word	.LANCHOR25
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 23
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 23
 
 
  922 04c0 00000000 		.word	.LANCHOR10
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  987              		.set	.LANCHOR19,. + 0
  990              	buzzerPrev:
  991 0000 00       		.space	1
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 24
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 24
 
 
  992              		.section	.bss.buzzerTimer,"aw",%nobits
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  1068              		.align	2
  1069              		.set	.LANCHOR25,. + 0
  1072              	pwml:
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 25
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 25
 
 
  1073 0000 00000000 		.space	4
@@ -1497,73 +1497,73 @@ ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 1
  1144              		.file 7 "Inc/BLDC_controller.h"
  1145              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
  1146              		.file 9 "Inc/util.h"
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 26
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 26
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bldc.c
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:18     .text.DMA1_Channel1_IRQHandler:0000000000000000 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:24     .text.DMA1_Channel1_IRQHandler:0000000000000000 DMA1_Channel1_IRQHandler
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:480    .text.DMA1_Channel1_IRQHandler:0000000000000268 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:516    .text.DMA1_Channel1_IRQHandler:00000000000002f0 $t
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:917    .text.DMA1_Channel1_IRQHandler:00000000000004ac $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1086   .data.batVoltage:0000000000000000 batVoltage
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1045   .bss.enable:0000000000000000 enable
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:997    .bss.buzzerTimer:0000000000000000 buzzerTimer
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:966    .bss.buzzerCount:0000000000000000 buzzerCount
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:984    .bss.buzzerPattern:0000000000000000 buzzerPattern
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:972    .bss.buzzerFreq:0000000000000000 buzzerFreq
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1079   .bss.pwmr:0000000000000000 pwmr
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1072   .bss.pwml:0000000000000000 pwml
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1025   .bss.curR_DC:0000000000000000 curR_DC
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1039   .bss.curR_phaC:0000000000000000 curR_phaC
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1032   .bss.curR_phaB:0000000000000000 curR_phaB
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1004   .bss.curL_DC:0000000000000000 curL_DC
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1018   .bss.curL_phaB:0000000000000000 curL_phaB
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1011   .bss.curL_phaA:0000000000000000 curL_phaA
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:960    .bss.OverrunFlag.0:0000000000000000 OverrunFlag.0
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:961    .bss.OverrunFlag.0:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:967    .bss.buzzerCount:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:973    .bss.buzzerFreq:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:978    .bss.buzzerIdx:0000000000000000 buzzerIdx
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:979    .bss.buzzerIdx:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:985    .bss.buzzerPattern:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:990    .bss.buzzerPrev:0000000000000000 buzzerPrev
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:991    .bss.buzzerPrev:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:993    .bss.buzzerTimer:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1000   .bss.curL_DC:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1007   .bss.curL_phaA:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1014   .bss.curL_phaB:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1021   .bss.curR_DC:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1028   .bss.curR_phaB:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1035   .bss.curR_phaC:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1046   .bss.enable:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1051   .bss.enableFin:0000000000000000 enableFin
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1052   .bss.enableFin:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1054   .bss.offsetcount:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1058   .bss.offsetcount:0000000000000000 offsetcount
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1061   .bss.pwm_margin:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1065   .bss.pwm_margin:0000000000000000 pwm_margin
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1068   .bss.pwml:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1075   .bss.pwmr:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1082   .data.batVoltage:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1089   .data.batVoltageFixdt:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1093   .data.batVoltageFixdt:0000000000000000 batVoltageFixdt
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1096   .data.offsetdcl:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1100   .data.offsetdcl:0000000000000000 offsetdcl
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1103   .data.offsetdcr:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1107   .data.offsetdcr:0000000000000000 offsetdcr
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1110   .data.offsetrlA:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1114   .data.offsetrlA:0000000000000000 offsetrlA
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1117   .data.offsetrlB:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1121   .data.offsetrlB:0000000000000000 offsetrlB
-ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s 			page 27
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:18     .text.DMA1_Channel1_IRQHandler:0000000000000000 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:24     .text.DMA1_Channel1_IRQHandler:0000000000000000 DMA1_Channel1_IRQHandler
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:480    .text.DMA1_Channel1_IRQHandler:0000000000000268 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:516    .text.DMA1_Channel1_IRQHandler:00000000000002f0 $t
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:917    .text.DMA1_Channel1_IRQHandler:00000000000004ac $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1086   .data.batVoltage:0000000000000000 batVoltage
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1045   .bss.enable:0000000000000000 enable
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:997    .bss.buzzerTimer:0000000000000000 buzzerTimer
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:966    .bss.buzzerCount:0000000000000000 buzzerCount
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:984    .bss.buzzerPattern:0000000000000000 buzzerPattern
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:972    .bss.buzzerFreq:0000000000000000 buzzerFreq
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1079   .bss.pwmr:0000000000000000 pwmr
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1072   .bss.pwml:0000000000000000 pwml
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1025   .bss.curR_DC:0000000000000000 curR_DC
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1039   .bss.curR_phaC:0000000000000000 curR_phaC
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1032   .bss.curR_phaB:0000000000000000 curR_phaB
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1004   .bss.curL_DC:0000000000000000 curL_DC
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1018   .bss.curL_phaB:0000000000000000 curL_phaB
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1011   .bss.curL_phaA:0000000000000000 curL_phaA
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:960    .bss.OverrunFlag.0:0000000000000000 OverrunFlag.0
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:961    .bss.OverrunFlag.0:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:967    .bss.buzzerCount:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:973    .bss.buzzerFreq:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:978    .bss.buzzerIdx:0000000000000000 buzzerIdx
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:979    .bss.buzzerIdx:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:985    .bss.buzzerPattern:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:990    .bss.buzzerPrev:0000000000000000 buzzerPrev
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:991    .bss.buzzerPrev:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:993    .bss.buzzerTimer:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1000   .bss.curL_DC:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1007   .bss.curL_phaA:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1014   .bss.curL_phaB:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1021   .bss.curR_DC:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1028   .bss.curR_phaB:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1035   .bss.curR_phaC:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1046   .bss.enable:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1051   .bss.enableFin:0000000000000000 enableFin
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1052   .bss.enableFin:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1054   .bss.offsetcount:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1058   .bss.offsetcount:0000000000000000 offsetcount
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1061   .bss.pwm_margin:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1065   .bss.pwm_margin:0000000000000000 pwm_margin
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1068   .bss.pwml:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1075   .bss.pwmr:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1082   .data.batVoltage:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1089   .data.batVoltageFixdt:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1093   .data.batVoltageFixdt:0000000000000000 batVoltageFixdt
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1096   .data.offsetdcl:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1100   .data.offsetdcl:0000000000000000 offsetdcl
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1103   .data.offsetdcr:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1107   .data.offsetdcr:0000000000000000 offsetdcr
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1110   .data.offsetrlA:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1114   .data.offsetrlA:0000000000000000 offsetrlA
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1117   .data.offsetrlB:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1121   .data.offsetrlB:0000000000000000 offsetrlB
+ARM GAS  /var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s 			page 27
 
 
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1124   .data.offsetrrB:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1128   .data.offsetrrB:0000000000000000 offsetrrB
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1131   .data.offsetrrC:0000000000000000 $d
-/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//cc7pcMpr.s:1135   .data.offsetrrC:0000000000000000 offsetrrC
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1124   .data.offsetrrB:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1128   .data.offsetrrB:0000000000000000 offsetrrB
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1131   .data.offsetrrC:0000000000000000 $d
+/var/folders/2w/5wbrmvx534s_vk8svtxz852c0000gn/T//ccc2W3Q0.s:1135   .data.offsetrrC:0000000000000000 offsetrrC
 
 UNDEFINED SYMBOLS
 HAL_GPIO_TogglePin

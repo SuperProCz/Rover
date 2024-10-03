@@ -33,7 +33,7 @@ showFeedback = False
 estopped = False
 def loadConfig():
     global config, interfaces
-    global GRADUAL_ACCELERATION, PERCENTAGE_STEP
+    global GRADUAL_ACCELERATION, PERCENTAGE_STEP, SPEED_VALUES, STEER_VALUES
 
     config.read('config.ini')
 
@@ -58,6 +58,8 @@ def loadConfig():
         interface = USARTInterface(0, 0, hover_serial, SPEED_VALUES, STEER_VALUES)
 
         interfaces.append(interface)
+
+    print(SPEED_VALUES)
 
 def createConfig():
     global config
@@ -271,7 +273,7 @@ def usartSending():
         time.sleep(TIME_SEND)
 
 def listen(conn, addr):
-    global connected, showFeedback, estopped, SPEED_VALUES, STEER_VALUES
+    global connected, showFeedback, estopped, SPEED_VALUES, STEER_VALUES, WANTED_SPEED, WANTED_STEER
     with conn:
         while True:
             dataLength = int.from_bytes(conn.recv(2), byteorder='big')
@@ -284,7 +286,7 @@ def listen(conn, addr):
                 return
             decodedData = data.split(" ")
 
-            print(decodedData)
+            #print(decodedData)
             cmdId = int(decodedData[0])
             #print(decodedData)
             if cmdId == 0:
@@ -317,9 +319,15 @@ def listen(conn, addr):
             elif cmdId == 3:
                 newSpeed = int(decodedData[1])
                 newValues = (newSpeed, 0, -newSpeed)
-                for interface in interfaces:
-                    interface.changeSpeedValues(newValues)
-                    interface.changeSteerValues(newValues)
+                
+                STEER_VALUES = newValues
+                SPEED_VALUES = newValues
+
+            elif cmdId == 4:
+                #print(SPEED_VALUES)
+                #print(STEER_VALUES)
+                WANTED_SPEED = round((int(decodedData[1]) / 100) * SPEED_VALUES[0])
+                WANTED_STEER = round((int(decodedData[2]) / 100) * STEER_VALUES[0])
 
             else:
                 raise ValueError(f"Invalid cmdId {cmdId}!!")
@@ -351,10 +359,6 @@ def main():
                     while connected:
                         if not listenThread.is_alive(): 
                             break
-                        x = input("huhuh: ")
-                        msgSend = x.encode("UTF-8")
-                        conn.send(len(msgSend).to_bytes(2, byteorder='big'))
-                        conn.send(msgSend)
                 print('closed conn')
             except KeyboardInterrupt:
                 print("keyboard interrupted, stopping program")
