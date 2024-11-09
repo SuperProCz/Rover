@@ -7,9 +7,9 @@ import multiprocessing
 import configparser
 import struct
 
-HOST = "10.42.0.1"
+
 HOSTNAME = socket.gethostname()
-#HOST = socket.gethostbyname(HOSTNAME)
+HOST = socket.gethostbyname(HOSTNAME+".local")
 PORT = 1532
 
 print(HOST)

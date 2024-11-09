@@ -7,9 +7,8 @@ import multiprocessing
 import configparser
 import struct
 
-HOST = "10.0.0.3"
 HOSTNAME = socket.gethostname()
-#HOST = socket.gethostbyname(HOSTNAME)
+HOST = socket.gethostbyname(HOSTNAME+".local")
 PORT = 1532
 
 SPEED_VALUES = (1000,0,-1000)
@@ -66,6 +65,7 @@ def listen(conn, addr):
                     #print("Received: ", int.from_bytes(received, byteorder='big'))
                     print("Received: ", received)
                     print("Actual: ", imageSize.to_bytes(32, byteorder='big'))
+                    print("actual normal: ", imageSize)
                     if received == imageSize.to_bytes(32, byteorder='big'):
                         print("<<<<<<<>>>???????")
                         conn.sendall(pic)
@@ -77,7 +77,11 @@ def listen(conn, addr):
                 pass     
             
 def main():
-    
+    with open("spotik.png", "rb") as f:
+        pic = f.read()
+
+    print(pic[:100])
+    print(type(pic))
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.bind((HOST, PORT))
