@@ -40,19 +40,22 @@ def loadConfig():
     GRADUAL_ACCELERATION = config.getboolean('Settings', 'gradualacceleration')
     PERCENTAGE_STEP = config.getfloat('Settings', 'percentagestep')
 
-    boards = config.items('Boards')
-    for board in boards:
-        print(board[1])
-        settings = eval(board[1])
-        SERIAL_PORT = settings['UartInterface']
-        SERIAL_BAUD = int(settings['BaudRate'])
-        if config.getboolean("Settings", 'unitedspeed'):
+    
+    if config.getboolean("Settings", 'unitedspeed'):
             speed = config.getint('Settings', 'speed')
             SPEED_VALUES = (speed, 0, -speed)
             STEER_VALUES = (speed, 0, -speed)
         else:    
             SPEED_VALUES = tuple(settings['SpeedValues'])
             STEER_VALUES = tuple(settings['SteerValues'])
+            
+    boards = config.items('Boards')
+    for board in boards:
+        print(board[1])
+        settings = eval(board[1])
+        SERIAL_PORT = settings['UartInterface']
+        SERIAL_BAUD = int(settings['BaudRate'])
+    
         hover_serial = Hoverboard_serial(SERIAL_PORT, SERIAL_BAUD)
 
         interface = USARTInterface(0, 0, hover_serial, SPEED_VALUES, STEER_VALUES)
@@ -66,28 +69,24 @@ def createConfig():
     config['Boards'] = {
         "DefaultBoard": {
             "UartInterface": "/dev/ttyAMA4",
-            "BaudRate": 115200,
-            "SpeedValues": (1000, 0, -1000),
-            "SteerValues": (1000, 0, -1000)
+            "BaudRate": 115200
         },
         "SecondTestBoard": {
             "UartInterface": "/dev/ttyAMA3",
-            "BaudRate": 115200,
-            "SpeedValues": (1000, 0, -1000),
-            "SteerValues": (1000, 0, -1000)
+            "BaudRate": 115200
         },
         "ThirdTestBoard": {
             "UartInterface": "/dev/ttyAMA2",
-            "BaudRate": 115200,
-            "SpeedValues": (1000, 0, -1000),
-            "SteerValues": (1000, 0, -1000)
+            "BaudRate": 115200
         }
     }
     config['Settings'] = {
         "GradualAcceleration": True,
         "PercentageStep": 0.1,
         "UnitedSpeed": False,
-        "Speed": 1000
+        "Speed": 1000,
+        "SpeedValues": (1000, 0, -1000),
+        "SteerValues": (1000, 0, -1000)
     }
 
     with open('config.ini', 'w') as configfile:
@@ -309,20 +308,23 @@ def listen(conn, addr):
                 else:
                     for interface in interfaces:
                         interface.setMiddleValue("steer")
+            #show feedback from board(doesnt work)
             elif cmdId == 1:
                 showFeedback = True
                 print("Got!!")
-
+                
+            #trigger estop
             elif cmdId == 2:
                 estopped = True
-            
+                
+            #changing steer/speed values
             elif cmdId == 3:
                 newSpeed = int(decodedData[1])
                 newValues = (newSpeed, 0, -newSpeed)
                 
                 STEER_VALUES = newValues
                 SPEED_VALUES = newValues
-
+            #truning joystick values to wanted values
             elif cmdId == 4:
                 #print(SPEED_VALUES)
                 #print(STEER_VALUES)
