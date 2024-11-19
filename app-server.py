@@ -45,9 +45,9 @@ def loadConfig():
             speed = config.getint('Settings', 'speed')
             SPEED_VALUES = (speed, 0, -speed)
             STEER_VALUES = (speed, 0, -speed)
-        else:    
-            SPEED_VALUES = tuple(settings['SpeedValues'])
-            STEER_VALUES = tuple(settings['SteerValues'])
+    else:    
+        SPEED_VALUES = tuple(settings['SpeedValues'])
+        STEER_VALUES = tuple(settings['SteerValues'])
             
     boards = config.items('Boards')
     for board in boards:
@@ -209,7 +209,7 @@ def usartFeedback():
                 print('Feedback:\t', feedback)
 
 def usartSending():
-    TIME_SEND = 0.01 
+    TIME_SEND = 0.01 #otestovat 0.1, v config.h je timeout 0.8s
     wantedSpeed = 0
     wantedSteer = 0
 
@@ -219,7 +219,7 @@ def usartSending():
             for interface in interfaces:
                 interface.setSpeed(0)
                 interface.setSteer(0)
-                interface.update()
+                #interface.update()
             break
         if GRADUAL_ACCELERATION:
             currentSpeed = CURRENT_SPEED
@@ -250,6 +250,8 @@ def usartSending():
 
             elif currentSteer == wantedSteer:
                 changeSteer = 0
+
+            #why is this here twice?
             wantedSpeed = WANTED_SPEED
             wantedSteer = WANTED_STEER
 
