@@ -1,0 +1,4 @@
+SERVER_STATUSES = 
+{
+  '1': 'SUCCESS' 
+}
