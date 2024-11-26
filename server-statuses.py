@@ -1,5 +1,5 @@
 SERVER_STATUSES = 
 {
-  1: 'SUCCESS',
-  2: 'DENIED'
+  'SUCCESS': 1,
+  'DENIED': 2
 }
