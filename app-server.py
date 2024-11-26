@@ -6,7 +6,7 @@ import time
 import multiprocessing
 import configparser
 import struct
-
+import server_statuses
 
 HOSTNAME = socket.gethostname()
 HOST = socket.gethostbyname(HOSTNAME+".local")
@@ -337,7 +337,7 @@ def listen(conn, addr):
 
             elif cmdId == 5:
                 if connected:
-                    pass
+                    # IMPORT THE SERVER STATUSES DICT AND SEND AN INT CORRESPONDING TO "SUCCESS"
             else:
                 raise ValueError(f"Invalid cmdId {cmdId}!!")
             
