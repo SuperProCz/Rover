@@ -12,6 +12,8 @@ HOSTNAME = socket.gethostname()
 HOST = socket.gethostbyname(HOSTNAME+".local")
 PORT = 1532
 
+conn = 0
+
 print(HOST)
 print(HOSTNAME)
 PERCENTAGE_STEP = 0.1
@@ -333,6 +335,9 @@ def listen(conn, addr):
                 WANTED_SPEED = round((int(decodedData[1]) / 100) * SPEED_VALUES[0])
                 WANTED_STEER = round((int(decodedData[2]) / 100) * STEER_VALUES[0])
 
+            elif cmdId == 5:
+                if connected:
+                    pass
             else:
                 raise ValueError(f"Invalid cmdId {cmdId}!!")
             
