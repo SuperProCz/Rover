@@ -1,5 +1,0 @@
-SERVER_STATUSES = 
-{
-  'SUCCESS': 1,
-  'DENIED': 2
-}

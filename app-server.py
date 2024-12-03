@@ -6,7 +6,7 @@ import time
 import multiprocessing
 import configparser
 import struct
-import server_statuses
+from server_statuses import SERVER_STATUSES
 
 HOSTNAME = socket.gethostname()
 HOST = socket.gethostbyname(HOSTNAME+".local")
@@ -335,9 +335,6 @@ def listen(conn, addr):
                 WANTED_SPEED = round((int(decodedData[1]) / 100) * SPEED_VALUES[0])
                 WANTED_STEER = round((int(decodedData[2]) / 100) * STEER_VALUES[0])
 
-            elif cmdId == 5:
-                if connected:
-                    # IMPORT THE SERVER STATUSES DICT AND SEND AN INT CORRESPONDING TO "SUCCESS"
             else:
                 raise ValueError(f"Invalid cmdId {cmdId}!!")
             
@@ -359,16 +356,21 @@ def main():
                 print("bubu")
                 s.listen()
                 conn, addr = s.accept()
-                print("accepted")
-                listenThread = threading.Thread(target=listen, args=(conn, addr))
-                listenThread.start()
-                with conn:
-                    print(f"Connected by {addr}")
-                    connected = True
-                    while connected:
-                        if not listenThread.is_alive(): 
-                            break
-                print('closed conn')
+                if connected:
+                    conn.sendall(SERVER_STATUSES["DENIED"].to_bytes(32, byteorder="big"))
+                    conn.close()
+                else:
+                    print("accepted")
+                    conn.sendall(SERVER_STATUSES["ACCEPTED"].to_bytes(32, byteorder="big"))
+                    listenThread = threading.Thread(target=listen, args=(conn, addr))
+                    listenThread.start()
+                    with conn:
+                        print(f"Connected by {addr}")
+                        connected = True
+                        while connected:
+                            if not listenThread.is_alive(): 
+                                break
+                    print('closed conn')
             except KeyboardInterrupt:
                 print("keyboard interrupted, stopping program")
                 break

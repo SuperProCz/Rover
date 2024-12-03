@@ -1,0 +1,4 @@
+SERVER_STATUSES = {
+  'ACCEPTED': 1,
+  'DENIED': 2
+}
