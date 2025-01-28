@@ -6,9 +6,14 @@ import time
 import multiprocessing
 import configparser
 import struct
+import cv2 as cv
+from cv2 import VideoCapture
+from server_statuses import SERVER_STATUSES
+from socket_headers import HEADERS
 
 HOSTNAME = socket.gethostname()
-HOST = socket.gethostbyname(HOSTNAME+".local")
+#HOST = socket.gethostbyname(HOSTNAME)
+HOST = '0.0.0.0'
 PORT = 1532
 
 SPEED_VALUES = (1000,0,-1000)
@@ -19,8 +24,15 @@ print(HOSTNAME)
 
 connected = False
 showFeedback = False
+canSendImg = False
 
-def listen(conn, addr):
+imgSize = 0
+
+maxDataSize = 2000
+
+cam = VideoCapture(1)
+
+def listen_old(conn, addr):
     global connected, showFeedback, SPEED_VALUES, STEER_VALUES
     with conn:
         while True:
@@ -30,7 +42,7 @@ def listen(conn, addr):
                 data = conn.recv(dataLength).decode('UTF-8')
                 if data == 'nice':
                     print(data)
-                if len(data) == 0:
+                if conn == None:
                     print(f"Disconnected {addr}")
                     connected = False
                     return
@@ -53,30 +65,68 @@ def listen(conn, addr):
                     pass
 
                 elif cmdId == 5:
+                    
+                    imageSendingThread = threading.Thread(target=sendImage, args=(conn,))
+                    imageSendingThread.start()
 
-                    with open("spotik.png", "rb") as f:
-                        pic = f.read()
-
-                    imageSize = len(pic)
-                    conn.sendall(imageSize.to_bytes(32, byteorder='big'))
-                    #print("sent")
-                    received = conn.recv(2048)
-
-                    #print("Received: ", int.from_bytes(received, byteorder='big'))
-                    print("Received: ", received)
-                    print("Actual: ", imageSize.to_bytes(32, byteorder='big'))
-                    print("actual normal: ", imageSize)
-                    if received == imageSize.to_bytes(32, byteorder='big'):
-                        print("<<<<<<<>>>???????")
-                        conn.sendall(pic)
-                        print("sent")
-                    else:
-                        conn.sendall(bytes([0]))
                 #print(decodedData)
             except Exception:
                 pass     
+
+def commandHandler(data):
+    pass
+
+def checkImgSize(data):
+        global imgSize, canSendImg
+        if imgSize == int.from_bytes(data, byteorder='big'):
+            canSendImg = True
+
+def listen(conn, addr):
+    global connected
+    with conn:
+        while True:
+            try:
+                header = conn.recv(8)
+
+                packetType = header[0]
+                dataSize = header[1:2]
+
+                data = conn.recv(int.from_bytes(dataSize, byteorder='big'))
+
+                if HEADERS["CMD"] == packetType:
+                    commandHandler(data)
+                elif HEADERS["STATUS"] == packetType:
+                    pass
+                elif HEADERS["IMG_SIZE"] == packetType:
+                    checkImgSize(data=data)
+            except Exception:
+                print("Something went wrong while listening to incoming data")
+def sendImage(conn):
+    global imgSize
+    while True:
+        result, image = cam.read()
+        if result:
+            image_bytes = cv.imencode('.jpg', image)[1].tobytes()
+            imgSize = len(image_bytes)
+            data = HEADERS["IMG_SIZE"] + (32).to_bytes(4, byteorder='big') + (5 * b'\x00') + imgSize.to_bytes(4, byteorder='big')
+            conn.sendall(data)
+            #print("sent")
+
+            #print("Received: ", int.from_bytes(received, byteorder='big'))
+            # print("Received: ", received)
+            # print("Received normal: ", int.from_bytes(received, "big"))
+            # print("Actual: ", imageSize.to_bytes(32, byteorder='big'))
+            # print("actual normal: ", imageSize)
+            #comparing the decoded integer values (java has one extra byte to represent un/signed values)
+            while True:
+                if canSendImg:
+                    canSendImg = False
+                    conn.sendall(image_bytes)
+                    break
             
+
 def main():
+    global connected
     with open("spotik.png", "rb") as f:
         pic = f.read()
 
@@ -91,17 +141,21 @@ def main():
                 print("bubu")
                 s.listen()
                 conn, addr = s.accept()
-                print("accepted")
-                listenThread = threading.Thread(target=listen, args=(conn, addr))
-                listenThread.start()
-                with conn:
-                    print(f"Connected by {addr}")
-                    connected = True
-                    while connected:
-                        if not listenThread.is_alive(): 
-                            break
-                        time.sleep(1)
-                print('closed conn')
+                if connected:
+                    conn.sendall(SERVER_STATUSES["DENIED"].to_bytes(1, byteorder="big"))
+                    conn.close()
+                else:
+                    print("accepted")
+                    conn.sendall(SERVER_STATUSES["ACCEPTED"].to_bytes(1, byteorder="big"))
+                    listenThread = threading.Thread(target=listen, args=(conn, addr))
+                    listenThread.start()
+                    with conn:
+                        print(f"Connected by {addr}")
+                        connected = True
+                        while connected:
+                            if not listenThread.is_alive(): 
+                                break
+                    print('closed conn')
             except KeyboardInterrupt:
                 print("keyboard interrupted, stopping program")
                 break
