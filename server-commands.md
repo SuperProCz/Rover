@@ -8,7 +8,7 @@ cmdId 0
 
 0 [speedOption] [steerOption]
 
-both optiona work as follows:
+both options work as follows:
 
 -1 = minimum value
 0 = middle value
@@ -30,6 +30,7 @@ cmdId 3
 
 3 [cornerValue]
 
+cornervalue = <-1000, 1000>
 
 *cornerValue must be positive or the controls will be flipped!!*
 

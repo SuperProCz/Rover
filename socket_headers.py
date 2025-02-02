@@ -3,9 +3,9 @@
 #Nah už se může používat 0-255, já mega smartaas jse mto zpravil
 
 HEADERS = {
-    "CMD": (0).to_bytes(1, byteorder='big'),
-    "IMG": (1).to_bytes(1, byteorder='big'),
-    "STATUS": (2).to_bytes(1, byteorder='big'),
-    "IMG_SIZE": (3).to_bytes(1, byteorder='big'),
-    
+    "CMD": 0,
+    "IMG": 1,
+    "STATUS": 2,
+    "IMG_SIZE": 3,
+    "IMG_DECODED": 4
 }
