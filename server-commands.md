@@ -44,4 +44,19 @@ cmdId 4
 
 4 [speedPercentage] [steerPercentage]
 
-The
+The values must be between 0 and 100
+
+
+## STARTING CAM LIVE STREAM
+
+cmdId 5
+
+no other arguments needed
+
+## CHANGING CAMERA
+
+cmdId 6
+
+6 [camID]
+
+camID must be present in a list of some sort, that I need to create...

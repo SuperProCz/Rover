@@ -22,6 +22,11 @@ HOSTNAME = socket.gethostname()
 HOST = '0.0.0.0'
 PORT = 1532
 
+
+
+
+
+
 SPEED_VALUES = (1000,0,-1000)
 STEER_VALUES = (1000,0,-1000)
 
@@ -34,11 +39,15 @@ canSendImg = False
 
 imgSize = 0
 
-maxDataSize = 65536
+maxDataSize = 16384
 
 imgDecoded = True
 
-appsink = 0
+appsink = None
+
+pipeline = None
+
+cameraChanging = False
 #cam = VideoCapture(0)
 def listen_old(conn, addr):
     global connected, showFeedback, SPEED_VALUES, STEER_VALUES
@@ -85,9 +94,54 @@ def commandHandler(data, conn):
     #print("command got!")
     cmdId = data[0]
 
+    print(cmdId)
+    print(data)
     if cmdId == 5:
+        print("starting img sending thread!")
         imageSendingThread = threading.Thread(target=sendImage, args=(conn,))
         imageSendingThread.start()
+    elif cmdId == 6:
+        print(data[1])
+        changeCam(data[1])
+
+
+def changeCam(id):
+    global pipeline, cameraChanging
+    if pipeline != None:
+        cameraChanging = True
+        print("Stopping current pipeline...")
+        pipeline.set_state(Gst.State.NULL)
+        pipeline = None
+
+        print(f"Creating new pipeline for camera id: {id}")
+        try:
+            pipeline = create_pipeline(id)
+        except Exception as e:
+            print(f"Failed to create new pipeline: {e}")
+            cameraChanging = False
+            return
+
+        # Retrieve and configure appsink
+        appsink = pipeline.get_by_name("sink")
+        if not appsink:
+            print("Appsink not found in pipeline!")
+            cameraChanging = False
+            return
+        #pipeline = create_pipeline(id)
+
+        appsink = pipeline.get_by_name("sink")
+        appsink.set_property("emit-signals", True)
+        appsink.set_property("sync", False)  # Disable synchronization to reduce latency
+        appsink.set_property("max-buffers", 1)  # Keep only the latest frame
+        appsink.set_property("drop", True)
+        appsink.set_property("max-lateness", 0)  # Make sure no buffer overrun
+
+        print("Starting new pipeline...")
+        pipeline.set_state(Gst.State.PLAYING)
+        cameraChanging = False
+    else:
+        print("PIPELINE IS NONE WHILE CHANGING CAM")
+
 
 def checkImgSize(data):
         #print("got imgsize!")
@@ -130,61 +184,84 @@ def listen(conn, addr):
 def sendImage(conn):
     global imgSize, canSendImg, imgDecoded
     while True:
-        if imgDecoded:
+        if imgDecoded and not cameraChanging:
             imgDecoded = False
             #result, image = cam.read()
+            #encode_param = [int(cv.IMWRITE_JPEG_QUALITY), 30]
+            #resized_image = cv.resize(image, (320, 240))
+            #result, image = cv.imencode('.jpg', resized_image, encode_param)
+            #image_bytes = image.tobytes()
             sample = appsink.emit('pull-sample')
-            if result:
-                encode_param = [int(cv.IMWRITE_JPEG_QUALITY), 30]
-                resized_image = cv.resize(image, (320, 240))
-                result, image = cv.imencode('.jpg', resized_image, encode_param)
-                if result:
-                    image_bytes = image.tobytes()
-                    imgSize = len(image_bytes)
-                    data = HEADERS["IMG_SIZE"].to_bytes(1, byteorder='big') + (4).to_bytes(2, byteorder='big') + (5 * b'\x00') + imgSize.to_bytes(4, byteorder='big')
-                    #print("sending img size!!")
-                    conn.sendall(data)
-                    #print(imgSize)
+            if not sample:
+                # No sample available; wait a bit and try again.
+                time.sleep(0.005)
+                print("Fuck")
+                continue
+            try:
+                buffer = sample.get_buffer()
+                imgBytes = buffer.extract_dup(0, buffer.get_size())
+            except Exception as e:
+                print(f"Error extracting buffer: {e}")
+                continue
+            imgSize = len(imgBytes)
+            imgSizePacket = HEADERS["IMG_SIZE"].to_bytes(1, byteorder='big') + (4).to_bytes(2, byteorder='big') + (5 * b'\x00') + imgSize.to_bytes(4, byteorder='big')
+            #print("sending img size!!")
+            conn.sendall(imgSizePacket)
+            #print(imgSize)
 
-                    #print("Received: ", int.from_bytes(received, byteorder='big'))
-                    # print("Received: ", received)
-                    # print("Received normal: ", int.from_bytes(received, "big"))
-                    # print("Actual: ", imageSize.to_bytes(32, byteorder='big'))
-                    # print("actual normal: ", imageSize)
-                    #comparing the decoded integer values (java has one extra byte to represent un/signed values)
+            #print("Received: ", int.from_bytes(received, byteorder='big'))
+            # print("Received: ", received)
+            # print("Received normal: ", int.from_bytes(received, "big"))
+            # print("Actual: ", imageSize.to_bytes(32, byteorder='big'))
+            # print("actual normal: ", imageSize)
+            #comparing the decoded integer values (java has one extra byte to represent un/signed values)
+            while True:
+                if canSendImg:
+                    #print("sending img!!")
+                    canSendImg = False
+                    imgBytesSent = 0
                     while True:
-                        if canSendImg:
-                            #print("sending img!!")
-                            canSendImg = False
-                            imgBytesSent = 0
-                            while True:
-                                packetSize = min(maxDataSize, imgSize - imgBytesSent)
-                                data = HEADERS["IMG"].to_bytes(1, byteorder='big') + (packetSize).to_bytes(2, byteorder='big') + (5 * b'\x00') + image_bytes[imgBytesSent:(imgBytesSent+packetSize)]
-                                conn.sendall(data)
-                                #TEMPCOUNTER += 1
-                                imgBytesSent += packetSize
-                                #print(packetSize)
-                                #print(imgBytesSent)
-                                if imgBytesSent == imgSize:
-                                    imgSize = 0
-                                    break
-                            #print(TEMPCOUNTER)
-                            #TEMPCOUNTER = 0
+                        packetSize = min(maxDataSize, imgSize - imgBytesSent)
+                        data = HEADERS["IMG"].to_bytes(1, byteorder='big') + (packetSize).to_bytes(2, byteorder='big') + (5 * b'\x00') + imgBytes[imgBytesSent:(imgBytesSent+packetSize)]
+                        conn.sendall(data)
+                        #TEMPCOUNTER += 1
+                        imgBytesSent += packetSize
+                        #print(packetSize)
+                        #print(imgBytesSent)
+                        if imgBytesSent == imgSize:
+                            imgSize = 0
+                            #print("sent")
                             break
+                        time.sleep(0.001)
+                    #print(TEMPCOUNTER)
+                    #TEMPCOUNTER = 0
+                    break
+                time.sleep(0.001)
+        time.sleep(0.001)
             
-def create_pipeline():
+def create_pipeline(id):
     system = platform.system()
 
     if system == 'Darwin':  # mac
         pipeline = Gst.parse_launch(
-            "v4l2src device=/dev/video0 ! video/x-raw,width=640,height=480,framerate=20/1 ! "
-            "videoconvert ! vtenc_h264 ! video/x-h264,profile=baseline ! appsink name=sink"
+            f"avfvideosrc device-index={id} do-timestamp=true ! "
+            "video/x-raw,width=640,height=480,framerate=30/1 ! "
+            "videoconvert ! "
+            "vtenc_h264 bitrate=3000 realtime=true max-keyframe-interval=1 allow-frame-reordering=false ! "
+            "h264parse config-interval=1 ! "
+            "video/x-h264,stream-format=byte-stream,profile=baseline ! "
+            "appsink name=sink max-buffers=1 drop=true sync=true"
         )
     elif system == 'Linux':  # RPi
         pipeline = Gst.parse_launch(
-            "v4l2src device=/dev/video0 ! video/x-raw,width=640,height=480,framerate=20/1 ! "
-            "videoconvert ! v4l2h264enc extra-controls=\"video_bitrate=500000\" ! "
-            "video/x-h264,profile=baseline ! appsink name=sink"
+            "filesrc location=output.mp4 ! "
+            "qtdemux ! queue ! "
+            "decodebin ! videoconvert ! "
+#            "v4l2h264enc extra-controls=\"cid,video_bitrate=5000\"  min-force-key-unit-interval=1000000000 ! "
+            "v4l2h264enc extra-controls=cid,video_gop_size=2,video_bitrate_mode=1,video_bitrate=850_000 !"
+            "h264parse config-interval=1 ! "
+            "video/x-h264,stream-format=byte-stream,profile=baseline,level=(string)4 ! "
+            "appsink name=sink max-buffers=1 drop=false sync=false"
         )
     else:
         raise Exception("Unsupported platform")
@@ -192,19 +269,23 @@ def create_pipeline():
     return pipeline
 
 def main():
-    global connected
-
-    pipeline = create_pipeline()
+    global connected, appsink, pipeline 
+    Gst.init(None)
+    pipeline = create_pipeline(0)
 
     # Get appsink element
     appsink = pipeline.get_by_name("sink")
     appsink.set_property("emit-signals", True)
 
+    appsink.set_property("sync", False)  # Disable synchronization to reduce latency
+    appsink.set_property("max-buffers", 1)  # Keep only the latest frame
+    appsink.set_property("drop", True)
+    appsink.set_property("max-lateness", 0)  # Make sure no buffer overrun
     # Start pipeline
     pipeline.set_state(Gst.State.PLAYING)
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        #s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, True)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 65536)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 65536)
@@ -229,6 +310,7 @@ def main():
                         while connected:
                             if not listenThread.is_alive(): 
                                 break
+                            time.sleep(0.001)
                     print('closed conn')
             except KeyboardInterrupt:
                 print("keyboard interrupted, stopping program")
