@@ -6,6 +6,7 @@ import time
 import multiprocessing
 import configparser
 import struct
+import logging
 
 import platform
 import gi
@@ -36,10 +37,13 @@ CURRENT_STEER = 0
 SPEED_VALUES = ()
 STEER_VALUES = ()
 
+
+logger = logging.getLogger(__name__)
+
 config = configparser.ConfigParser()
 interfaces = []
 connected = False
-showFeedback = False
+#showFeedback = False
 estopped = False
 
 canSendImg = False
@@ -281,22 +285,21 @@ class USARTInterface:
         #print('Sending:\t steer: '+str(currentSteer)+'speed: '+str(currentSpeed))
 
 def usartFeedback():
-    global showFeedback
     while True:
-        for interface in interfaces:
-            feedback = interface.getBoard().receive_feedback()
+        feedback = interfaces[0].getBoard().receive_feedback()
 
-            if feedback == None:
-                #print("Continuing")
-                continue
-                
-            if showFeedback:
-                print("bububu")
-                showFeedback = False    
-                print('Feedback:\t', feedback)
+        if feedback == None:
+            #print("Continuing")
+            continue
+        
+        print("bububu")
+        print('Feedback:\t', feedback)
+        logger.boards(feedback)
+
+        time.sleep(0.001)
 
 def usartSending():
-    TIME_SEND = 0.001 #otestovat 0.1, v config.h je timeout 0.8s
+    TIME_SEND = 0.01 #otestovat 0.1, v config.h je timeout 0.8s
     wantedSpeed = 0
     wantedSteer = 0
     changeSpeed = 0
@@ -535,24 +538,83 @@ def create_pipeline(id):
         )
     elif system == 'Linux':  # RPi
         pipeline = Gst.parse_launch(
-            "filesrc location=output.mp4 ! "
-            "qtdemux ! queue ! "
-            "decodebin ! videoconvert ! "
-    #            "v4l2h264enc extra-controls=\"cid,video_bitrate=5000\"  min-force-key-unit-interval=1000000000 ! "
-            "v4l2h264enc extra-controls=cid,video_gop_size=2,video_bitrate_mode=1,video_bitrate=850_000 !"
+            # Live USB camera instead of filesrc
+            "v4l2src device=/dev/video0 do-timestamp=true ! "
+            # match your 640×480@30 settings
+            "video/x-raw,width=640,height=480,framerate=30/1 ! "
+            "videoconvert ! "
+            # same encoder + extra-controls exactly as before, but quoted
+            "v4l2h264enc extra-controls=\"cid,video_gop_size=2,video_bitrate_mode=1,video_bitrate=1_750_000\" ! "
             "h264parse config-interval=1 ! "
             "video/x-h264,stream-format=byte-stream,profile=baseline,level=(string)4 ! "
             "appsink name=sink max-buffers=1 drop=false sync=false"
         )
+
     else:
         raise Exception("Unsupported platform")
 
     return pipeline
 
+def addLoggingLevel(levelName, levelNum, methodName=None):
+    """
+    Comprehensively adds a new logging level to the `logging` module and the
+    currently configured logging class.
+
+    `levelName` becomes an attribute of the `logging` module with the value
+    `levelNum`. `methodName` becomes a convenience method for both `logging`
+    itself and the class returned by `logging.getLoggerClass()` (usually just
+    `logging.Logger`). If `methodName` is not specified, `levelName.lower()` is
+    used.
+
+    To avoid accidental clobberings of existing attributes, this method will
+    raise an `AttributeError` if the level name is already an attribute of the
+    `logging` module or if the method name is already present 
+
+    Example
+    -------
+    >>> addLoggingLevel('TRACE', logging.DEBUG - 5)
+    >>> logging.getLogger(__name__).setLevel("TRACE")
+    >>> logging.getLogger(__name__).trace('that worked')
+    >>> logging.trace('so did this')
+    >>> logging.TRACE
+    5
+
+    """
+    if not methodName:
+        methodName = levelName.lower()
+
+    if hasattr(logging, levelName):
+       raise AttributeError('{} already defined in logging module'.format(levelName))
+    if hasattr(logging, methodName):
+       raise AttributeError('{} already defined in logging module'.format(methodName))
+    if hasattr(logging.getLoggerClass(), methodName):
+       raise AttributeError('{} already defined in logger class'.format(methodName))
+
+    # This method was inspired by the answers to Stack Overflow post
+    # http://stackoverflow.com/q/2183233/2988730, especially
+    # http://stackoverflow.com/a/13638084/2988730
+    def logForLevel(self, message, *args, **kwargs):
+        if self.isEnabledFor(levelNum):
+            self._log(levelNum, message, args, **kwargs)
+    def logToRoot(message, *args, **kwargs):
+        logging.log(levelNum, message, *args, **kwargs)
+
+    logging.addLevelName(levelNum, levelName)
+    setattr(logging, levelName, levelNum)
+    setattr(logging.getLoggerClass(), methodName, logForLevel)
+    setattr(logging, methodName, logToRoot)
+
 def main():
-    global connected, appsink, pipeline 
+    global connected, appsink, pipeline
+
+    FORMAT = '%(levelname)s %(asctime)s %(message)s'
+    logging.basicConfig(filename='test.log', level=logging.INFO, format=FORMAT)
+    addLoggingLevel('BOARDS', logging.DEBUG - 5)
+
+    logger.info("Logging started.")
     if not os.path.isfile('config.ini'):
         createConfig()
+        logger.info("Config file created.")
     
     loadConfig()
 
@@ -569,6 +631,8 @@ def main():
     appsink.set_property("max-lateness", 0)  # Make sure no buffer overrun
     # Start pipeline
     pipeline.set_state(Gst.State.PLAYING)
+    
+    logger.info("Gstreamer setup.")
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -576,26 +640,29 @@ def main():
         s.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 65536)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 65536)
         s.bind((HOST, PORT))
-        # usartListenerThread = multiprocessing.Process(target=usartFeedback)
-        # usartListenerThread.start()
+        logger.info("Server binded")
         usartSendingThread = threading.Thread(target=usartSending)
         usartSendingThread.start()
-        print("haha")
+        logger.info("usartSending() started")
         while True:
             try:
-                print("bubu")
                 s.listen()
                 conn, addr = s.accept()
                 if connected:
                     conn.sendall(SERVER_STATUSES["DENIED"].to_bytes(1, byteorder="big"))
                     conn.close()
+                    logger.warn("Client denied")
                 else:
                     print("accepted")
                     conn.sendall(SERVER_STATUSES["ACCEPTED"].to_bytes(1, byteorder="big"))
                     listenThread = threading.Thread(target=listen, args=(conn, addr))
                     listenThread.start()
+                    logger.info("Client accepted and listen thread started")
                     with conn:
                         print(f"Connected by {addr}")
+                        usartListenerThread = multiprocessing.Process(target=usartFeedback)
+                        usartListenerThread.start()
+                        listenThread.info()
                         connected = True
                         while connected:
                             if not listenThread.is_alive(): 

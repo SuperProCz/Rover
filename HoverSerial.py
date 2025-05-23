@@ -73,7 +73,7 @@ class Hoverboard_serial:
             # Control checksumBytes Read is checksumBytes Calculate
             checksumBytesRead=self.uart.read(2)
             if checksumBytesCalculate == checksumBytesRead:
-                #print("checksumBytes True")
+                print("checksumBytes True")
                 return feedback
             else:
                 print("checksumBytes False")
